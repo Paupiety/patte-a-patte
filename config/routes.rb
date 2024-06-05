@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
+  resources :offers
   devise_for :users
+  resources :users, only: [:show, :new, :create, :edit, :update]
   get 'static_pages/accueil'
   root 'static_pages#accueil'
-
-  resources :users, only: [:show]
 
   resources :carts, only: [:show]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
