@@ -1,0 +1,41 @@
+<%= form_with(model: offer, local: true) do |form| %>
+  <% if offer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(offer.errors.count, "error") %> prohibited this offer from being saved:</h2>
+      <ul>
+        <% offer.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.number_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :type_animal %>
+    <%= form.text_field :type_animal %>
+  </div>
+
+  <div class="field container_form_element"> 
+    <%= form.label :image, "Image", class: 'label'%> 
+    <%= form.file_field :image, class: 'form-control input' %> 
+  </div> 
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
