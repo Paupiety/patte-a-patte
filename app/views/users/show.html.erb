@@ -1,3 +1,4 @@
+<h1>profil</h1>
 <section class="profile-section">
   <div class="container">
     <div class="row">
@@ -5,7 +6,7 @@
         <% if @user.profile_picture.attached? %>
           <%= image_tag @user.profile_picture, class: "img-fluid rounded-circle", alt: "Photo de profil" %>
         <% end %>
-</div>
+      </div>
       <div class="col-md-8">
         <div class="profile-info">
           <h2 class="profile-heading">Informations de profil</h2>
