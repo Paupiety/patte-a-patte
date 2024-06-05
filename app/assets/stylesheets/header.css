@@ -1,0 +1,25 @@
+.background {
+  background-color: var(--current_color);
+}
+
+.svg_navbar {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--current_color);
+}
+
+.svg_navbar:hover{
+    color: var(--secondary_color);
+}
+
+.svg_navbar:focus{
+    color: var(--secondary_color);
+}
+
+.current_page{
+    color: var(--secondary_color);
+}
+
+.link:hover{
+    color: var(--secondary_color);
+}

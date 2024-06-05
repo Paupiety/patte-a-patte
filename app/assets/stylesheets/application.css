@@ -13,4 +13,43 @@
  *= require_tree .
  *= require_self
  */
- @import 'application.tailwind.css';
+@import "application.tailwind.css";
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 0.9rem;
+  line-height: 1.5rem;
+  --secondary_color: #df9d1d;
+  --primary_color: #0f4a38;
+  --complementary_color: #f4e9d5;
+  --tiercary_color: #e35b27;
+  --current_color: #07271d;
+  --background_color: #fffbf3;
+  color: var(--current_color);
+}
+
+.btn_primary{
+  background-color: var(--primary_color);
+  border-radius: 999px;
+  color: var(--complementary_color);
+  padding:0.3rem 1.3rem;
+}
+
+.btn_primary:hover{
+  color: var(--current_color);
+  background-color: var(--secondary_color);
+}
+
+.btn_secondary{
+  background-color: var(--secondary_color);
+  border-radius: 999px;
+  color: var(--current_color);
+  padding:0.3rem 1,3rem;
+}
+
+.btn_secondary:hover{
+  color: var(--complementary_color);
+  background-color: var(--secondary_color);
+}
