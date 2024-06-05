@@ -1,6 +1,9 @@
 #lancer le serveur rails
 web: rails server
 
+#precompiler les assets
+assets: bundle exec rake assets:precompile
+
 #compiler les fichiers js
 js: esbuild --watch --sourcemap --bundle --outdir=../app/assets/builds ./app/javascript/application.js
 
