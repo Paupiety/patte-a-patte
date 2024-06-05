@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  titre: MyString
+  description: MyText
+  prix: 9.99
+  type_animal: MyString
+  date_publication: 2024-06-05
+  utilisateur: one
+
+two:
+  titre: MyString
+  description: MyText
+  prix: 9.99
+  type_animal: MyString
+  date_publication: 2024-06-05
+  utilisateur: two
