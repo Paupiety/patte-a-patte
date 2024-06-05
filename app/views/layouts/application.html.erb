@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,12 +7,16 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", media:"all", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag 'header', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
-
-  <body class="antialiased font-base text-gray-100 bg-black p-20">
+  <%= render 'layouts/header' %>
+  <body>
+    <div>
+    </div>
     <%= yield %>
   </body>
 </html>
