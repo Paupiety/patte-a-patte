@@ -1,6 +1,7 @@
 class Offer < ApplicationRecord
   belongs_to :user
   has_one_attached :image
+  has_many :comments, dependent: :destroy
 
   validates :titre, presence: true
   validates :description, presence: true
