@@ -10,3 +10,7 @@ footer{
 .title_footer{
     color: var(--secondary_color);
   }
+
+.section{
+    height: calc(100vh - 188px)
+}
