@@ -1,6 +1,6 @@
-<section>
-  <h1>Informations publiques</h1>
-  <div class="flex gap-3">
+<section class="mt-12 p-14 flex flex-col gap-6">
+  <h1 class="text-3xl">Informations publiques</h1>
+  <div class="flex">
     <div>
     <% if @user.profile_picture.attached? %>
       <%= image_tag @user.profile_picture, alt: "Photo de profil" %>
@@ -24,26 +24,42 @@
     <div>
 </section>
 
-<section>
-  <h1>Informations publiques</h1>
-  <div>
-     <%= form_for @user, html: {class: 'needs-validation'} do |f| %>
-      <div class="container_form_element">
-        <%= f.label :email, "Email", class: 'label' %>
-        <%= f.email_field :email, class: 'form-control input' %>
-      </div>
-    <%end%>
-    <%# à faire : partie informations privées lorsqu'elles y seront%>
+<section class="flex flex-col gap-6 mt-12 p-14">
+  <h1 class="text-3xl">Informations privées</h1>
+  <div class="flex gap-6 justify-between wrap">
+    <div>
+      <%= form_for @user, html: {class: 'flex flex-col gap-4'} do |f| %>
+        <div class="flex flex-col w-max gap-0.5">
+          <%= f.label :email, "Email", class: 'label' %>
+          <%= f.email_field :email, class:"input focus:border-0 appearance-none rounded w-full py-2 px-3 leading-tight" %>
+        </div>
+        <div class="actions">
+          <%= f.submit "Enregistrer les modifications", class: 'btn_primary' %>
+        </div>
+      <%end%>
+      <%# à faire : partie informations privées lorsqu'elles y seront%>
+    </div>
+    <div>
+    <img class="min-w-28" src="<%= asset_path('illustrations/dog-swimming.svg')%>" alt="Batman qui nage">
+  </div>
   </div>
 </section>
 
-<section>
-  <div>
-    <h1>Mes favoris</h1>
-    <div>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-4 h-4" viewBox="0 0 16 16">
+<section class="mt-12 p-14 flex flex-col gap-4">
+  <div class="flex items-center justify-between bg-complementary p-4 rounded">
+    <h1 class="text-3xl">Mes favoris</h1>
+    <a href="#" class="bg-secondary p-1 w-fi rounded-full arrow_icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-10 h-10" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"/>  
         </svg>
-    </div>
-</div>
+    </a>
+  </div>
+  <div class="flex items-center justify-between bg-complementary p-4 rounded">
+    <h1 class="text-3xl">Mes annonces</h1>
+    <a href="#" class="bg-secondary p-1 w-fi rounded-full">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-10 h-10" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"/>  
+        </svg>
+    </a>
+  </div>
 </section>

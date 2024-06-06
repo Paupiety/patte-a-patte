@@ -27,6 +27,7 @@ body {
   --current_color: #07271d;
   --background_color: #fffbf3;
   color: var(--current_color);
+  background-color: var(--background_color);
 }
 
 .btn_primary{
@@ -77,4 +78,8 @@ span{
 
 em{
   font-size: 0.7rem;
+}
+
+svg{
+  color: var(--primary_color);
 }
