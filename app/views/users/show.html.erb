@@ -11,11 +11,9 @@
         <div class="profile-info">
           <h2 class="profile-heading">Informations de profil</h2>
           <ul class="profile-info-list">
-            <% if @user.first_name.present? && @user.last_name.present? %>
             <li>
               <span class="fw-bold">Nom :</span> <%= @user.first_name %> <%= @user.last_name %>
             </li>
-            <% end %>
             <li>
               <span class="fw-bold">Email :</span> <%= @user.email %>
             </li>
