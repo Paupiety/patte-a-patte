@@ -96,9 +96,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_06_102523) do
   end
 
   create_table "offers", force: :cascade do |t|
-    t.string "titre"
+    t.string "title"
     t.text "description"
-    t.decimal "prix"
+    t.decimal "price"
     t.string "type_animal"
     t.date "date_publication"
     t.bigint "user_id", null: false
