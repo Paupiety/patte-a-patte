@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_one :cart
   has_many :offers, dependent: :destroy
   has_many :comments
+  has_many :likes
+  has_many :liked_offers, through: :likes, source: :offer
 
   #def welcome_send
     #UserMailer.welcome_email(self).deliver_now
