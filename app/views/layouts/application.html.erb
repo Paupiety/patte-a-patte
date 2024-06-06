@@ -17,11 +17,15 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
     <script src="https://js.stripe.com/v3/"></script>
   </head>
-  <%= render 'layouts/header' %>
-  <body>
-    <%= yield %>
+  <body class="m-0">
+    <%= render 'layouts/header' %>
+    <div class="mt-16">
+      <div class="content">
+        <%= yield %>
+      </div>
+      <footer class="w-full">
+        <%= render 'layouts/footer' %>
+      </footer>
+  </div>
   </body>
-  <footer class="w-full mt-4">
-  <%= render 'layouts/footer' %>
-  </footer>
 </html>
