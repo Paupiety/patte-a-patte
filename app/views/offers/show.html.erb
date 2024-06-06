@@ -2,13 +2,13 @@
   <div class="row justify-content-center">
     <div class="col-12 col-md-8 col-lg-6">
       <div class="card mb-4 border-0">
-        <% if @offer.image.attached? %> 
-          <div class="container_image_product_show"> 
-            <%= link_to @offer do %> 
-              <%= image_tag @offer.image, alt: 'image', class: "image_product_show img-fluid" %> 
-            <% end %> 
-          </div> 
-        <% end %> 
+        <% if @offer.image.attached? %>
+        <div class="container_image_product_show">
+          <%= link_to @offer do %>
+          <%= image_tag @offer.image, alt: 'image', class: "image_product_show img-fluid" %>
+          <% end %>
+        </div>
+        <% end %>
 
         <div class="card-body">
           <h1 class="card-title"><%= @offer.titre %></h1>
@@ -16,9 +16,26 @@
           <p class="card-text"><small class="text-body-secondary"><%= number_to_currency(@offer.prix, unit: "€") %></small></p>
           <p class="card-text">Type d'animal: <%= @offer.type_animal %></p>
           <p class="card-text">Date de publication: <%= @offer.created_at.strftime('%d'"/"'%m'"/"'%y') %></p>
-        </div>
 
-        <% if user_signed_in? %>
+          <!-- Affichage du nombre de likes -->
+          <p><strong>Nombre de likes :</strong> <%= @offer.likes.count %></p>
+
+          <!-- Affichage des utilisateurs ayant aimé l'offre -->
+          <p><strong>Utilisateurs ayant aimé cette offre :</strong></p>
+          <ul>
+            <% @offer.likes.each do |like| %>
+            <li><%= "#{like.user.first_name} #{like.user.last_name}" %></li>
+            <% end %>
+          </ul>
+
+          <!-- Boutons "Liker" et "Déliker" -->
+          <% if current_user.likes.exists?(offer_id: @offer.id) %>
+          <%= button_to "Déliker", unlike_offer_path(@offer), method: :delete, class: "btn btn-danger" %>
+          <% else %>
+          <%= button_to "Liker", like_offer_path(@offer), method: :post, class: "btn btn-primary" %>
+          <% end %>
+
+          <% if user_signed_in? %>
           <!-- Formulaire pour ajouter un commentaire -->
           <%= form_with(model: [@offer, @offer.comments.build], local: true) do |form| %>
             <div class="form-group">
@@ -31,36 +48,36 @@
             </div>
             <%= form.submit "Poster", class: 'btn btn-primary' %>
           <% end %>
-        <% else %>
+          <% else %>
           <p class="text-muted">Connectez-vous pour laisser un commentaire.</p>
-        <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 <% if @offer.comments.any? %>
-  <div class="container mt-4">
-    <div class="row justify-content-center">
-      <div class="col-12 col-md-8 col-lg-6">
-        <div class="card mb-4 border-0">
-          <div class="card-body">
-            <h2 class="card-title">Commentaires</h2>
-            <% @offer.comments.each do |comment| %>
-              <div class="card-text">
-                <h5><%= comment.title %></h5>
-                <p><%= comment.content %></p>
-                <% if comment.user %>
-                  <small class="text-muted">Posté par <%= comment.user.email %> le <%= comment.created_at.strftime('%d'"/"'%m'"/"'%Y à %H:%M') %></small>
-                <% else %>
-                <% end %>
-              </div>
-              <hr>
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <div class="card mb-4 border-0">
+        <div class="card-body">
+          <h2 class="card-title">Commentaires</h2>
+          <% @offer.comments.each do |comment| %>
+          <div class="card-text">
+            <h5><%= comment.title %></h5>
+            <p><%= comment.content %></p>
+            <% if comment.user %>
+            <small class="text-muted">Posté par <%= comment.user.email %> le <%= comment.created_at.strftime('%d'"/"'%m'"/"'%Y à %H:%M') %></small>
+            <% else %>
             <% end %>
           </div>
+          <hr>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
+</div>
 <% end %>
-
