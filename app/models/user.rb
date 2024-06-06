@@ -16,9 +16,6 @@ class User < ApplicationRecord
     ["cart", "orders", "profile_picture_attachment", "profile_picture_blob"]
   end
 
-  def create_cart
-    Cart.create(user: self)
-  end
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
