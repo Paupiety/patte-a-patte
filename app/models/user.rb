@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_one_attached :profile_picture
   has_one :cart
   has_many :offers, dependent: :destroy
+  has_many :comments
 
   #def welcome_send
     #UserMailer.welcome_email(self).deliver_now
