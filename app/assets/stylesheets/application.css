@@ -27,6 +27,7 @@ body {
   --current_color: #07271d;
   --background_color: #fffbf3;
   color: var(--current_color);
+  background-color: var(--background_color);
 }
 
 .btn_primary{
@@ -46,7 +47,14 @@ body {
   background-color: var(--secondary_color);
   border-radius: 999px;
   color: var(--current_color);
-  padding:0.3rem 1,3rem;
+  padding:0.3rem 1.3rem;
+}
+
+.btn_danger{
+  background-color: var(--tiercary_color);
+  border-radius: 999px;
+  color: var(--current_color);
+  padding: 0.3rem 1.3rem;
 }
 
 .btn_secondary:hover{
@@ -77,4 +85,8 @@ span{
 
 em{
   font-size: 0.7rem;
+}
+
+svg{
+  color: var(--primary_color);
 }
