@@ -11,9 +11,9 @@
         <% end %>
 
         <div class="card-body">
-          <h1 class="card-title"><%= @offer.titre %></h1>
+          <h1 class="card-title"><%= @offer.title %></h1>
           <p class="card-text"><%= @offer.description %></p>
-          <p class="card-text"><small class="text-body-secondary"><%= number_to_currency(@offer.prix, unit: "€") %></small></p>
+          <p class="card-text"><small class="text-body-secondary"><%= number_to_currency(@offer.price, unit: "€") %></small></p>
           <p class="card-text">Type d'animal: <%= @offer.type_animal %></p>
           <p class="card-text">Date de publication: <%= @offer.created_at.strftime('%d'"/"'%m'"/"'%y') %></p>
 
@@ -29,7 +29,7 @@
           </ul>
 
           <!-- Boutons "Liker" et "Déliker" -->
-          <% if current_user.likes.exists?(offer_id: @offer.id) %>
+          <% if @offer.likes.find_by(user: current_user) %>
           <%= button_to "Déliker", unlike_offer_path(@offer), method: :delete, class: "btn btn-danger" %>
           <% else %>
           <%= button_to "Liker", like_offer_path(@offer), method: :post, class: "btn btn-primary" %>
