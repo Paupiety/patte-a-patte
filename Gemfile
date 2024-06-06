@@ -19,7 +19,10 @@ gem "jsbundling-rails"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
+
 gem 'devise'
+
+gem 'activeadmin'
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
@@ -32,6 +35,10 @@ gem "stripe"
 gem "dotenv"
 
 gem "dotenv-rails"
+
+gem 'sassc-rails'
+
+gem "table_print"
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
