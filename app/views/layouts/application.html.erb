@@ -18,8 +18,10 @@
     <script src="https://js.stripe.com/v3/"></script>
   </head>
   <%= render 'layouts/header' %>
-  <body class="min-h-screen">
+  <body>
     <%= yield %>
   </body>
+  <footer class="w-full mt-4">
   <%= render 'layouts/footer' %>
+  </footer>
 </html>

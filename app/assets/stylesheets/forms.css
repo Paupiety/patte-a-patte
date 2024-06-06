@@ -2,8 +2,6 @@
     background-color: var(--complementary_color);
 }
 
-
-
 .input:focus{
     border: 1.5px solid var(--secondary_color) !important;
 }
