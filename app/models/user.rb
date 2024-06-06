@@ -1,12 +1,20 @@
 class User < ApplicationRecord
-  # after_create :welcome_send
+  #after_create :welcome_send
   has_one_attached :profile_picture
   has_one :cart
-  has_many :orders
+  has_many :offers, dependent: :destroy
 
-  # def welcome_send
-  #   UserMailer.welcome_email(self).deliver_now
-  # end
+  #def welcome_send
+    #UserMailer.welcome_email(self).deliver_now
+  #end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["created_at", "description", "email", "encrypted_password", "first_name", "id", "last_name", "remember_created_at", "reset_password_sent_at", "reset_password_token", "updated_at"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["cart", "orders", "profile_picture_attachment", "profile_picture_blob"]
+  end
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
