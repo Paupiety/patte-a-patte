@@ -1,0 +1,13 @@
+.bg-primary{
+  background-color: var(--primary_color);
+}
+
+.bg-secondary{
+    background: var(--secondary_color);
+}
+
+.arrow_icon:hover{
+    background-color: var(--current_color);
+    color: var(--complementary_color)
+}
+
