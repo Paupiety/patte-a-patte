@@ -1,0 +1,12 @@
+.reduce-block {
+    width: 200px;
+}
+
+footer{
+    background-color: var(--primary_color);
+    color: var(--complementary_color);
+}
+
+.title_footer{
+    color: var(--secondary_color);
+  }
