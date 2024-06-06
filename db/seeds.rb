@@ -3,6 +3,27 @@
 # Clear existing data
 User.destroy_all
 Offer.destroy_all
+Category.destroy_all
+
+
+type_animal_array = ["Cat", "Dog", "Bird", "Reptil", "Fish"]
+index = 0
+5.times do |t|
+  Category.create!(
+    type_animal: type_animal_array[index]
+  )
+  index += 1
+end
+
+  Typeoffer.create!(
+    type_offer: "Service"
+  )
+  Typeoffer.create!(
+    type_offer: "Adoption"
+  )
+  Typeoffer.create!(
+    type_offer: "Vente"
+  )
 
 # Create Users
 10.times do |i|
@@ -20,9 +41,9 @@ end
 User.all.each do |user|
   3.times do |i|
     Offer.create!(
-      titre: "Offer #{i} for #{user.first_name}",
+      title: "Offer #{i} for #{user.first_name}",
       description: "This is a description for offer #{i} by #{user.first_name}",
-      prix: rand(10..100),
+      price: rand(10..100),
       type_animal: ["Cat", "Dog", "Bird"].sample,
       date_publication: Date.today,
       user: user
