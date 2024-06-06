@@ -1,5 +1,6 @@
 class OffersController < ApplicationController
   before_action :set_offer, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:like, :unlike]
 
   def index
     @offers = Offer.all
@@ -37,5 +38,18 @@ class OffersController < ApplicationController
     @offer.destroy
     redirect_to offers_url
     flash[:success] = "L'offre a été supprimée avec succès."
+  end
+
+  def like
+    @offer = Offer.find(params[:id])
+    current_user.likes.create(offer: @offer) unless current_user.likes.exists?(offer: @offer)
+    redirect_to @offer
+  end
+
+  def unlike
+    @offer = Offer.find(params[:id])
+    like = current_user.likes.find_by(offer: @offer)
+    like.destroy if like
+    redirect_to @offer
   end
 end

@@ -11,6 +11,11 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :type_d_annonce %>
+    <%= form.select :type_offer, Typeoffer.all.collect { |t| [t.type_offer, t.id] }, {}, class: "form-control"%>
+  </div>
+
+  <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title %>
   </div>
@@ -27,7 +32,7 @@
 
   <div class="field">
     <%= form.label :type_animal %>
-    <%= form.text_field :type_animal %>
+    <%= form.select :type_animal, Category.all.collect { |c| [c.type_animal, c.id] }, {}, class: "form-control"%>
   </div>
 
   <div class="field container_form_element"> 
