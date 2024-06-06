@@ -27,6 +27,8 @@ body {
   --current_color: #07271d;
   --background_color: #fffbf3;
   color: var(--current_color);
+  height: 100%;
+  width: 100%;
 }
 
 .btn_primary{
@@ -34,6 +36,7 @@ body {
   border-radius: 999px;
   color: var(--complementary_color);
   padding:0.3rem 1.3rem;
+  width: fit-content;
 }
 
 .btn_primary:hover{
@@ -54,7 +57,8 @@ body {
 }
 
 h1{
-
+  font-family: "Ultra", serif;
+  font-style: normal;
 }
 
 h2{
@@ -71,4 +75,8 @@ span{
   font-style: italic;
   font-size: 0.9rem;
   line-height: 1.4rem;
+}
+
+em{
+  font-size: 0.7rem;
 }
