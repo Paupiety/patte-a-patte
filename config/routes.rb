@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :offers do
+    resources :cart_offers, only: %i[create destroy]
     member do
       post 'like', to: 'offers#like', as: 'like'
       delete 'unlike', to: 'offers#unlike', as: 'unlike'

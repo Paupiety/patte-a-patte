@@ -5,12 +5,17 @@ module CartsHelper
         Cart.create(user: current_user)
       end
 
-#to have total_price of the cart
+#to have total_price of the cart withour services charges
       def total_price(cart)
         total_price = 0
         cart.offers.each do |offer|
           total_price += offer.price
         end
         total_price
+      end
+
+
+      def services_charges(cart)
+        total_price(cart) * 0.04
       end
 end
