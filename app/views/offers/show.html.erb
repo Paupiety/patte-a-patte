@@ -1,6 +1,6 @@
-<%if @offer.type_offer == "Service"%>
+<%if @offer.type_offer.type_offer == "Service"%>
   <%= render 'offers/show_services' %>
 <%else%>
   <%= render 'offers/show_products_adoptions' %>
-  <%= @offer.type_offer%>
+  <%= @offer.type_offer.type_offer%>
 <%end%>

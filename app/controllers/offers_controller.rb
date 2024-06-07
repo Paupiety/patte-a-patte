@@ -58,17 +58,20 @@ class OffersController < ApplicationController
   end
 
   def vente
-    @offers = Offer.where(type_offer: 'Vente')
+    @typeoffer = Typeoffer.find_by(type_offer: "Vente")
+    @offers = Offer.where(type_offer_id: @typeoffer.id)
     render :index
   end
 
   def adoption
-    @offers = Offer.where(type_offer: 'Adoption')
+    @typeoffer = Typeoffer.find_by(type_offer: "Adoption")
+    @offers = Offer.where(type_offer_id: @typeoffer.id)
     render :index
   end
 
   def service
-    @offers = Offer.where(type_offer: 'Service')
+    @typeoffer = Typeoffer.find_by(type_offer: "Service")
+    @offers = Offer.where(type_offer_id: @typeoffer.id)
     render :index
   end
 end

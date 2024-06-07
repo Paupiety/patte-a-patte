@@ -1,5 +1,6 @@
 class Offer < ApplicationRecord
   belongs_to :user
+  belongs_to :type_offer, class_name: 'Typeoffer'
   has_one_attached :image
   has_many :comments, dependent: :destroy
   has_many :likes

@@ -1,4 +1,5 @@
 # db/seeds.rb
+require './app/models/type_offer'
 
 # Clear existing data
 User.destroy_all
@@ -51,7 +52,7 @@ User.all.each do |user|
       type_animal: ["Cat", "Dog", "Bird"].sample,
       date_publication: Date.today,
       user: user,
-      type_offer: ["Vente", "Service", "Adoption"].sample
+      type_offer_id: 1
     )
   end
 end
