@@ -1,4 +1,4 @@
-class CategoriesController < ApplicationController
+class CategoryController < ApplicationController
   before_action :set_category, only: [:edit, :destroy]
 
   def new
