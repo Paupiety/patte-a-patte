@@ -32,47 +32,51 @@ body {
   background-color: var(--background_color);
 }
 
-.btn_primary{
+.btn_primary {
   background-color: var(--primary_color);
   border-radius: 999px;
   color: var(--complementary_color);
-  padding:0.3rem 1.3rem;
+  padding: 0.3rem 1.3rem;
   width: fit-content;
 }
 
-.btn_primary:hover{
+.btn_primary:hover {
   color: var(--current_color);
   background-color: var(--secondary_color);
 }
 
-.btn_secondary{
+.btn_secondary {
   background-color: var(--secondary_color);
   border-radius: 999px;
   color: var(--current_color);
-  padding:0.3rem 1.3rem;
+  padding: 0.3rem 1.3rem;
 }
 
-.btn_secondary:hover{
+.btn_secondary:hover {
   color: var(--complementary_color);
   background-color: var(--secondary_color);
 }
 
-h1{
+h1 {
   font-family: "Ultra", serif;
   font-style: normal;
 }
 
-h2{
+h2 {
   font-style: italic;
   line-height: 2rem;
 }
 
-span{
+span {
   font-style: italic;
   font-size: 0.9rem;
   line-height: 1.4rem;
 }
 
-em{
+em {
   font-size: 0.7rem;
+}
+
+.border-current {
+  border-color: var(--current_color);
 }
