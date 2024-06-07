@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       post 'like', to: 'offers#like', as: 'like'
       delete 'unlike', to: 'offers#unlike', as: 'unlike'
     end
+    resources :users, only: [:show]
     collection do
       get 'vente'
       get 'adoption'

@@ -1,31 +1,60 @@
-<div class="container mx-auto mt-8">
-  <div class="max-w-3xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
-    <% if @offer.image.attached? %>
-      <div class="w-full h-64">
-        <%= link_to @offer do %>
-          <%= image_tag @offer.image, alt: 'image', class: "w-full h-full object-cover" %>
-        <% end %>
+<section class="mt-12 p-14 flex flex-col gap-6 max-xl:p-4">
+    <div class="flex gap-3 max-sm:flex-col max-sm:items-center">
+      <% if @offer.user.profile_picture.attached? %>
+        <div class="w-3/5 h-96 rounded max-sm:w-full rounded-full overflow-hidden h-72 w-72 flex">
+          <%= link_to @offer do %>
+            <%= image_tag @offer.user.profile_picture, alt: 'image', class: "w-full h-full object-cover rounded" %>
+          <% end %>
+          <%else%>
+            <img src="<%= asset_path('logo/symbole_logo.svg')%>" alt="Logo Patte à patte">
+          <%end%>
       </div>
-    <% end %>
-    <div class="p-6">
-      <h1 class="text-3xl font-bold mb-2"><%= @offer.title %></h1>
-      <p class="text-gray-700 mb-4"><%= @offer.description %></p>
-      <p class="text-xl text-gray-900 font-semibold mb-4"><%= number_to_currency(@offer.price, unit: "€") %></p>
-      <p class="text-gray-600 mb-4">Type d'animal: <%= @offer.type_animal %></p>
-      <p class="text-gray-600 mb-4">Date de publication: <%= @offer.created_at.strftime('%d/%m/%y') %></p>
-      <p class="font-semibold mb-2">Nombre de likes: <%= @offer.likes.count %></p>
-      <ul class="list-disc pl-5 mb-4">
-        <% @offer.likes.each do |like| %>
-          <li><%= "#{like.user.first_name} #{like.user.last_name}" %></li>
-        <% end %>
-      </ul>
-      <div class="mb-4">
-        <% if @offer.likes.find_by(user: current_user) %>
-          <%= button_to "Déliker", unlike_offer_path(@offer), method: :delete, class: "bg-red-500 text-white py-2 px-4 rounded hover:bg-red-400" %>
-        <% else %>
-          <%= button_to "Liker", like_offer_path(@offer), method: :post, class: "bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-400" %>
-        <% end %>
+      <div class="w-2/5 p-6 flex flex-col gap-6 max-sm:w-full">
+        <div class="flex flex-col gap-3">
+            <div>
+              <p><%= @offer.created_at.strftime('%d/%m/%y') %></p>
+              <h1 class="text-3xl"><%= @offer.title %></h1>
+              <h2 class="text-2xl"><%= number_to_currency(@offer.price, unit: "€") %></h2>
+            </div>
+            <p><%= @offer.description %></p>
+            <%= link_to "Voir le profil du vendeur", offer_user_path(@offer), class:"underline"%>
+              <div class="flex gap-3">
+                <% if user_signed_in? %>
+                  <div> 
+                    <%= button_to "Ajouter au panier", offer_cart_offers_path(@offer.id), method: :post, class: "btn_primary" %>
+                  </div>
+                <% end %>
+
+              <div>
+                <% if @offer.likes.find_by(user: current_user) %>
+                  <%= button_to unlike_offer_path(@offer), method: :delete, class: "bg-secondary p-2 w-fi rounded-full arrow_icon" do %>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
+                    </svg>
+                  <% end %>
+                <% else %>
+                  <%= button_to like_offer_path(@offer), method: :post, class: "bg-secondary p-2 w-fi rounded-full arrow_icon" do %>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                      <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
+                    </svg>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <h3 class="font-bold text-lg">Caractéristiques<h3>
+            <div class="flex flex-col gap-1">
+              <h4 class="italic text-xs">Type d'animal</h4>
+              <h5 class=font-semibold><%= @offer.type_animal %></h5>
+            </div>
+        </div>
+
+        <%# Rajouter livraison et les autres caractéristiques %>
+
       </div>
     </div>
-  </div>
-</div>
+</section>
+
+<h5 class="font-semibold mb-2">Nombre de likes: <%= @offer.likes.count %></h5>
