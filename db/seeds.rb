@@ -1,5 +1,3 @@
-# db/seeds.rb
-require './app/models/type_offer'
 
 # Clear existing data
 User.destroy_all
