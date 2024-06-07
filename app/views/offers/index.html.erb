@@ -26,8 +26,8 @@
               </div>
             </div>
             <% if user_signed_in? %>
-                  <%= button_to "Ajouter au panier"%><%#, offer_cart_offers_path(offer.id), method: :post, class: "btn btn_primary" %>
-                <% end %>
+                  <%=link_to "Ajouter au panier", offer_cart_offers_path(offer.id), method: :post, class: "btn_primary" %>
+            <% end %>
           </div>
         <% end %>
     </div>
