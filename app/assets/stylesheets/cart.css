@@ -18,8 +18,8 @@
 }
 
 .background_card{
-    background-color: var(--transparency_color);
-    padding: 3rem;
+    background-color: var(--complementary_color);
+    padding: 2rem;
     border-radius: 10px;
 }
 

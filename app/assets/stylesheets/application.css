@@ -29,6 +29,7 @@ body {
   color: var(--current_color);
   height: 100%;
   width: 100%;
+  background-color: var(--transparency_color);
 }
 
 .btn_primary{
@@ -48,7 +49,7 @@ body {
   background-color: var(--secondary_color);
   border-radius: 999px;
   color: var(--current_color);
-  padding:0.3rem 1,3rem;
+  padding:0.3rem 1.3rem;
 }
 
 .btn_secondary:hover{
