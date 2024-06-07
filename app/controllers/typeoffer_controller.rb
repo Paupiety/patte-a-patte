@@ -1,4 +1,4 @@
-class TypeoffersController < ApplicationController
+class TypeofferController < ApplicationController
 before_action :set_type, only: [:edit, :destroy]
 
   def new
