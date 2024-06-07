@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    @favorite_offers = @user.liked_offers
   end
 
   def edit
