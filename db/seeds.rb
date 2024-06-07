@@ -2,9 +2,13 @@
 
 # Clear existing data
 User.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('users')
 Offer.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('offers')
 Category.destroy_all
-
+ActiveRecord::Base.connection.reset_pk_sequence!('categories')
+Typeoffer.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('typeoffers')
 
 type_animal_array = ["Cat", "Dog", "Bird", "Reptil", "Fish"]
 index = 0
