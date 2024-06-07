@@ -3,7 +3,11 @@ class OffersController < ApplicationController
   before_action :authenticate_user!, only: [:like, :unlike]
 
   def index
-    @offers = Offer.all
+    if params[:search].present?
+      @offers = Offer.where("title ILIKE ? OR description ILIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
+    else
+      @offers = Offer.all
+    end
   end
 
   def new
