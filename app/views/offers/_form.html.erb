@@ -14,10 +14,10 @@
         </div>
       <% end %>
 
-        <div class="flex flex-col gap-0.5">
-          <%= f.label :type_d_annonce, "Type d'annonce", class: "label" %>
-          <%= f.select :type_offer, Typeoffer.all.collect { |t| [t.type_offer, t.id] }, {}, class: "form-control border-transparent focus:border-0 appearance-none rounded w-full py-2 px-3 leading-tight"%>
-        </div>
+  <div class="field">
+    <%= form.label :type_d_annonce %>
+    <%= form.select :type_offer_id, Typeoffer.all.collect { |t| [t.type_offer, t.id] }, {}, class: "form-control"%>
+  </div>
 
         <div class="flex flex-col gap-0.5">
           <%= f.label :title, "Titre", class: "label" %>
