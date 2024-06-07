@@ -39,6 +39,11 @@
             <%= link_to "Adopter une patte", adoption_offers_path, class: "link py-2" %>
             <a href="#" class="link py-2">À propos</a>
             <a href="#" class="link py-2">Contact</a>
+            <%= form_with url: offers_path, method: :get, html: {  class: "flex gap-4 h-fit" }, local: true do %>
+              <%= text_field_tag :search, params[:search], placeholder: "Search offers...", class:"input border focus:border-0 appearance-none rounded-full py-1 px-3 leading-tight" %>
+              <%= submit_tag "Search" %>
+            <% end %>
+
           </div>
         </div>
       </div>
