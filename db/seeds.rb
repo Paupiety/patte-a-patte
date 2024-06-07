@@ -46,7 +46,8 @@ User.all.each do |user|
       price: rand(10..100),
       type_animal: ["Cat", "Dog", "Bird"].sample,
       date_publication: Date.today,
-      user: user
+      user: user,
+      type_offer: ["Vente", "Service", "Adoption"].sample
     )
   end
 end

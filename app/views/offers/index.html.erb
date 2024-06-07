@@ -5,8 +5,9 @@
     </div>
 <br>
 <section class="collection">
-    <div class="container">
-      <div class="row">
+  <div class="container">
+    <div class="row">
+      <% if @offers.any? %>
         <% @offers.each do |offer| %>
           <div class="col-sm-6 col-md-4 col-lg-3 mb-3 p-3 section_collection">
                <% if offer.image.attached? %>
@@ -18,7 +19,7 @@
               <% end %>
             <div class=gap_container_info_item>
               <div class=container_infos_left_item>
-                <h2><%= offer.title %></h2>
+                <h2 class="text-xl"><%= offer.title %></h2>
                 <p><%= offer.description %></p>
               </div>
               <div>
@@ -30,5 +31,8 @@
             <% end %>
           </div>
         <% end %>
+      <% else %>
+        <p>No offers found</p>
+      <% end %>
     </div>
 </section>

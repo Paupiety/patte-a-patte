@@ -7,10 +7,16 @@ Rails.application.routes.draw do
       post 'like', to: 'offers#like', as: 'like'
       delete 'unlike', to: 'offers#unlike', as: 'unlike'
     end
+    collection do
+      get 'vente'
+      get 'adoption'
+      get 'service'
+    end
     resources :cart_offers, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
   end
-  devise_for :users
+  
+  devise_for :users, controllers: { registrations: 'users/registrations' }
   resources :users, only: [:show, :new, :create, :edit, :update]
   get 'static_pages/accueil'
   root 'static_pages#accueil'
