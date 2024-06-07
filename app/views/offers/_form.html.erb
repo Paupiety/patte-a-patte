@@ -1,46 +1,54 @@
-<%= form_with(model: offer, local: true) do |form| %>
-  <% if offer.errors.any? %>
-    <div id="error_explanation">
-      <h2 class="text-xl"><%= pluralize(offer.errors.count, "error") %> prohibited this offer from being saved:</h2>
-      <ul>
-        <% offer.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<section class="flex flex-col section">
+  <div class="flex flex-col w-full items-center mt-2">
+    <div class="flex flex-col gap-2 bg-complementary rounded px-8 pt-6 pb-8">
+      <%= form_for @offer, html: { multipart: true, class: 'needs-validation', novalidate: true, class: "flex flex-col gap-4" } do |f| %>
+     
+      <% if offer.errors.any? %>
+        <div id="error_explanation">
+          <h2 class="text-xl"><%= pluralize(offer.errors.count, "error") %> prohibited this offer from being saved:</h2>
+          <ul>
+            <% offer.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
   <div class="field">
     <%= form.label :type_d_annonce %>
     <%= form.select :type_offer_id, Typeoffer.all.collect { |t| [t.type_offer, t.id] }, {}, class: "form-control"%>
   </div>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+        <div class="flex flex-col gap-0.5">
+          <%= f.label :title, "Titre", class: "label" %>
+          <%= f.text_field :title, class:"input border-transparent focus:border-0 appearance-none rounded w-full py-2 px-3 leading-tight" %>
+        </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
+        <div class="flex flex-col gap-0.5">
+          <%= f.label :description, "Description", class: "label" %>
+          <%= f.text_area :description,  class:"input border-transparent focus:border-0 appearance-none rounded w-full py-2 px-3 leading-tight" %>
+        </div>
 
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.number_field :price %>
-  </div>
+        <div class="flex flex-col gap-0.5">
+          <%= f.label :price, "Prix", class: "label" %>
+          <%= f.number_field :price, class:"input border-transparent focus:border-0 appearance-none rounded w-full py-2 px-3 leading-tight" %>
+        </div>
 
-  <div class="field">
-    <%= form.label :type_animal %>
-    <%= form.select :type_animal, Category.all.collect { |c| [c.type_animal, c.id] }, {}, class: "form-control"%>
-  </div>
+        <div class="flex flex-col gap-0.5">
+          <%= f.label :type_animal, "Catégorie", class: "label" %>
+          <%= f.select :type_animal, Category.all.collect { |c| [c.type_animal, c.id] }, {}, class: "form-control border-transparent focus:border-0 appearance-none rounded w-full py-2 px-3 leading-tight" %>
+        </div>
 
-  <div class="field container_form_element"> 
-    <%= form.label :image, "Image", class: 'label'%> 
-    <%= form.file_field :image, class: 'form-control input' %> 
-  </div> 
+        <div class="flex flex-col gap-0.5"></div>
+          <%= f.label :image, "Image", class: 'label'%> 
+          <%= f.file_field :image, class: 'form-control input border-transparent focus:border-0 appearance-none rounded w-full py-2 px-3 leading-tight' %> 
+        </div>
 
-  <div class="actions">
-    <%= form.submit %>
+        <div class="actions btn_primary">
+          <%= f.submit "Enregistrer" %>
+        </div>
+      </div>
+    <% end %>
+    </div>
   </div>
-<% end %>
+</section>
