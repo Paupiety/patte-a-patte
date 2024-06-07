@@ -12,7 +12,7 @@
 
   <div class="field">
     <%= form.label :type_d_annonce %>
-    <%= form.select :type_offer, Typeoffer.all.collect { |t| [t.type_offer, t.id] }, {}, class: "form-control"%>
+    <%= form.select :type_offer_id, Typeoffer.all.collect { |t| [t.type_offer, t.id] }, {}, class: "form-control"%>
   </div>
 
   <div class="field">
