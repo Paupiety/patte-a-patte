@@ -33,10 +33,10 @@
         <div class="hidden sm:ml-6 sm:block">
           <div class="flex space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="#" class="current_page rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Bazar des pattes</a>
-            <a href="#" class="link py-2">Coup de patte</a>
-            <a href="#" class="link py-2">Adopte une patte</a>
-            <%= link_to "Dépose une annonce", new_offer_path, class: "link py-2" %>
+            <%# <a href="#" class="current_page rounded-md px-3 py-2 text-sm font-medium" aria-current="page"></a> %>   
+            <%= link_to "Bazar des pattes", vente_offers_path, class: "link py-2" %>
+            <%= link_to "Coup de patte", service_offers_path, class: "link py-2" %>
+            <%= link_to "Adopter une patte", adoption_offers_path, class: "link py-2" %>
             <a href="#" class="link py-2">À propos</a>
             <a href="#" class="link py-2">Contact</a>
           </div>
@@ -85,7 +85,7 @@
             <!-- Active: "bg-gray-100", Not Active: "" -->
 
             <a href="<%=user_path(current_user)%>" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Mon compte</a>
-
+            <%= link_to "Publier une annonce", new_offer_path, class: "block px-4 py-2 text-sm text-gray-700" %>
             <%= button_to "Se déconnecter", destroy_user_session_path, method: :delete, class:"block px-4 py-2 text-sm text-gray-700" %>
           </div>
         </div>
