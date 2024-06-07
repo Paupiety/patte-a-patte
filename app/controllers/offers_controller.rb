@@ -52,4 +52,19 @@ class OffersController < ApplicationController
     like.destroy if like
     redirect_to @offer
   end
+
+  def vente
+    @offers = Offer.where(type_offer: 'Vente')
+    render :index
+  end
+
+  def adoption
+    @offers = Offer.where(type_offer: 'Adoption')
+    render :index
+  end
+
+  def service
+    @offers = Offer.where(type_offer: 'Service')
+    render :index
+  end
 end
