@@ -2,6 +2,10 @@
   background-color: var(--current_color);
 }
 
+.background_header{
+  background-color: var(--background_color);
+}
+
 .svg_navbar {
   width: 1.5rem;
   height: 1.5rem;
@@ -22,4 +26,8 @@
 
 .link:hover{
     color: var(--secondary_color);
+}
+
+.content{
+  min-height: calc(100vh - 64px - 124px);
 }
