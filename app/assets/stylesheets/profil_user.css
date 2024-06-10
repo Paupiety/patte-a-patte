@@ -7,7 +7,7 @@
 }
 
 .arrow_icon:hover{
-    background-color: var(--current_color);
+    background-color: var(--secondary_color);
     color: var(--complementary_color)
 }
 

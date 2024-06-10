@@ -2,17 +2,6 @@
   <div class="flex flex-col w-full items-center mt-2">
     <div class="flex flex-col gap-2 bg-complementary rounded px-8 pt-6 pb-8">
       <%= form_for @offer, html: { multipart: true, class: 'needs-validation', novalidate: true, class: "flex flex-col gap-4" } do |f| %>
-     
-      <% if offer.errors.any? %>
-        <div id="error_explanation">
-          <h2 class="text-xl"><%= pluralize(offer.errors.count, "error") %> prohibited this offer from being saved:</h2>
-          <ul>
-            <% offer.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
 
   <div class="field">
     <%= f.label :type_d_annonce %>
