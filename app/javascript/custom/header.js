@@ -1,6 +1,5 @@
-console.log('File1.js has been loaded');
-const dropdown = document.getElementsByTagName("mobile-menu")[0];
-const burger = document.getElementsByTagName("burger")[0];
+const dropdown = document.getElementById("mobile-menu");
+const burger = document.getElementById("burger");
 
 const burgerOnClick = function () {
   dropdown.classList.toggle("hidden");
