@@ -80,3 +80,11 @@ em {
 .border-current {
   border-color: var(--current_color);
 }
+
+.color-primary{
+  color: var(--primary_color);
+}
+
+.color-secondary{
+  color: var(--secondary_color);
+}
