@@ -3,7 +3,7 @@
     <div class="relative flex h-16 items-center justify-between gap-6">
       <div class="absolute inset-y-0 left-0 flex items-center xl:hidden">
         <!-- Mobile menu button-->
-        <button type="button" class="relative inline-flex items-center justify-center rounded-md p-2 color-primary hover:color-secondary" aria-controls="mobile-menu" aria-expanded="false">
+        <button id="burger" type="button" class="relative inline-flex items-center justify-center rounded-md p-2" aria-controls="mobile-menu" aria-expanded="false">
           <span class="absolute -inset-0.5"></span>
           <span class="sr-only">Open main menu</span>
           <!--
@@ -31,7 +31,7 @@
           </a>
         </div>
         <div class="hidden sm:ml-6 sm:block">
-          <div class="flex gap-6 items-center max-xl:hidden">
+          <div class="flex space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
             <%# <a href="#" class="current_page rounded-md px-3 py-2 text-sm font-medium" aria-current="page"></a> %>   
             <%= link_to "Bazar des pattes", vente_offers_path, class: "link py-2" %>
