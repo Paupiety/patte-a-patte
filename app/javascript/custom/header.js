@@ -1,11 +1,4 @@
-//add function to wait page loaded to add button
-document.addEventListener("DOMContentLoaded", function() {
+export const burgerOnClick = function () {
   const dropdown = document.getElementById("mobile-menu");
-  const burger = document.getElementById("burger");
-
-  const burgerOnClick = function () {
-    dropdown.classList.toggle("hidden");
-  };
-
-  burger.addEventListener("click", burgerOnClick);
-});
+  dropdown.classList.toggle("hidden");
+};
