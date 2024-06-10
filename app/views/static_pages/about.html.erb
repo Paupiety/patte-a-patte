@@ -6,74 +6,76 @@
   <title>À propos de nous</title>
   <link rel="stylesheet" href="path/to/your/css/styles.css">
 </head>
-<body class="bg-gray-100">
+<body>
 
   <!-- Main content -->
-  <main class="mt-12 p-14 max-md:p-4">
+  <main class="mt-28 flex flex-col items-center w-full gap-28">
     <!-- Logo -->
-    <div class="text-center mb-12">
-      <%= image_tag("logo/logo-patte-a-patte-rvb.svg", alt: "Logo", class: "mx-auto h-32 w-auto") %>
+    <div class="text-center">
+      <%= image_tag("logo/logo-patte-a-patte-rvb.svg", alt: "Logo", class: "mx-auto h-40 w-auto") %>
     </div>
 
     <!-- About Us Section -->
-    <section class="bg-primary p-10 rounded shadow-md text-white">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="p-6 rounded">
-          <h2 class="text-2xl font-bold mb-4">De 3 amis</h2>
-          <p>Avec nous, trois étudiants passionnés par les animaux, avons réalisé que nos compagnons méritaient une communauté dédiée. Après des semaines de travail intense et de durs labeurs, nous avons créé Patte à Patte. Notre but ? Offrir une plateforme où les propriétaires d’animaux peuvent échanger des services et des accessoires en toute confiance.</p>
-        </div>
-        <div class="p-6 rounded">
-          <h2 class="text-2xl font-bold mb-4">À une communauté en pleine croissance</h2>
-          <p>Aujourd'hui, Patte à Patte rassemble une communauté dynamique de propriétaires d’animaux de tous horizons. Notre équipe, composée de passionnés d'animaux et de technologie (et de pleins d'autres choses!), s'efforce de rendre chaque interaction sur la plateforme aussi simple et agréable que possible. Vous cherchez une laisse top tendance pour Chouchou ou un service de garde pour Fluffy ? Patte à Patte est là pour vous.</p>
-        </div>
-        <div class="p-6 rounded">
-          <h2 class="text-2xl font-bold mb-4">Opérant à travers la France</h2>
-          <p>Depuis nos bureaux à PARIS (évidemment), nous connectons les amoureux des animaux dans toute la France. Peu importe où vous êtes, vous pouvez trouver des services fiables, des accessoires uniques et des compagnons pour vos animaux.</p>
-        </div>
-        <div class="p-6 rounded">
-          <h2 class="text-2xl font-bold mb-4">Pour une mission globale</h2>
-          <p>Trouver des services, des accessoires pour vos animaux n’a jamais été aussi facile. Échangez, achetez, vendez en toute confiance sur Patte à Patte. Rejoignez notre communauté et participez à notre mission : faire de Patte à Patte la référence pour les services et les échanges entre propriétaires d’animaux. Parce que vos amis à quatre pattes, à plumes ou à écailles le méritent.</p>
+    <section class="bg-complementary rounded flex flex-col items-center w-full">
+      <div class="max-w-6xl p-20 flex flex-col gap-6">
+        <h1 class="text-3xl color-primary">Comment tout a commencé ?</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <h2 class="text-2xl mb-4">De 3 amis</h2>
+            <p class="leading-6">Avec nous, trois étudiants passionnés par les animaux, avons réalisé que nos compagnons méritaient une communauté dédiée. Après des semaines de travail intense et de durs labeurs, nous avons créé Patte à Patte. Notre but ? Offrir une plateforme où les propriétaires d’animaux peuvent échanger des services et des accessoires en toute confiance.</p>
+          </div>
+          <div>
+            <h2 class="text-2xl mb-4">À une communauté en pleine croissance</h2>
+            <p class="leading-6">Aujourd'hui, Patte à Patte rassemble une communauté dynamique de propriétaires d’animaux de tous horizons. Notre équipe, composée de passionnés d'animaux et de technologie (et de pleins d'autres choses!), s'efforce de rendre chaque interaction sur la plateforme aussi simple et agréable que possible. Vous cherchez une laisse top tendance pour Chouchou ou un service de garde pour Fluffy ? Patte à Patte est là pour vous.</p>
+          </div>
+          <div>
+            <h2 class="text-2xl mb-4">Opérant à travers la France</h2>
+            <p class="leading-6">Depuis nos bureaux à PARIS (évidemment), nous connectons les amoureux des animaux dans toute la France. Peu importe où vous êtes, vous pouvez trouver des services fiables, des accessoires uniques et des compagnons pour vos animaux.</p>
+          </div>
+          <div>
+            <h2 class="text-2xl mb-4">Pour une mission globale</h2>
+            <p class="leading-6">Trouver des services, des accessoires pour vos animaux n’a jamais été aussi facile. Échangez, achetez, vendez en toute confiance sur Patte à Patte. Rejoignez notre communauté et participez à notre mission : faire de Patte à Patte la référence pour les services et les échanges entre propriétaires d’animaux. Parce que vos amis à quatre pattes, à plumes ou à écailles le méritent.</p>
+          </div>
         </div>
       </div>
     </section>
 
 <!-- Additional Information Section -->
-<section class="mt-12 bg-primary p-10 rounded shadow-md text-white">
-  <h2 class="text-2xl font-bold mb-6">L'équipe Patte à Patte</h2>
+<section class="w-fit bg-secondary p-10 rounded flex flex-col items-center gap-6 mb-28">
+  <div class="flex flex-col items-center gap-3">
+    <h3 class="text-2xl font-bold">L'équipe Patte à Patte</h3>
+    <p class="text-center max-w-2xl italic">Nous croyons en une communauté solidaire, engagée, où chaque interaction renforce la confiance et le bien-être de nos animaux. Ensemble, faisons de Patte à Patte le lieu incontournable pour tous les propriétaires d’animaux.
+  Patte à patte, les bons plans entre amis à pattes.</p>
+  </div>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
     <!-- Membre 1 -->
     <div class="p-4 text-center">
-      <div class="h-48 w-48 mx-auto rounded-full overflow-hidden">
-        <%= image_tag("chat_profil.jpg", alt: "Membre 1", class: "object-cover h-full w-full rounded-full") %>
+      <div class="h-28 w-28 mx-auto rounded-full overflow-hidden">
+        <%= image_tag("profil-about/chat_profil.jpg", alt: "Membre 1", class: "object-cover h-full w-full rounded-full") %>
       </div>
-      <h3 class="text-lg font-bold mt-4">LENORMAND Thibault</h3>
-      <p class="text-sm">Fonction dans l'équipe</p>
+      <h3 class="font-bold mt-4">Lenormand Thibault</h3>
+      <p class="text-xs">Co-fondateur</p>
     </div>
 
     <!-- Membre 2 -->
     <div class="p-4 text-center">
-      <div class="h-48 w-48 mx-auto rounded-full overflow-hidden">
-        <img src="path/to/membre2-photo.jpg" alt="Membre 2" class="object-cover h-full w-full rounded-full">
+      <div class="h-28 w-28 mx-auto rounded-full overflow-hidden flex items-center justify-center">
+        <%= image_tag("profil-about/profil-manon-about.jpg", alt: "Membre 1", class: "object-cover") %>
       </div>
-      <h3 class="text-lg font-bold mt-4">ESQUERRE Manon</h3>
-      <p class="text-sm">Fonction dans l'équipe</p>
+      <h3 class="font-bold mt-4">Esquerre Manon</h3>
+      <p class="text-xs">Co-fondateur</p>
     </div>
 
     <!-- Membre 3 -->
     <div class="p-4 text-center">
-      <div class="h-48 w-48 mx-auto rounded-full overflow-hidden">
+      <div class="h-28 w-28 mx-auto rounded-full overflow-hidden">
         <img src="path/to/membre3-photo.jpg" alt="Membre 3" class="object-cover h-full w-full rounded-full">
       </div>
-      <h3 class="text-lg font-bold mt-4">TEDESCO Alexandre</h3>
-      <p class="text-sm">Fonction dans l'équipe</p>
+      <h3 class="font-bold mt-4">Tedesco Alexandre</h3>
+      <p class="text-xs">Co-fondateur</p>
     </div>
   </div>
 </section>
-
-
-      <!-- Texte sur l'équipe -->
-      <p class="text-white mt-8">Nous croyons en une communauté solidaire, engagée, où chaque interaction renforce la confiance et le bien-être de nos animaux. Ensemble, faisons de Patte à Patte le lieu incontournable pour tous les propriétaires d’animaux.</p>
-      <p class="text-white">"Patte à Patte : ‘Think different... think patte’</p>
     </section>
   </main>
 </body>
