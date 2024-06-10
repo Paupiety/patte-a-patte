@@ -1,5 +1,11 @@
-const dropdown = document.getElementsByTagName("dropdown")[0];
-const burger = document.getElementsByTagName("dropdown")[0];
+console.log('File1.js has been loaded');
+const dropdown = document.getElementsByTagName("mobile-menu")[0];
+const burger = document.getElementsByTagName("burger")[0];
+
+const burgerOnClick = function () {
+  dropdown.classList.toggle("hidden");
+};
+burger.addEventListener("click", burgerOnClick);
 
 // const footer = document.querySelector("footer.text-muted");
 // let number = 0;
