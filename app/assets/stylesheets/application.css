@@ -84,3 +84,7 @@ em {
 .color-primary{
   color: var(--primary_color);
 }
+
+.color-secondary{
+  color: var(--secondary_color);
+}
