@@ -1,8 +1,8 @@
-<section class="flex flex-col section">
-  <div class="flex flex-col w-full items-center mt-20">
-    <div class="flex flex-col gap-2 bg-complementary rounded px-8 pt-6 pb-8">
+<section class="flex flex-col section max-xl:p-4 p-14">
+  <div class="flex flex-col w-full items-center">
+    <div class="flex flex-col gap-2 bg-complementary rounded px-8 pt-6 pb-8 w-fit">
 
-      <h1 class="text-3xl">Editer mes informations de connexions</h1>
+      <h1 class="text-3xl max-w-lg">Editer mes informations de connexion</h1>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "flex flex-col gap-4" }) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
@@ -42,7 +42,7 @@
       <% end %>
     <div class="flex justify-between mt-10">
       <%= link_to "Retour", user_path(current_user), class:"btn_primary" %>
-      <div><%= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class:"btn_danger" %></div>
+      <div><%= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class:"btn_danger underline" %></div>
     </div>
     </div>
   </div>
