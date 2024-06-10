@@ -5,6 +5,7 @@ class Offer < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes
   has_many :liking_users, through: :likes, source: :user
+  has_many :categories
 
   validates :title, presence: true
   validates :description, presence: true
