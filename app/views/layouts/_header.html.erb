@@ -1,9 +1,9 @@
 <nav class="fixed w-full top-0 h-16 background_header z-10">
   <div class="mx-auto px-2 sm:px-6 lg:px-12">
-    <div class="relative flex h-16 items-center justify-between">
-      <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+    <div class="relative flex h-16 items-center justify-between gap-6">
+      <div class="absolute inset-y-0 left-0 flex items-center xl:hidden">
         <!-- Mobile menu button-->
-        <button type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+        <button type="button" class="relative inline-flex items-center justify-center rounded-md p-2 color-primary hover:color-secondary" aria-controls="mobile-menu" aria-expanded="false">
           <span class="absolute -inset-0.5"></span>
           <span class="sr-only">Open main menu</span>
           <!--
@@ -24,14 +24,14 @@
           </svg>
         </button>
       </div>
-      <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+      <div class="flex flex-1 items-center justify-center xl:items-stretch xl:justify-start">
         <div class="flex flex-shrink-0 items-center">
           <a href="/">
           <img class="h-10 w-auto" src="<%= asset_path('logo/logo-patte-a-patte-rvb.svg')%>" alt="Your Company">
           </a>
         </div>
         <div class="hidden sm:ml-6 sm:block">
-          <div class="flex space-x-4">
+          <div class="flex gap-6 items-center max-xl:hidden">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
             <%# <a href="#" class="current_page rounded-md px-3 py-2 text-sm font-medium" aria-current="page"></a> %>   
             <%= link_to "Bazar des pattes", vente_offers_path, class: "link py-2" %>
@@ -39,18 +39,26 @@
             <%= link_to "Adopter une patte", adoption_offers_path, class: "link py-2" %>
             <%= link_to "À propos", about_path, class: "link py-2" %>
             <a href="#" class="link py-2">Contact</a>
-            <%= form_with url: offers_path, method: :get, html: {  class: "flex gap-4 h-fit" }, local: true do %>
-              <%= text_field_tag :search, params[:search], placeholder: "Search offers...", class:"input border focus:border-0 appearance-none rounded-full py-1 px-3 leading-tight" %>
-              <%= submit_tag "Search" %>
-            <% end %>
-
           </div>
         </div>
       </div>
+
+      <%= form_with url: offers_path, method: :get, html: {  class: "flex gap-4 h-fit w-1/5 max-xl:hidden" }, local: true do %>
+              <div class="relative w-full">
+                <%= text_field_tag :search, params[:search], class:"w-full input bg-complementary rounded-full py-1 px-3 leading-tight text-sm" %>
+
+                <%= button_tag(type:"submit", class:"absolute right-0 py-1 px-2") do %>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                  </svg>
+                <%end%>
+              </div>
+            <% end %>
+
       <%if user_signed_in?%>
       <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 gap-3">
         
-        <button type="button" class="relative p-1">
+        <button type="button" class="relative p-1 max-xl:hidden">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="svg_navbar bi bi-heart" viewBox="0 0 16 16">
             <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
           </svg>
@@ -105,13 +113,27 @@
   </div>
 
   <!-- Mobile menu, show/hide based on menu state. -->
-  <div class="sm:hidden" id="mobile-menu">
-    <div class="space-y-1 px-2 pb-3 pt-2">
+  <div class="xl:hidden bg-complementary" id="mobile-menu">
+    <div class="space-y-1 flex flex-col gap-3 py-4">
+      <div class="flex flex-col">
       <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-      <a href="#" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Dashboard</a>
-      <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Team</a>
-      <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Projects</a>
-      <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Calendar</a>
+      <%= link_to "Bazar des pattes", vente_offers_path, class: "link px-4 py-2" %>
+      <%= link_to "Coup de patte", service_offers_path, class: "link px-4 py-2" %>
+      <%= link_to "Adopter une patte", adoption_offers_path, class: "link px-4 py-2" %>
+      <%= link_to "À propos", about_path, class: "link px-4 py-2" %>
+      <a href="#" class="link px-4 py-2">Contact</a>
+      </div>
+      <%= form_with url: offers_path, method: :get, html: {  class: "flex gap-4 h-fit w-full mt-4 px-4" }, local: true do %>
+              <div class="relative w-full">
+                <%= text_field_tag :search, params[:search], class:"w-full input bg-white rounded-full py-1 px-3 leading-tight text-sm" %>
+
+                <%= button_tag(type:"submit", class:"absolute right-0 py-1 px-2") do %>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                  </svg>
+                <%end%>
+              </div>
+            <% end %>
     </div>
   </div>
 </nav>
