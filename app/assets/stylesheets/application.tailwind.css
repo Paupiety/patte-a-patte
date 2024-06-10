@@ -15,6 +15,12 @@
     outline-offset: none;
 }
 
+[multiple], [type=date], [type=datetime-local], [type=email], [type=month], [type=number], [type=password], [type=search], [type=tel], [type=text], [type=time], [type=url], [type=week], select, textarea {
+    background-color: var(--complementary_color);
+    border-color: none;
+    border-width: 0px;
+}
+
 [type=checkbox], [type=radio] {
     --tw-shadow: 0 0 #0000;
     -webkit-appearance: none;

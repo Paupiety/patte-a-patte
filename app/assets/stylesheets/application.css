@@ -88,3 +88,7 @@ em {
 .color-secondary{
   color: var(--secondary_color);
 }
+
+.bg-transparency{
+  background-color: var(--background_color);
+}
