@@ -15,8 +15,8 @@
       <% end %>
 
   <div class="field">
-    <%= form.label :type_d_annonce %>
-    <%= form.select :type_offer_id, Typeoffer.all.collect { |t| [t.type_offer, t.id] }, {}, class: "form-control"%>
+    <%= f.label :type_d_annonce %>
+    <%= f.select :type_offer_id, Typeoffer.all.collect { |t| [t.type_offer, t.id] }, {}, class: "form-control"%>
   </div>
 
         <div class="flex flex-col gap-0.5">
