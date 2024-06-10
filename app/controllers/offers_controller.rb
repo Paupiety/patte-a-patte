@@ -1,6 +1,7 @@
 class OffersController < ApplicationController
   before_action :set_offer, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:like, :unlike]
+  before_action :authenticate_offer_owner!, only: [:edit, :update, :destroy]
 
   def index
     if params[:search].present?
