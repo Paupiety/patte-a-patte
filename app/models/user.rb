@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_one :cart
   has_many :offers, dependent: :destroy
   has_many :comments
+  has_many :pets, dependent: :destroy
   has_many :likes
   has_many :liked_offers, through: :likes, source: :offer
 

@@ -1,5 +1,6 @@
 class Category < ApplicationRecord
   has_many :offer
+  has_many :pets
 
   validates :type_animal, presence: true
 

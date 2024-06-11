@@ -1,0 +1,46 @@
+<%= form_with(model: @pet, local: true, html: { multipart: true }) do |form| %>
+  <% if @pet.errors.any? %>
+    <div id="error_explanation">
+      <h2 class="text-xl"><%= pluralize(@pet.errors.count, "error") %> prohibited this pet from being saved:</h2>
+      <ul>
+        <% @pet.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="flex flex-col gap-0.5">
+    <%= form.label :first_name, "Prénom", class: 'label' %>
+    <%= form.text_field :first_name, class:"input border-transparent focus:border-0 appearance-none rounded w-full py-2 px-3 leading-tight" %>
+  </div>
+
+  <div class="flex flex-col gap-0.5">
+    <%= form.label :age, "Âge", class: 'label' %>
+    <%= form.number_field :age, class:"input border-transparent focus:border-0 appearance-none rounded w-full py-2 px-3 leading-tight" %>
+  </div>
+
+  <div class="flex flex-col gap-0.5">
+    <%= form.label :breed, "Race", class: 'label' %>
+    <%= form.text_field :breed, class:"input border-transparent focus:border-0 appearance-none rounded w-full py-2 px-3 leading-tight" %>
+  </div>
+
+  <div class="flex flex-col gap-0.5">
+    <%= form.label :sex, "Sexe", class: 'label' %>
+    <%= form.select :sex, options_for_select(['Mâle', 'Femelle']), class:"input border-transparent focus:border-0 appearance-none rounded w-full py-2 px-3 leading-tight" %>
+  </div>
+
+  <div class="flex flex-col gap-0.5">
+    <%= form.label :category_id, "Type d'animal", class: 'label' %>
+    <%= form.collection_select :category_id, Category.all, :id, :type_animal, {}, { class: "input border-transparent focus:border-0 appearance-none rounded w-full py-2 px-3 leading-tight" } %>
+  </div>
+
+  <div class="flex flex-col gap-0.5">
+    <%= form.label :image, "Photo principale", class: 'label' %>
+    <%= form.file_field :image, class: 'form-control input border-transparent focus:border-0 appearance-none rounded w-full py-2 px-3 leading-tight' %>
+  </div>
+
+  <div class="actions btn_primary">
+    <%= form.submit %>
+  </div>
+<% end %>
