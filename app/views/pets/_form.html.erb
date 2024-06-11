@@ -41,6 +41,14 @@
   </div>
 
   <div class="actions btn_primary">
-    <%= form.submit %>
+    <% if @pet.new_record? %>
+      <%= form.submit "Ajoutez un animal" %>
+    <% else %>
+      <%= form.submit "Enregistrer les modifications" %>
+    <% end %>
+  </div>
+
+  <div class="actions btn_primary mt-4">
+    <%= link_to "Retour", user_path(current_user), class: "btn_primary" %>
   </div>
 <% end %>
