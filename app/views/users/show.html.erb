@@ -42,6 +42,7 @@
 </section>
 
 <section class="p-14 flex flex-col gap-4">
+  <!-- Section pour les favoris -->
   <div class="flex items-center justify-between bg-complementary p-4 rounded">
     <h1 class="text-3xl">
       <%= link_to "Mes favoris", favorites_path %>
@@ -53,37 +54,15 @@
     </a>
   </div>
   
-  <div class="flex flex-col gap-4">
-    <% @favorite_offers.take(3).each do |offer| %>
-      <div class="bg-white p-4 rounded shadow">
-        <h2 class="text-xl font-bold"><%= link_to offer.title, offer_path(offer) %></h2>
-        <p><%= offer.description %></p>
-        <p class="text-gray-500"><%= number_to_currency(offer.price, unit: "€") %></p>
-        <div class="flex justify-between items-center mt-2">
-          <small class="text-gray-500">Type d'animal: <%= offer.type_animal %></small>
-          <small class="text-gray-500">Posté le <%= offer.created_at.strftime('%d/%m/%Y') %></small>
-        </div>
-      </div>
-    <% end %>
-  </div>
-
+  <!-- Section pour les annonces -->
   <div class="flex items-center justify-between bg-complementary p-4 rounded">
     <h1 class="text-3xl">
-      <%= link_to "Mes annonces", favorites_path %>
+      <%= link_to "Mes annonces", my_offers_path %>
     </h1>
-  </div>
-
-  <div class="flex flex-col gap-4">
-    <% @user.offers.take(3).each do |offer| %>
-      <div class="bg-white p-4 rounded shadow">
-        <h2 class="text-xl font-bold"><%= link_to offer.title, offer_path(offer) %></h2>
-        <p><%= offer.description %></p>
-        <p class="text-gray-500"><%= number_to_currency(offer.price, unit: "€") %></p>
-        <div class="flex justify-between items-center mt-2">
-          <small class="text-gray-500">Type d'animal: <%= offer.type_animal %></small>
-          <small class="text-gray-500">Posté le <%= offer.created_at.strftime('%d/%m/%Y') %></small>
-        </div>
-      </div>
-    <% end %>
+    <a href="<%= my_offers_path %>" class="bg-secondary p-1 w-fi rounded-full arrow_icon">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-10 h-10" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"/>  
+      </svg>
+    </a>
   </div>
 </section>
