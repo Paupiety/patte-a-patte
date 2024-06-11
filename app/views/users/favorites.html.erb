@@ -1,0 +1,41 @@
+<section class="p-14 flex flex-col gap-6">
+  <div class="flex items-center justify-between bg-complementary p-4 rounded">
+    <h1 class="text-3xl">Mes favoris</h1>
+  </div>
+  
+  <!-- Section pour les offres likées -->
+  <div>
+    <h2 class="text-2xl mt-6 mb-4">Offres likées</h2>
+    <div class="flex flex-col gap-4">
+      <% @liked_offers.each do |offer| %>
+        <div class="bg-white p-4 rounded shadow">
+          <h2 class="text-xl font-bold"><%= link_to offer.title, offer_path(offer) %></h2>
+          <p><%= offer.description %></p>
+          <p class="text-gray-500"><%= number_to_currency(offer.price, unit: "€") %></p>
+          <div class="flex justify-between items-center mt-2">
+            <small class="text-gray-500">Type d'animal: <%= offer.type_animal %></small>
+            <small class="text-gray-500">Posté le <%= offer.created_at.strftime('%d/%m/%Y') %></small>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Section pour les offres publiées -->
+  <div>
+    <h2 class="text-2xl mt-6 mb-4">Mes annonces</h2>
+    <div class="flex flex-col gap-4">
+      <% @user_offers.each do |offer| %>
+        <div class="bg-white p-4 rounded shadow">
+          <h2 class="text-xl font-bold"><%= link_to offer.title, offer_path(offer) %></h2>
+          <p><%= offer.description %></p>
+          <p class="text-gray-500"><%= number_to_currency(offer.price, unit: "€") %></p>
+          <div class="flex justify-between items-center mt-2">
+            <small class="text-gray-500">Type d'animal: <%= offer.type_animal %></small>
+            <small class="text-gray-500">Posté le <%= offer.created_at.strftime('%d/%m/%Y') %></small>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
