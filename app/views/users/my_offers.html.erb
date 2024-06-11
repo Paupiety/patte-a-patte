@@ -1,10 +1,10 @@
 <section class="p-14 flex flex-col gap-6">
-    <h1 class="text-3xl">Mes favoris</h1>
+    <h1 class="text-3xl">Mes annonces</h1>
   
   <div>
     <div class="flex flex-col gap-4">
-      <% if @liked_offers.present? %>
-        <% @liked_offers.each do |offer| %>
+      <% if @user_offers.present? %>
+        <% @user_offers.each do |offer| %>
           <div class="bg-complementary p-4 rounded flex justify-between max-sm:flex-col-reverse max-sm:gap-3">
             <div class="flex flex-col gap-2">
               <h2 class="text-2xl"><%= offer.title %></h2>
@@ -22,8 +22,8 @@
           </div>
         <% end %>
       <% else %>
-        <p>Vous n'avez pas de favoris pour le moment.</p>
-        <a href="<%=vente_offers_path%>" class="btn_primary">Explorez</a>
+        <p>Vous n'avez aucune annonce pour le moment.</p>
+         <%= link_to "Publier une annonce", new_offer_path, class: "btn_primary" %>
       <% end %>
     </div>
   </div>

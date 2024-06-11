@@ -1,0 +1,23 @@
+<section class="mt-12 p-14 flex flex-col gap-6 max-md:p-4">
+  <h1 class="text-3xl">Mes animaux</h1>
+  <% if @pets.any? %>
+    <div class="grid gap-4">
+      <% @pets.each do |pet| %>
+        <div class="flex flex-col items-center justify-center gap-2">
+          <% if pet.profile_picture.attached? %>
+            <%= image_tag pet.profile_picture, alt: "Photo de #{pet.first_name}", class: "rounded-full h-20 w-20 object-cover" %>
+          <% else %>
+            <div class="rounded-full h-20 w-20 bg-gray-300 flex items-center justify-center">
+              <span class="text-gray-500 text-center">Aucune image</span>
+            </div>
+          <% end %>
+          <h3 class="text-lg"><%= pet.first_name %></h3>
+          <p><%= pet.age %> ans</p>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="white">Vous n'avez pas ajouté d'animaux pour le moment.</p>
+  <% end %>
+  <%= link_to "Ajouter un animal", new_pet_path, class: "btn_secondary mt-6 min-w-max" %>
+</section>
