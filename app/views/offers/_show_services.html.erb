@@ -15,11 +15,7 @@
             <div>
               <div class="flex justify-between gap-3">
                 <h1 class="text-3xl"><%= @offer.title %></h1>
-                <div class="h-fit flex gap-1 items-center rounded-full py-1 px-3 border w-min border-current">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="counter_heart" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
-                  </svg><h5 class="font-semibold"><%= @offer.likes.count %></h5>
-                </div>
+                
               </div>
               <h2 class="text-2xl"><%= number_to_currency(@offer.price, unit: "€") %></h2>
             </div>

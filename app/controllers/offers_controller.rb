@@ -48,14 +48,14 @@ class OffersController < ApplicationController
   def like
     @offer = Offer.find(params[:id])
     current_user.likes.create(offer: @offer) unless current_user.likes.exists?(offer: @offer)
-    redirect_to @offer
+    redirect_to request.referer || @offer
   end
 
   def unlike
     @offer = Offer.find(params[:id])
     like = current_user.likes.find_by(offer: @offer)
     like.destroy if like
-    redirect_to @offer
+    redirect_to request.referer || @offer
   end
 
   def vente

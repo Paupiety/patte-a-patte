@@ -81,6 +81,10 @@ em {
   border-color: var(--current_color);
 }
 
+.border-secondary {
+  border-color: var(--secondary_color);
+}
+
 .color-primary{
   color: var(--primary_color);
 }
