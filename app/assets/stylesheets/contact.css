@@ -10,24 +10,24 @@
     right: 2%;
 }
 
-.question_off{
-    margin-top: 24px;
-    height: 100%;
-    transition: height 1s ease-in;
-}
-
 .question_on{
-    height: 0%;
     overflow: hidden;
-    transition: height 1s ease-out;
+    max-height: 500px;
+    transition: all 1s ease;
 }
 
-.arrow_rotate_on{
-    rotate: 180deg;
-    transition: height 1s ease-out;
+.question_off{
+    overflow: hidden;
+    max-height: 0px;
+    transition: all 0.4s ease;
 }
 
 .arrow_rotate_off{
+    rotate: 180deg;
+    transition: rotate 0.4s ease;
+}
+
+.arrow_rotate_on{
     rotate: 90deg;
-    transition: height 1s ease-in;
+    transition: rotate 0.4s ease;
 }
