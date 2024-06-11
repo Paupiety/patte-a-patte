@@ -1,13 +1,12 @@
 <section>
-  
   <div class="py-12 sm:py-12">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="mx-auto max-w-2xl lg:mx-0">
-        <h1 class="text-3xl">Coup de patte</h1>
+        <h1 class="text-3xl">Résultats de votre recherche</h1>
       </div>
       <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-        <% if @offers.any? %>
-          <% @offers.each do |offer| %>
+        <% if @offers_search.any? %>
+          <% @offers_search.each do |offer| %>
             <article class="flex max-w-xl flex-col items-start gap-5">
               <div class="group relative h-64 w-full">
                 <% if offer.image.attached? %>
