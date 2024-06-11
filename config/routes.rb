@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   get 'about', to: 'static_pages#about'
   get 'favorites', to: 'users#favorites', as: 'favorites'
+  get 'my_offers', to: 'users#my_offers', as: 'my_offers'
 
 
   resources :carts, only: [:show]
