@@ -26,7 +26,6 @@
 
 .link:hover{
     color: var(--secondary_color);
-    background-color: var(--background_color);
 }
 
 .content{

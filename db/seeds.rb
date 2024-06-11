@@ -8,7 +8,7 @@ ActiveRecord::Base.connection.reset_pk_sequence!('categories')
 Typeoffer.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('typeoffers')
 
-type_animal_array = ["Cat", "Dog", "Bird", "Reptil", "Fish"]
+type_animal_array = ["Chat", "Chien", "NAC"]
 index = 0
 5.times do |t|
   Category.create!(
@@ -24,7 +24,7 @@ end
     type_offer: "Adoption"
   )
   Typeoffer.create!(
-    type_offer: "Vente"
+    type_offer: "Produit"
   )
 
 # Create Users

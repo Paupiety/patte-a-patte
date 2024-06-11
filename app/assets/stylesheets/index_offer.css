@@ -1,0 +1,10 @@
+.svg:hover {
+    background-color: var(--secondary_color);
+    color: var(--complementary_color)
+}
+
+.svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--current_color);
+  }
