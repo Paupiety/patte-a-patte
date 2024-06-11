@@ -1,7 +1,13 @@
-<%if @typeoffer.type_offer == "Service"%>
+<%if @typeoffre.present? && @typeoffer.type_offer == "Service"%>
   <%= render 'offers/index_services' %>
-<%elsif @typeoffer.type_offer == "Vente"%>
+<%elsif @typeoffre.present? && @typeoffer.type_offer == "Vente"%>
   <%= render 'offers/index_products' %>
+<%elsif @typeoffre.present? && @typeoffer.type_offer == "Adoption"%>
+  <%= render 'offers/index_adoptions' %>
+<%elsif @offers_search.present?%>
+  <%= render 'offers/index_search' %>
 <%else%>
-<%= render 'offers/index_adoptions' %>
+<section class="w-full flex justify-center items-center">
+  <p class="mt-24 text-center"> Aucun article trouvé.</p>
+</section>
 <%end%>

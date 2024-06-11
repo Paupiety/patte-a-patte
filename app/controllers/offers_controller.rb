@@ -5,9 +5,9 @@ class OffersController < ApplicationController
 
   def index
     if params[:search].present?
-      @offers = Offer.where("title ILIKE ? OR description ILIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
+      @offers_search = Offer.where("title ILIKE ? OR description ILIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
     else
-      @offers = Offer.all
+      @offers_search = Offer.all
     end
   end
 
