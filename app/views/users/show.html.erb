@@ -19,7 +19,25 @@
       <div class="flex flex-col items-center gap-2">
         <h2 class="white text-xl">Mes animaux</h2>
         <% if @user.pets.any? %>
-          <%= render @user.pets %>
+          <div class="grid gap-4">
+            <% @user.pets.each do |pet| %>
+              <div class="flex flex-col items-center justify-center gap-2">
+                <% if pet.profile_picture.attached? %>
+                  <%= image_tag pet.profile_picture, alt: "Photo de #{pet.first_name}", class: "rounded-full h-20 w-20 object-cover" %>
+                <% else %>
+                  <div class="rounded-full h-20 w-20 bg-gray-300 flex items-center justify-center">
+                    <span class="text-gray-500">Aucune image</span>
+                  </div>
+                <% end %>
+                <h3 class="text-lg"><%= pet.first_name %></h3>
+                <p><strong>Age:</strong> <%= pet.age %> ans</p>
+                <p><strong>Race:</strong> <%= pet.breed %></p>
+                <p><strong>Sexe:</strong> <%= pet.sex %></p>
+                <!-- Ajoutez d'autres détails ici si nécessaire -->
+                <%= link_to "Modifier son profil", edit_pet_path(pet), class: "btn_secondary mt-2 min-w-max" %>
+              </div>
+            <% end %>
+          </div>
         <% else %>
           <p class="white">Vous n'avez pas ajouté d'animaux pour le moment.</p>
         <% end %>
@@ -29,16 +47,14 @@
   </div>
 </section>
 
-
 <section class="flex flex-col gap-6 p-14">
   <h1 class="text-3xl">Informations privées</h1>
   <div class="flex gap-6 justify-between max-md:flex-col-reverse max-md:items-center">
     <div class="flex flex-col gap-4">
-      <%= link_to "Informations de connexion", edit_user_registration_path(current_user), class: "btn_primary" %>
+      <%= link_to "Modifier mon profil", edit_user_registration_path(current_user), class: "btn_secondary mt-6 min-w-max" %>
     </div>
     <div>
       <img class="min-w-28" src="<%= asset_path('illustrations/dog-swimming.svg') %>" alt="Batman qui nage">
     </div>
   </div>
 </section>
-

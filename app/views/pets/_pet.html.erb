@@ -1,44 +1,23 @@
 <section class="mt-12 p-14 flex flex-col gap-6 max-md:p-4">
-  <h1 class="text-3xl">Informations publiques</h1>
-  <div class="flex gap-6 w-full max-md:flex-col max-md:items-center">
-    <div class="rounded-full overflow-hidden h-72 w-72 flex">
-      <% if @user.profile_picture.attached? %>
-        <%= image_tag @user.profile_picture, alt: "Photo de profil", class:"self-center" %>
-      <% else %>
-        <img src="<%= asset_path('logo/symbole_logo.svg') %>" alt="Logo Patte à patte">
+  <h1 class="text-3xl">Mes animaux</h1>
+  <% if @pets.any? %>
+    <div class="grid gap-4">
+      <% @pets.each do |pet| %>
+        <div class="flex flex-col items-center justify-center gap-2">
+          <% if pet.profile_picture.attached? %>
+            <%= image_tag pet.profile_picture, alt: "Photo de #{pet.first_name}", class: "rounded-full h-20 w-20 object-cover" %>
+          <% else %>
+            <div class="rounded-full h-20 w-20 bg-gray-300 flex items-center justify-center">
+              <span class="text-gray-500 text-center">Aucune image</span>
+            </div>
+          <% end %>
+          <h3 class="text-lg"><%= pet.first_name %></h3>
+          <p><%= pet.age %> ans</p>
+        </div>
       <% end %>
     </div>
-    <div class="flex flex-col gap-3 w-2/5 max-md:w-auto">
-      <div class="flex flex-col gap-2">
-        <h2 class="text-xl"><%= @user.first_name %> <%= @user.last_name %></h2>
-        <p><%= @user.description %></p>
-      </div>
-      <%= link_to "Modifier mon profil", edit_user_path(@user), class: "btn_primary" %>
-    </div>
-    <div class="bg-primary rounded p-10 w-2/5 flex flex-col g-6 items-center justify-between max-md:w-full">
-      <div class="flex flex-col items-center gap-2">
-        <h2 class="white text-xl">Mes animaux</h2>
-        <% if @user.pets.any? %>
-          <div class="grid gap-4">
-            <% @user.pets.each do |pet| %>
-              <div class="flex flex-col items-center justify-center gap-2">
-                <% if pet.profile_picture.attached? %>
-                  <%= image_tag pet.profile_picture, alt: "Photo de #{pet.first_name}", class: "rounded-full h-20 w-20 object-cover" %>
-                <% else %>
-                  <div class="rounded-full h-20 w-20 bg-gray-300 flex items-center justify-center">
-                    <span class="text-gray-500">Aucune image</span>
-                  </div>
-                <% end %>
-                <h3 class="text-lg"><%= pet.first_name %></h3>
-                <p><%= pet.age %> ans</p>
-              </div>
-            <% end %>
-          </div>
-        <% else %>
-          <p class="white">Vous n'avez pas ajouté d'animaux pour le moment.</p>
-        <% end %>
-      </div>
-      <%= link_to "Ajouter un animal", new_pet_path, class: "btn_secondary mt-6 min-w-max" %>
-    </div>
-  </div>
+  <% else %>
+    <p class="white">Vous n'avez pas ajouté d'animaux pour le moment.</p>
+  <% end %>
+  <%= link_to "Ajouter un animal", new_pet_path, class: "btn_secondary mt-6 min-w-max" %>
 </section>
