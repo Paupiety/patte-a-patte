@@ -1,0 +1,33 @@
+.icone_contact{
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--primary_color);
+}
+
+.bottom-icone-contact{
+    width: 25%;
+    bottom: 78%;
+    right: 2%;
+}
+
+.question_off{
+    margin-top: 24px;
+    height: 100%;
+    transition: height 1s ease-in;
+}
+
+.question_on{
+    height: 0%;
+    overflow: hidden;
+    transition: height 1s ease-out;
+}
+
+.arrow_rotate_on{
+    rotate: 180deg;
+    transition: height 1s ease-out;
+}
+
+.arrow_rotate_off{
+    rotate: 90deg;
+    transition: height 1s ease-in;
+}

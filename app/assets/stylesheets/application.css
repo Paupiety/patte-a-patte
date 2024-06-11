@@ -96,3 +96,7 @@ em {
 .bg-transparency{
   background-color: var(--background_color);
 }
+
+.color-complementary{
+  color: var(--complementary_color);
+}
