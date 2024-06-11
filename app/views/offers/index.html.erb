@@ -1,51 +1,7 @@
-<section>
-  
-  <div class="bg-white py-24 sm:py-32">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <div class="mx-auto max-w-2xl lg:mx-0">
-        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Les annonces du moment</h2>
-        <!-- Ajoutez une description ici si nécessaire -->
-      </div>
-      <div class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-        <% if @offers.any? %>
-          <% @offers.each do |offer| %>
-            <article class="flex max-w-xl flex-col items-start justify-between">
-              <div class="group relative h-64 w-full">
-                <% if offer.image.attached? %>
-                  <%= link_to offer_path(offer) do %>
-                    <%= image_tag offer.image, alt: 'image', class: "w-full h-full rounded-lg object-cover" %>
-                  <% end %>
-                <% end %>
-              </div>
-              <div>
-                <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-                  <%= link_to offer.title, offer_path(offer) %>
-                </h3>
-                <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600"><%= offer.description %></p>
-              </div>
-              <div class="relative mt-8 flex items-center gap-x-4">
-                <div class="text-sm leading-6">
-                  <p class="font-semibold text-gray-900">
-                    <!-- Insérez ici les informations sur l'auteur, la date, etc. -->
-                  </p>
-                </div>
-                <div class="text-sm leading-6">
-                  <p class="font-semibold text-gray-900">
-                    <%= offer.price %> €
-                  </p>
-                </div>
-                <% if user_signed_in? %>
-                  <div>
-                  </div>
-                  <%= button_to "Ajouter au panier", offer_cart_offers_path(offer.id), method: :post, class: "btn_primary" %>
-                <% end %>
-              </div>
-            </article>
-          <% end %>
-        <% else %>
-          <p class="col">Aucune offre disponible pour le moment</p>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</section>
+<%if @typeoffer.type_offer == "Service"%>
+  <%= render 'offers/index_services' %>
+<%elsif @typeoffer.type_offer == "Vente"%>
+  <%= render 'offers/index_products' %>
+<%else%>
+<%= render 'offers/index_adoptions' %>
+<%end%>
