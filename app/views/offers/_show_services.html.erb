@@ -56,7 +56,9 @@
             </div>
         </div>
 
-         <% if current_user == @offer.user %>
+        <%# Rajouter livraison et les autres caractéristiques %>
+
+          <% if current_user == @offer.user %>
               <div class="flex gap-3 w-full justify-end">
                 <div class="w-max h-fit">
                   <%= link_to "Modifier l'annonce", edit_offer_path(@offer), class: "btn_secondary" %>
@@ -65,9 +67,8 @@
                   <%= link_to "Supprimer l'annonce", @offer, method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cette annonce ?" }, class: "btn_danger" %>
                 </div>
               </div>
-            <% end %>
+          <% end %>
 
-        <%# Rajouter livraison et les autres caractéristiques %>
 
       </div>
     </div>
