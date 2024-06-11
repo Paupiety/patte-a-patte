@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
   resources :users, only: [:show, :new, :create, :edit, :update]
+  resources :pets, only: [:new, :create, :edit, :update, :destroy]
+
   get 'static_pages/home'
   root 'static_pages#home'
   get 'about', to: 'static_pages#about'
