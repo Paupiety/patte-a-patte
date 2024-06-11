@@ -34,7 +34,7 @@ class OffersController < ApplicationController
       redirect_to @offer
       flash[:success] = "L'offre a été modifiée avec succès."
     else
-      redirect_to :edit
+      redirect_to edit_offer_path
       flash[:error] = "Une erreur a été détectée : #{@offer.errors.full_messages.join(",")}"
     end
   end
