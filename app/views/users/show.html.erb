@@ -8,15 +8,14 @@
         <img src="<%= asset_path('logo/symbole_logo.svg') %>" alt="Logo Patte à patte">
       <% end %>
     </div>
-    <!-- Bouton "Modifier mon profil" sous l'image du logo -->
-    <div class="flex flex-col items-center justify-center">
-      <%= link_to "Modifier mon profil", edit_user_path(@user), class: "btn_primary mt-4 min-w-max" %>
-    </div>
     <div class="flex flex-col gap-3 w-2/5 max-md:w-auto">
       <div class="flex flex-col gap-2">
         <h2 class="text-xl"><%= @user.first_name %> <%= @user.last_name %></h2>
         <p><%= @user.description %></p>
       </div>
+      <div>
+      <%= link_to "Modifier mon profil", edit_user_path(@user), class: "btn_primary" %>
+    </div>
     </div>
     <div class="bg-primary rounded p-10 w-2/5 flex flex-col g-6 items-center justify-between max-md:w-full">
       <div class="flex flex-col items-center gap-2">
@@ -54,8 +53,7 @@
   <h1 class="text-3xl">Informations privées</h1>
   <div class="flex gap-6 justify-between max-md:flex-col-reverse max-md:items-center">
     <div class="flex flex-col gap-4">
-      <!-- Le bouton "Modifier mon profil" est maintenant en dessous de la photo -->
-      <%= link_to "Modifier mon profil", edit_user_registration_path(current_user), class: "btn_secondary mt-6 min-w-max" %>
+      <%= link_to "Informations de connexion", edit_user_registration_path(current_user), class: "btn_primary mt-6 min-w-max" %>
     </div>
     <div>
       <img class="min-w-28" src="<%= asset_path('illustrations/dog-swimming.svg') %>" alt="Batman qui nage">
