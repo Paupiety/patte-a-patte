@@ -21,6 +21,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def favorites
+    @liked_offers = current_user.likes.includes(:offer).map(&:offer)
+    @user_offers = current_user.offers
+  end
+
   private
 
   def user_params
