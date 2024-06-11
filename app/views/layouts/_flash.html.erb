@@ -1,9 +1,16 @@
 <%if flash[:success]%>
   <div class="alert alert-success" role="alert">
-    <%= flash[:success]%>
+    <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4" role="alert">
+      <p class="font-bold">Bravo</p>
+      <p><%= flash[:success]%></p>
+    </div>
+  </div>
   </div>
 <%elsif flash[:error]%>
   <div class="alert alert-danger" role="alert">
-    <%= flash[:error]%>
+    <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
+      <p class="font-bold">Attention</p>
+      <p><%= flash[:error]%></p>
+    </div>
   </div>
 <%end%>

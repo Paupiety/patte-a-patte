@@ -49,7 +49,7 @@ User.all.each do |user|
       type_animal: ["Cat", "Dog", "Bird"].sample,
       date_publication: Date.today,
       user: user,
-      type_offer_id: 1
+      type_offer_id: ["1", "2", "3"].sample
     )
   end
 end

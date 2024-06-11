@@ -21,7 +21,7 @@
                   </svg><h5 class="font-semibold"><%= @offer.likes.count %></h5>
                 </div>
               </div>
-              <h2 class="text-2xl"><%= number_to_currency(@offer.price, unit: "€") %></h2>
+              <h2 class="text-2xl"><%= number_to_currency(@offer.price, unit: "€") %>/<%= @offer.price_type %></h2>
             </div>
             <p><%= @offer.description %></p>
             <%= link_to "Voir le profil de #{@offer.user.first_name}", offer_user_path(@offer), class:"underline"%>
@@ -47,6 +47,16 @@
                   </div>
                 <% end %>
             </div>
+            <% if current_user == @offer.user %>
+              <div class="flex gap-3">
+                <div>
+                  <%= link_to "Modifier", edit_offer_path(@offer), class: "btn_secondary" %>
+                </div>
+                <div>
+                  <%= link_to "Supprimer", @offer, method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cette annonce ?" }, class: "btn_secondary" %>
+                </div>
+              </div>
+            <% end %>
         </div>
 
         <div class="flex flex-col gap-3">
