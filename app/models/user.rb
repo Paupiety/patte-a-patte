@@ -10,8 +10,7 @@ class User < ApplicationRecord
   has_many :user_addresses
   has_many :addresses, through: :user_addresses
   accepts_nested_attributes_for :user_addresses
-  validates :phone_number, format: { with: /\A\d{10}\z/, message: "doit contenir exactement 10 chiffres" }
-
+  validates :phone_number, format: { with: /\A\d{10}\z/, message: "doit contenir exactement 10 chiffres" }, allow_blank: true
 
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
