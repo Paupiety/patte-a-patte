@@ -9,6 +9,7 @@ class UserMailer < ApplicationMailer
     @url  = 'https://patte-a-patte.fly.dev/users/sign_in'
 
     # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
-    mail(to: @user.email, subject: "Objet : Bienvenue dans la communauté Patte à Patte !")
+    mail(to: @user.email, subject: "Objet : Bienvenue dans la communauté Patte à Patte !
+")
   end
 end
