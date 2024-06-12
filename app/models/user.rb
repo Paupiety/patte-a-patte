@@ -1,6 +1,5 @@
 class User < ApplicationRecord
-  attr_accessor :address, :city, :zip_code
-  #after_create :welcome_send
+  after_create :welcome_send
   has_one_attached :profile_picture
   has_one :cart
   has_many :offers, dependent: :destroy
