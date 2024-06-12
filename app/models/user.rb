@@ -1,6 +1,5 @@
 class User < ApplicationRecord
-  attr_accessor :address, :city, :zip_code
-  #after_create :welcome_send
+  after_create :welcome_send
   has_one_attached :profile_picture
   has_one :cart
   has_many :offers, dependent: :destroy
@@ -12,9 +11,9 @@ class User < ApplicationRecord
   has_many :addresses, through: :user_addresses
   accepts_nested_attributes_for :user_addresses
 
-  #def welcome_send
-    #UserMailer.welcome_email(self).deliver_now
-  #end
+  def welcome_send
+    UserMailer.welcome_email(self).deliver_now
+  end
 
   def self.ransackable_attributes(auth_object = nil)
     ["created_at", "description", "email", "encrypted_password", "first_name", "id", "last_name", "remember_created_at", "reset_password_sent_at", "reset_password_token", "updated_at"]

@@ -21,7 +21,6 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :new, :create, :edit, :update]
   resources :pets, only: [:new, :create, :edit, :update, :destroy]
 
-  get 'static_pages/home'
   root 'static_pages#home'
   get 'about', to: 'static_pages#about'
   get 'favorites', to: 'users#favorites', as: 'favorites'

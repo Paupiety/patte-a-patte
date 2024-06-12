@@ -14,8 +14,8 @@
         <p><%= @user.description %></p>
       </div>
       <div>
-      <%= link_to "Modifier mon profil", edit_user_path(@user), class: "btn_primary" %>
-    </div>
+        <%= link_to "Modifier mon profil", edit_user_path(@user), class: "btn_primary" %>
+      </div>
     </div>
     <div class="bg-primary rounded p-10 w-2/5 flex flex-col g-6 items-center justify-between max-md:w-full">
       <div class="flex flex-col items-center gap-2">
@@ -62,9 +62,11 @@
         </div>
       </div>
       <div>
-        <%= @user.adresses.each do |adress|%>
-          
-        <%end%>
+        <% @user.user_addresses.each do |user_address| %>
+          <p><%= user_address.address.address_name %></p>
+          <p><%= user_address.address.zip_code %> <%= user_address.address.city_name %></p>
+          <!-- Afficher d'autres détails de l'adresse selon votre structure -->
+        <% end %>
       </div>
       <div class="flex flex-col gap-4">
         <%= link_to "Informations de connexion", edit_user_registration_path(current_user), class: "btn_primary mt-6 min-w-max" %>
@@ -75,3 +77,4 @@
     </div>
   </div>
 </section>
+
