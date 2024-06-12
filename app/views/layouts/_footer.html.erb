@@ -5,22 +5,22 @@
       <div class="flex gap-9 flex-wrap">
           <div class="flex flex-col gap-2">
               <h3 class="text-xs font-semibold title_footer">Trouver</h3>
-              <div class="flex flex-col gap-0.5 text-xs">
-                <%= link_to "Bazar des pattes", vente_offers_path, class: "link py-2" %>
-                <%= link_to "Coup de patte", service_offers_path, class: "link py-2" %>
-                <%= link_to "Adopter une patte", adoption_offers_path, class: "link py-2" %>
+              <div class="flex flex-col gap-1.5 text-xs">
+                <%= link_to "Bazar des pattes", vente_offers_path, class: "link" %>
+                <%= link_to "Coup de patte", service_offers_path, class: "link" %>
+                <%= link_to "Adopter une patte", adoption_offers_path, class: "link" %>
               </div>
           </div>
           <div class="flex flex-col gap-2 flex-wrap">
               <h3 class="text-xs font-semibold title_footer">Vendre ou donner</h3>
               <div class="flex flex-col gap-1.5 text-xs">
-                <%= link_to "Publier une annonce", new_offer_path, class: "link py-2" %>
+                <%= link_to "Publier une annonce", new_offer_path, class: "link" %>
               </div>
           </div>
           <div class="flex flex-col gap-2 flex-wrap">
               <h3 class="text-xs font-semibold title_footer">Aide</h3>
               <div class="flex flex-col gap-1.5 text-xs">
-                <a href="">Nous contacter</a>
+                <a href="/contact" class="link">Nous contacter</a>
               </div>
           </div>
       </div>
