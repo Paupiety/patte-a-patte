@@ -52,8 +52,23 @@
 <section class="flex flex-col gap-6 p-14">
   <h1 class="text-3xl">Informations privées</h1>
   <div class="flex gap-6 justify-between max-md:flex-col-reverse max-md:items-center">
-    <div class="flex flex-col gap-4">
-      <%= link_to "Informations de connexion", edit_user_registration_path(current_user), class: "btn_primary mt-6 min-w-max" %>
+    <div class="flex flex-col gap-3">
+      <div class="flex justify-between gap-3 items-center w-full">
+        <h2>Adresse de livraison</h2>
+        <div class="rounded-full p-2 bg-secondary h-fit w-fit">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+          </svg>
+        </div>
+      </div>
+      <div>
+        <%= @user.adresses.each do |adress|%>
+          
+        <%end%>
+      </div>
+      <div class="flex flex-col gap-4">
+        <%= link_to "Informations de connexion", edit_user_registration_path(current_user), class: "btn_primary mt-6 min-w-max" %>
+      </div>
     </div>
     <div>
       <img class="min-w-28" src="<%= asset_path('illustrations/dog-swimming.svg') %>" alt="Batman qui nage">
