@@ -1,4 +1,5 @@
 # Clear existing data
+Like.destroy_all
 User.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('users')
 Offer.destroy_all
@@ -8,14 +9,18 @@ ActiveRecord::Base.connection.reset_pk_sequence!('categories')
 Typeoffer.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('typeoffers')
 
-type_animal_array = ["Chat", "Chien", "NAC"]
-index = 0
-5.times do |t|
-  Category.create!(
-    type_animal: type_animal_array[index]
-  )
-  index += 1
-end
+# type_animal_array = ["Chat", "Chien", "NAC"]
+# index = 0
+# 5.times do |t|
+#   Category.create!(
+#     type_animal: type_animal_array[index]
+#   )
+#   index += 1
+# end
+
+  Category.create(type_animal: "Chat")
+  Category.create(type_animal: "Chien")
+  Category.create(type_animal: "NAC")
 
   Typeoffer.create!(
     type_offer: "Service"
@@ -24,7 +29,7 @@ end
     type_offer: "Adoption"
   )
   Typeoffer.create!(
-    type_offer: "Produit"
+    type_offer: "Vente"
   )
 
 # Create Users
@@ -49,7 +54,7 @@ User.all.each do |user|
       type_animal: ["Cat", "Dog", "Bird"].sample,
       date_publication: Date.today,
       user: user,
-      type_offer_id: 1
+      type_offer_id: ["1", "2", "3"].sample
     )
   end
 end

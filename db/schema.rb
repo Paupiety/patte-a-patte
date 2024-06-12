@@ -132,6 +132,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_11_151717) do
     t.bigint "type_offer_id"
     t.string "photo_1"
     t.string "photo_2"
+    t.string "price_type"
     t.index ["user_id"], name: "index_offers_on_user_id"
   end
 

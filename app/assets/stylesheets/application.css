@@ -54,6 +54,18 @@ body {
 
 .btn_secondary:hover {
   color: var(--complementary_color);
+  background-color: var(--primary_color);
+}
+
+.btn_danger {
+  background-color: var(--tiercary_color);
+  border-radius: 999px;
+  color: var(--current_color);
+  padding: 0.3rem 1.3rem;
+}
+
+.btn_danger:hover {
+  color: var(--current_color);
   background-color: var(--secondary_color);
 }
 
@@ -95,4 +107,8 @@ em {
 
 .bg-transparency{
   background-color: var(--background_color);
+}
+
+.color-complementary{
+  color: var(--complementary_color);
 }
