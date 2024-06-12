@@ -5,3 +5,9 @@
 .input:focus{
     border: 1.5px solid var(--secondary_color) !important;
 }
+
+.bottom-icone-form{
+    width: 45%;
+    top: 77%;
+    left: 120%;
+}

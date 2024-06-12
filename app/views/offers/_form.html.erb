@@ -1,4 +1,4 @@
-      <%= form_for @offer, html: { multipart: true, class: 'needs-validation', novalidate: true, class: "flex flex-col gap-3" } do |f| %>
+      <%= form_for @offer, html: { multipart: true, class: 'needs-validation', novalidate: true, class: "flex flex-col gap-3 relative" } do |f| %>
 
       <div class="flex flex-col gap-0.5">
         <%= f.label :type_offer_id, "Type d'annonce", class: "label" %>
@@ -41,5 +41,8 @@
 
         <div class="actions btn_primary mt-3">
           <%= f.submit "Enregistrer" %>
+        </div>
+        <div class="absolute bottom-icone-form">
+          <img class="min-w-28 max-sm:hidden" src="<%= asset_path('illustrations/angry-cat.svg') %>" alt="Batman qui déchire le journal">
         </div>
       <% end %>
