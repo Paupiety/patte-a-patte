@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+
+  resources :addresses
+
+
+
   resources :offers do
     resources :cart_offers, only: %i[create destroy]
     member do
@@ -21,8 +26,8 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :new, :create, :edit, :update]
   resources :pets, only: [:new, :create, :edit, :update, :destroy]
 
-  get 'static_pages/home'
   root 'static_pages#home'
+  get 'profil', to: 'static_pages#profil'
   get 'about', to: 'static_pages#about'
   get 'favorites', to: 'users#favorites', as: 'favorites'
   get 'my_offers', to: 'users#my_offers', as: 'my_offers'

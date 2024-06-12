@@ -11,3 +11,26 @@
     color: var(--complementary_color)
 }
 
+.form_on{
+  overflow: hidden;
+  max-height: 600px;
+  transition: all 0.4s ease;
+}
+
+.form_off{
+  overflow: hidden;
+  max-height: 0px;
+  transition: all 0.4s ease;
+}
+
+.button:hover{
+  width: 2.2rem;
+  height: 2.2rem;
+  transition: all 0.2s ease;
+}
+
+.button{
+  width: 2rem;
+  height: 2rem;
+  transition: all 0.2s ease;
+}

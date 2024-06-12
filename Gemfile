@@ -40,6 +40,8 @@ gem 'sassc-rails'
 
 gem "table_print"
 
+gem "faker"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 

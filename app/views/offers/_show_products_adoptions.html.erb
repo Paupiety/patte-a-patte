@@ -41,14 +41,18 @@
               <h2 class="text-2xl"><%= @offer.price%> €</h2>
             </div>
             <p><%= @offer.description %></p>
-            <%= link_to "Voir le profil du vendeur", offer_user_path(@offer), class:"underline"%>
-              <div class="flex gap-3">
-                <% if user_signed_in? %>
-                  <div> 
-                    <%= button_to "Ajouter au panier", offer_cart_offers_path(@offer.id), method: :post, class: "btn_primary" %>
-                  </div>
-                <% end %>
-              </div>
+            <%if @offer.type_offer.type_offer == "Vente"%>
+              <%= link_to "Voir le profil du vendeur", offer_user_path(@offer), class:"underline"%>
+                <div class="flex gap-3">
+                  <% if user_signed_in?%>
+                    <div> 
+                      <%= button_to "Ajouter au panier", offer_cart_offers_path(@offer.id), method: :post, class: "btn_primary" %>
+                    </div>
+                  <% end %>
+                </div>
+            <%else%>
+              <%= button_to "Contacter", user_path(@offer.user), method: :get, class: "btn_primary" %>
+              <%end%>
             </div>
 
             <div class="flex flex-col gap-3">
