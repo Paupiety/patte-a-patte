@@ -1,5 +1,5 @@
 class OrderMailer < ApplicationMailer
-  default from: 'https://patte-a-patte.fly.dev/'
+  default from: ENV['MAILJET.DEFAULT_FROM']
 
   def order_confirmation(user, offer)
     @user = user
