@@ -1,4 +1,5 @@
 # Clear existing data
+Like.destroy_all
 User.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('users')
 Offer.destroy_all
@@ -28,7 +29,7 @@ ActiveRecord::Base.connection.reset_pk_sequence!('typeoffers')
     type_offer: "Adoption"
   )
   Typeoffer.create!(
-    type_offer: "Produit"
+    type_offer: "Vente"
   )
 
 # Create Users

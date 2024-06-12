@@ -1,8 +1,8 @@
-<%if @typeoffre.present? && @typeoffer.type_offer == "Service"%>
+<%if @typeoffer.present? && @typeoffer.type_offer == "Service"%>
   <%= render 'offers/index_services' %>
-<%elsif @typeoffre.present? && @typeoffer.type_offer == "Vente"%>
+<%elsif @typeoffer.present? && @typeoffer.type_offer == "Vente"%>
   <%= render 'offers/index_products' %>
-<%elsif @typeoffre.present? && @typeoffer.type_offer == "Adoption"%>
+<%elsif @typeoffer.present? && @typeoffer.type_offer == "Adoption"%>
   <%= render 'offers/index_adoptions' %>
 <%elsif @offers_search.present?%>
   <%= render 'offers/index_search' %>
