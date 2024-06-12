@@ -112,3 +112,17 @@ em {
 .color-complementary{
   color: var(--complementary_color);
 }
+
+.svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.icone_svg:hover{
+  background-color: var(--primary_color);
+  color: var(--complementary_color);
+}
+
+.icone_svg{
+  color: var(--current_color);
+}
