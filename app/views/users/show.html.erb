@@ -1,147 +1,83 @@
-<section class="mt-12 p-14 flex flex-col gap-6 max-md:p-4">
-  <h1 class="text-3xl">Informations publiques</h1>
-  <div class="flex gap-6 w-full max-md:flex-col max-md:items-center">
-    <div class="rounded-full overflow-hidden h-72 w-72 flex flex-col items-center justify-center">
-      <% if @user.profile_picture.attached? %>
-        <%= image_tag @user.profile_picture, alt: "Photo de profil", class:"self-center" %>
-      <% else %>
-        <img src="<%= asset_path('logo/symbole_logo.svg') %>" alt="Logo Patte à patte">
-      <% end %>
-    </div>
-    <div class="flex flex-col gap-3 w-2/5 max-md:w-auto">
-      <div class="flex flex-col gap-2">
-        <h2 class="text-xl"><%= @user.first_name %> <%= @user.last_name %></h2>
-        <p><%= @user.description %></p>
+<section class="mt-12 px-14 pt-14 flex flex-col gap-6 max-md:p-4">
+  <div class="flex gap-6 w-full max-md:flex-col max-md:items-center justify-center">
+    <div class="flex flex-col gap-3 items-center">
+      <div class="rounded-full overflow-hidden h-40 w-40 flex flex-col items-center justify-center">
+        <% if @user.profile_picture.attached? %>
+          <%= image_tag @user.profile_picture, alt: "Photo de profil", class:"self-center" %>
+        <% else %>
+          <img src="<%= asset_path('logo/symbole_logo.svg') %>" alt="Logo Patte à patte">
+        <% end %>
       </div>
-      <div>
-        <%= link_to "Modifier mon profil", edit_user_path(@user), class: "btn_primary" %>
+        <h1 class="text-3xl text-center"><%= @user.first_name %> <%= @user.last_name %></h1>
+    </div>
+  </div>
+</section>
+
+<section class="p-14 flex max-md:p-4 justify-center">
+  <div class="max-w-7xl flex gap-6 max-md:flex-col">
+    <div class="flex flex-col gap-3 w-full max-md:w-auto">
+      <h2 class="text-xl">Informations</h2>
+      <div class="flex flex-col gap-6">
+        <% if @user.description.present? %>
+          <div class="flex flex-col">
+            <h3 class="font-semibold">Description</h3>
+            <p><%= @user.description %> Truc mechin chose truc machin chose et truc machin chiose</p>
+          </div>
+        <% end %>
+        <div class="flex flex-col gap-6">
+          <div class="flex gap-3 items-center">
+            <div class="rounded-full p-3 bg-secondary h-fit w-fit">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-envelope icone_contact" viewBox="0 0 16 16">
+                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-bold">Email</h3>
+              <p><%= @user.email %></p>
+            </div>
+          </div>
+          <% if @user.phone_number.present? %>
+            <div class="flex gap-3 items-center">
+              <div class="rounded-full p-3 bg-secondary h-fit w-fit">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone icone_contact" viewBox="0 0 16 16">
+                  <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-bold">Téléphone</h3>
+                <p><%= @user.phone_number %></p>
+              </div>
+            </div>
+          <% end %>
+          <%if @user == current_user%>
+            <a href="<%=profil_path%>" class="btn_primary" role="menuitem" tabindex="-1" id="user-menu-item-0">Modifier mon profil</a>
+          <%end%>
+        </div>
       </div>
     </div>
-    <div class="bg-primary rounded p-10 w-2/5 flex flex-col g-6 items-center justify-between max-md:w-full">
+    
+    <div class="bg-primary rounded p-10 w-2/5 flex flex-col gap-6 items-center justify-between max-md:w-full h-fit min-w-80 max-md:min-w-min">
       <div class="flex flex-col items-center gap-2">
-        <h2 class="white text-xl">Mes animaux</h2>
+        <h2 class="white text-xl">Animaux</h2>
         <% if @user.pets.any? %>
           <div class="grid gap-4">
             <% @user.pets.each do |pet| %>
               <div class="flex flex-col items-center justify-center gap-2">
                 <% if pet.profile_picture.attached? %>
                   <%= image_tag pet.profile_picture, alt: "Photo de #{pet.first_name}", class: "rounded-full h-20 w-20 object-cover" %>
-                <% else %>
-                  <div class="rounded-full h-20 w-20 bg-gray-300 flex items-center justify-center">
-                    <span class="text-gray-500">Aucune image</span>
-                  </div>
                 <% end %>
                 <h3 class="text-lg"><%= pet.first_name %></h3>
                 <p><strong>Age:</strong> <%= pet.age %> ans</p>
                 <p><strong>Race:</strong> <%= pet.breed %></p>
                 <p><strong>Sexe:</strong> <%= pet.sex %></p>
                 <!-- Ajoutez d'autres détails ici si nécessaire -->
-                <%= link_to "Modifier son profil", edit_pet_path(pet), class: "btn_secondary mt-2 min-w-max" %>
               </div>
             <% end %>
           </div>
         <% else %>
-          <p class="white">Vous n'avez pas ajouté d'animaux pour le moment.</p>
+          <p class="color-complementary"><%= @user.first_name %> n'a pas d'animaux ou ne les a pas encore ajoutés sur Patte à patte.</p>
         <% end %>
       </div>
-      <%= link_to "Ajouter un animal", new_pet_path, class: "btn_secondary mt-6 min-w-max" %>
     </div>
-  </div>
-</section>
-
-<section class="flex flex-col gap-6 p-14 max-md:p-6">
-  <h1 class="text-3xl">Informations privées</h1>
-  <div class="flex gap-6 justify-between max-md:flex-col-reverse max-md:items-center">
-    <div class="flex flex-col gap-3 w-2/5 relative max-md:w-full">
-      <div class="flex justify-between gap-3 items-center w-full">
-        <h2>Adresses de livraison</h2>
-        <div class="rounded-full p-2 bg-secondary h-8 w-8 justify-center items-center button flex absolute right-0">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg plus_off" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
-          </svg>
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="hidden bi bi-dash plus_on" viewBox="0 0 16 16">
-            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
-          </svg>
-        </div>
-      </div>
-      <div class="form form_off">
-
-        <%= form_with url: {controller: "addresses", action: "create"}, html: {class: "flex flex-col gap-4" } do |f| %>
-        <div class="flex flex-col gap-0.5">
-          <%= f.label :zip_code, "Code postal", class: 'label' %>
-          <%= f.text_field :zip_code, class:"input border-transparent focus:border-0 appearance-none rounded w-full py-2 px-3 leading-tight" %>
-        </div>
-
-        <div class="flex flex-col gap-0.5">
-          <%= f.label :city_name, "Ville", class: 'label' %>
-          <%= f.text_field :city_name, class:"input border-transparent focus:border-0 appearance-none rounded w-full py-2 px-3 leading-tight" %>
-        </div>
-
-        <div class="flex flex-col gap-0.5">
-          <%= f.label :address_name, "Adresse", class: 'label' %>
-          <%= f.text_field :address_name, class:"input border-transparent focus:border-0 appearance-none rounded w-full py-2 px-3 leading-tight" %>
-        </div>
-
-        <div class="flex flex-col gap-0.5">
-        <%= f.label :phone_number, "Numéro de téléphone", class: 'label' %>
-        <%= f.text_field :phone_number, class:"input border-transparent focus:border-0 appearance-none rounded w-full py-2 px-3 leading-tight" %>
-       </div>
-
-        <div class="actions btn_primary">
-          <%= f.submit "Ajouter l'adresse" %>
-        </div>
-      </div>
-      <% end %>
-        <div class="max-md:w-full">
-        <%if @user.addresses.present?%>
-        <div class="flex flex-col gap-6">
-          <% @user.addresses.each do |address|%>
-              <div class="flex flex-col gap-1 bg-complementary p-4 rounded">
-                <p><%= address.address_name%><p>
-                <p><%= address.zip_code%> <%= address.city_name%><p>
-                <div class="flex gap-3 justify-between">
-                  <%= link_to "Modifier", edit_address_path(address), class: "underline" %>
-                  <%= button_to "Supprimer", address_path(address), method: :delete, class: "underline" %>
-                </div>
-          <%end%>
-          </div>
-        <%else%>
-          <p>Vous n'avez pas d'adresses enregistrées pour le moment.</p>
-        <%end%>
-      </div>
-      <div class="flex flex-col gap-4">
-        <%= link_to "Informations de connexion", edit_user_registration_path(current_user), class: "btn_primary mt-6 min-w-max" %>
-      </div>
-    </div>
-  </div>
-  <div>
-      <img class="min-w-28" src="<%= asset_path('illustrations/dog-swimming.svg') %>" alt="Batman qui nage">
-    </div>
-    </div>
-</section>
-
-<!-- Section pour les annonces -->
-<section class="mt-12 p-14 flex flex-col gap-6 max-md:p-4">
-  <div class="flex items-center justify-between bg-complementary p-4 rounded">
-    <h1 class="text-3xl">
-      <%= link_to "Mes annonces", my_offers_path %>
-    </h1>
-    <a href="<%= my_offers_path %>" class="bg-secondary p-1 w-fi rounded-full arrow_icon">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-10 h-10" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"/>
-      </svg>
-    </a>
-  </div>
-
-  <!-- Onglet pour Mes Favoris -->
-  <div class="flex items-center justify-between bg-complementary p-4 rounded mt-4">
-    <h1 class="text-3xl">
-      <%= link_to "Mes favoris", favorites_path %>
-    </h1>
-    <a href="<%= favorites_path %>" class="bg-secondary p-1 w-fi rounded-full arrow_icon">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-10 h-10" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"/>  
-      </svg>
-    </a>
   </div>
 </section>
