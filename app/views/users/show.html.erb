@@ -92,6 +92,7 @@
               <div class="flex flex-col gap-1 bg-complementary p-4 rounded">
                 <p><%= address.address_name%><p>
                 <p><%= address.zip_code%> <%= address.city_name%><p>
+                  <%= link_to "Modifier", edit_address_path(address), class: "btn_secondary" %>
                 <%= button_to "Supprimer", address_path(address), method: :delete, class: "relative p-1 bg-secondary rounded-full p-3 h-fit w-fit" %>
           <%end%>
           </div>

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  resources :addresses, only: [:create, :destroy]
+  resources :addresses
 
   resources :offers do
     resources :cart_offers, only: %i[create destroy]
