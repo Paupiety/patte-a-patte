@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   get 'favorites', to: 'users#favorites', as: 'favorites'
   get 'my_offers', to: 'users#my_offers', as: 'my_offers'
 
-
+  get 'map', to: 'maps#show', as: 'map'
   resources :carts, only: [:show]
 
   #stripe roads
