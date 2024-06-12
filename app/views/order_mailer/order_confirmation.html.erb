@@ -4,12 +4,25 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Merci <%= @user.first_name %> <%= @user.last_name %> pour votre commande sur Patte à Patte !</h1>
-    
-    <p>Vous avez commandé : <%= @offer.title %></p>
-    
-    <!-- Ajoutez d'autres détails de la commande ici, en fonction de vos besoins -->
+    <p>Salut <%= @user.first_name %>,</p>
+
+    <p>Merci pour votre commande chez Patte à Patte !</p>
+
+    <p>Voici les détails de votre commande :</p>
+
+    <ul>
+      <li>Produit : <%= @offer.title %></li>
+      <li>Prix unitaire : <%= @offer.price %> EUR</li>
+      <li>Total : <%= @total %> EUR</li>
+    </ul>
+
+    <p>Méthode de paiement : <%= @payment_method %></p>
+
+    <p>Nous vous tiendrons informé de l'avancement de votre commande par e-mail.</p>
 
     <p>Merci de votre confiance !</p>
+
+    <p>Cordialement,<br>L'équipe de Patte à Patte</p>
   </body>
 </html>
+

@@ -16,9 +16,9 @@ class CheckoutController < ApplicationController
           quantity: 1
         },
       ],
-        metadata: {
-          cart_id: @cart_id
-        },
+      metadata: {
+        cart_id: @cart_id
+      },
       mode: 'payment',
       success_url: checkout_success_url + '?session_id={CHECKOUT_SESSION_ID}',
       cancel_url: checkout_cancel_url
@@ -31,9 +31,13 @@ class CheckoutController < ApplicationController
     @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
     @cart_id = @session.metadata.cart_id
 
-    # Création de l'Attendance ici après un paiement réussi
-    # Vous devez adapter cette partie en fonction de votre modèle Attendance
-    # Attendance.create(cart_id: @cart_id, user_id: current_user.id)
+    # Récupérer l'utilisateur et l'offre associée au panier
+    @user = current_user
+    @cart = Cart.find(@cart_id)
+    @offer = @cart.offers.first # ou toute autre méthode pour récupérer l'offre associée au panier
+
+    # Appeler la méthode order_confirmation du mailer avec les arguments requis
+    OrderMailer.order_confirmation(@user, @offer).deliver_now
   end
 
   def cancel
@@ -41,5 +45,14 @@ class CheckoutController < ApplicationController
     # Par exemple, afficher un message d'erreur à l'utilisateur ou effectuer d'autres actions nécessaires
     flash[:error] = "Le paiement a été annulé ou a échoué."
     redirect_to root_path
+  end
+
+  private
+
+  def send_order_confirmation_email(cart_id)
+    # Récupérer la commande associée au cart_id
+    @order = Order.find_by(cart_id: cart_id)
+    # Envoyer l'e-mail de confirmation de commande
+    OrderMailer.with(order: @order).order_confirmation.deliver_now
   end
 end
