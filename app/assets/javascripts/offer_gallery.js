@@ -1,5 +1,5 @@
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("turbo:load", function() {
   const mainImage = document.getElementById('main-image');
   const thumbnails = document.querySelectorAll('.thumbnail');
 
