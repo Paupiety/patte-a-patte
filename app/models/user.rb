@@ -7,6 +7,9 @@ class User < ApplicationRecord
   has_many :pets, dependent: :destroy
   has_many :likes
   has_many :liked_offers, through: :likes, source: :offer
+  has_many :user_addresses
+  has_many :addresses, through: :user_addresses
+  accepts_nested_attributes_for :user_addresses
 
   def welcome_send
     UserMailer.welcome_email(self).deliver_now

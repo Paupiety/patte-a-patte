@@ -33,7 +33,7 @@ class CheckoutController < ApplicationController
 
     # Création de l'Attendance ici après un paiement réussi
     # Vous devez adapter cette partie en fonction de votre modèle Attendance
-    #Attendance.create(event_id: @event_id, user_id: current_user.id)
+    # Attendance.create(cart_id: @cart_id, user_id: current_user.id)
   end
 
   def cancel
