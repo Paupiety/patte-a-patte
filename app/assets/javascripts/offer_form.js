@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("turbo:load", function() {
   const typeOfferSelect = document.querySelector(".type_offer_select");
   const sections1 = document.querySelectorAll(".type_offer_section_1");
   const sections2 = document.querySelectorAll(".type_offer_section_2");
