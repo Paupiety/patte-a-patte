@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  attr_accessor :address, :city, :zip_code
   #after_create :welcome_send
   has_one_attached :profile_picture
   has_one :cart
@@ -7,6 +8,9 @@ class User < ApplicationRecord
   has_many :pets, dependent: :destroy
   has_many :likes
   has_many :liked_offers, through: :likes, source: :offer
+  has_many :user_addresses
+  has_many :addresses, through: :user_addresses
+  accepts_nested_attributes_for :user_addresses
 
   #def welcome_send
     #UserMailer.welcome_email(self).deliver_now
