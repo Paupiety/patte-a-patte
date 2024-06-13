@@ -5,7 +5,7 @@
     <% if @offer.comments.any? %>
       <div class="container">
         <div class="gap-6 flex flex-col w-full">
-          <% @offer.comments.each do |comment| %>
+          <% @offer.comments.last(6).each do |comment| %>
             <div class="flex justify-between border-b border-current pb-4 max-sm:flex-col">
               <div class="flex gap-3">
                 <div class="rounded-full overflow-hidden h-14 w-14 flex flex-col items-center justify-center">
