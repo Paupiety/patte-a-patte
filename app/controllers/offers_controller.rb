@@ -44,35 +44,4 @@ class OffersController < ApplicationController
     redirect_to offers_url
     flash[:success] = "L'offre a été supprimée avec succès."
   end
-
-  def like
-    @offer = Offer.find(params[:id])
-    current_user.likes.create(offer: @offer) unless current_user.likes.exists?(offer: @offer)
-    redirect_to request.referer || @offer
-  end
-
-  def unlike
-    @offer = Offer.find(params[:id])
-    like = current_user.likes.find_by(offer: @offer)
-    like.destroy if like
-    redirect_to request.referer || @offer
-  end
-
-  def vente
-    @typeoffer = Typeoffer.find_by(type_offer: "Vente")
-    @offers = Offer.where(type_offer_id: @typeoffer.id)
-    render :index
-  end
-
-  def adoption
-    @typeoffer = Typeoffer.find_by(type_offer: "Adoption")
-    @offers = Offer.where(type_offer_id: @typeoffer.id)
-    render :index
-  end
-
-  def service
-    @typeoffer = Typeoffer.find_by(type_offer: "Service")
-    @offers = Offer.where(type_offer_id: @typeoffer.id)
-    render :index
-  end
 end
