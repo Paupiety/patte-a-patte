@@ -27,7 +27,7 @@
               <div class="flex gap-3">
                 <% if user_signed_in? %>
                   <div class="flex gap-3 justify-between w-full"> 
-                    <%= button_to "Contacter", offer_cart_offers_path(@offer.id), method: :post, class: "btn_primary" %>
+                    <%= button_to "Contacter", user_path(@offer.user), method: :get, class: "btn_primary" %>
                     <div>
                       <% if @offer.likes.find_by(user: current_user) %>
                         <%= button_to unlike_offer_path(@offer), method: :delete, class: "bg-secondary p-2 w-fi rounded-full icone_svg" do %>

@@ -51,7 +51,7 @@
                   <% end %>
                 </div>
             <%else%>
-              <%= button_to "Contacter", offer_cart_offers_path(@offer.id), method: :post, class: "btn_primary" %>
+              <%= button_to "Contacter", user_path(@offer.user), method: :get, class: "btn_primary" %>
               <%end%>
             </div>
 

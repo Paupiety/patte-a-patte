@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   resources :addresses
 
+
+
   resources :offers do
     resources :cart_offers, only: %i[create destroy]
     member do
@@ -25,6 +27,7 @@ Rails.application.routes.draw do
   resources :pets, only: [:new, :create, :edit, :update, :destroy]
 
   root 'static_pages#home'
+  get 'profil', to: 'static_pages#profil'
   get 'about', to: 'static_pages#about'
   get 'favorites', to: 'users#favorites', as: 'favorites'
   get 'my_offers', to: 'users#my_offers', as: 'my_offers'
