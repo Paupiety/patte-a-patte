@@ -1,45 +1,47 @@
-<section class="bg-complementary p-12 flex flex-col gap-6 max-sm:py-6 max-sm:px-3">
-  <h1 class="text-3xl">Avis</h1>
+<section class="bg-complementary p-12 flex flex-col gap-6 max-sm:py-6 max-sm:px-6 w-full items-center">
+  <div class="max-w-7xl flex flex-col gap-3 w-full">
+    <h1 class="text-3xl">Avis</h1>
 
-  <% if @offer.comments.any? %>
-    <div class="container">
-      <div class="gap-6 flex flex-col w-full">
-        <% @offer.comments.each do |comment| %>
-          <div class="flex justify-between border-b border-current pb-4 max-sm:flex-col">
-            <div class="flex gap-3">
-              <div class="rounded-full overflow-hidden h-14 w-14 flex flex-col items-center justify-center">
-                <% if comment.user.profile_picture.attached? %>
-                  <%= image_tag comment.user.profile_picture, alt: "Photo de profil", class:"self-center" %>
-                <% else %>
-                  <img src="<%= asset_path('logo/symbole_logo.svg') %>" alt="Logo Patte à patte">
-                <% end %>
+    <% if @offer.comments.any? %>
+      <div class="container">
+        <div class="gap-6 flex flex-col w-full">
+          <% @offer.comments.each do |comment| %>
+            <div class="flex justify-between border-b border-current pb-4 max-sm:flex-col">
+              <div class="flex gap-3">
+                <div class="rounded-full overflow-hidden h-14 w-14 flex flex-col items-center justify-center">
+                  <% if comment.user.profile_picture.attached? %>
+                    <%= image_tag comment.user.profile_picture, alt: "Photo de profil", class:"self-center" %>
+                  <% else %>
+                    <img src="<%= asset_path('logo/symbole_logo.svg') %>" alt="Logo Patte à patte">
+                  <% end %>
+                </div>
+                <div>
+                  <h3 class="font-semibold"><%=comment.user.first_name%> <%=comment.user.last_name%></h3> 
+                  <p><%= comment.content %></p>
+                </div>
               </div>
-              <div>
-                <h3 class="font-semibold"><%=comment.user.first_name%> <%=comment.user.last_name%></h3> 
-                <p><%= comment.content %></p>
-              </div>
+              <small class="text-xs italic max-sm:self-end">
+                <%= comment.created_at.strftime('%d/%m/%Y') %>
+              </small>
             </div>
-            <small class="text-xs italic max-sm:self-end">
-              <%= comment.created_at.strftime('%d/%m/%Y') %>
-            </small>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
 
-  <% if user_signed_in? %>
-    <div class="container">
-        <%= form_with(model: [@offer, @offer.comments.build], local: true) do |form| %>
-        <div class="flex flex-col gap-3 items-end">
-          <div class="w-full">
-            <%= form.text_area :content, class: 'p-3 mt-1 w-full rounded input', placeholder: "Donner son avis" %>
-          </div>
-          <%= form.submit "Donner son avis", class: 'btn_primary w-fit h-fit' %>
-        <% end %>
+    <% if user_signed_in? %>
+      <div class="container">
+          <%= form_with(model: [@offer, @offer.comments.build], local: true) do |form| %>
+          <div class="flex flex-col gap-3 items-end">
+            <div class="w-full">
+              <%= form.text_area :content, class: 'p-3 mt-1 w-full rounded input', placeholder: "Donner son avis" %>
+            </div>
+            <%= form.submit "Donner son avis", class: 'btn_primary w-fit h-fit' %>
+          <% end %>
+        </div>
       </div>
-    </div>
-  <% else %>
-    <p class="text-muted">Connectez-vous pour laisser un avis.</p>
-  <% end %>
+    <% else %>
+      <p class="text-muted">Connectez-vous pour laisser un avis.</p>
+    <% end %>
+  </div>
 </section>

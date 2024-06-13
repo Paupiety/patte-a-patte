@@ -1,5 +1,5 @@
-    <section class="mt-12 mb-12 p-14 flex flex-col gap-6 max-xl:p-4 items-center">
-    <div class="flex gap-3 justify-center max-sm:flex-col max-sm:items-center max-w-max">
+    <section class="mt-6 p-12 flex flex-col gap-6 max-md:p-4 max-w-7xl w-full max-sm:p-6 max-sm:mt-0 items-center">
+    <div class="flex gap-12 justify-center max-sm:flex-col max-sm:items-center max-w-max">
       <div class="flex flex-col items-center">
         <% if @offer.user.profile_picture.attached? %>
         <div class="w-3/5 h-96 rounded max-sm:w-auto">
@@ -8,9 +8,9 @@
         <%else%>
           <img src="<%= asset_path('logo/symbole_logo.svg')%>" alt="Logo Patte à patte" class="h-72 w-72">
         <%end%>
-        <h2 class="text-2xl mt-2"><%= @offer.user.first_name%> <%= @offer.user.first_name%></h2>
+        <h2 class="text-2xl mt-2 w-max"><%= @offer.user.first_name%> <%= @offer.user.first_name%></h2>
       </div>
-      <div class="p-6 flex flex-col gap-6 max-sm:w-full">
+      <div class="flex flex-col gap-6 max-sm:w-full w-3/5">
         <div class="flex flex-col gap-3">
             <div class="flex flex-col gap-3">
               <div class="flex justify-between gap-3">
@@ -59,11 +59,11 @@
         <%# Rajouter livraison et les autres caractéristiques %>
 
           <% if current_user == @offer.user %>
-              <div class="flex gap-3 w-full justify-end max-sm:flex-col">
-                <div class="w-max h-fit">
+              <div class="flex gap-3 w-full justify-end max-md:flex-col">
+                <div class="w-max min-h-fit">
                   <%= link_to "Modifier l'annonce", edit_offer_path(@offer), class: "btn_secondary" %>
                 </div>
-                <div class="w-max h-fit">
+                <div class="w-max min-h-fit">
                   <%= link_to "Supprimer l'annonce", @offer, method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cette annonce ?" }, class: "btn_danger" %>
                 </div>
               </div>
