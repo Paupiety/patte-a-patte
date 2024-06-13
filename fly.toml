@@ -8,9 +8,10 @@ primary_region = 'cdg'
 console_command = '/rails/bin/rails console'
 
 [build]
+dockerfile = "./Dockerfile"
 
 [deploy]
-  release_command = './bin/rails db:prepare'
+  release_command = "/bin/bash -c 'bundle exec rails db:prepare && bundle exec rails db:seed'"
 
 [http_service]
   internal_port = 3000

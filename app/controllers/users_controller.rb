@@ -24,9 +24,6 @@ class UsersController < ApplicationController
 
   private
 
-  def favorites
-    @liked_offers = current_user.likes.includes(:offer).map(&:offer)
-  end
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :description, :profile_picture, :phone_number)
