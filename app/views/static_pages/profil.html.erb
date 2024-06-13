@@ -3,9 +3,9 @@
     <div class="flex gap-6 w-full max-md:flex-col max-md:items-center">
       <div class="rounded-full overflow-hidden h-72 w-72 flex flex-col items-center justify-center">
         <% if current_user.profile_picture.attached? %>
-          <%= image_tag current_user.profile_picture, alt: "Photo de profil", class:"self-center" %>
+          <%= image_tag current_user.profile_picture, alt: "Photo de profil", class:"h-full" %>
         <% else %>
-          <img src="<%= asset_path('logo/symbole_logo.svg') %>" alt="Logo Patte à patte">
+          <img src="<%= asset_path('logo/symbole_logo.svg') %>" alt="Logo Patte à patte" class="w-full h-full">
         <% end %>
       </div>
       <div class="flex flex-col gap-3 w-2/5 max-md:w-auto">
@@ -21,24 +21,19 @@
         <div class="flex flex-col items-center gap-2">
           <h2 class="white text-xl">Mes animaux</h2>
           <% if current_user.pets.any? %>
-            <div class="grid gap-4">
+            <div class="flex flex-col gap-4">
               <% current_user.pets.each do |pet| %>
-                <div class="flex flex-col items-center justify-center gap-2">
-                  <% if pet.profile_picture.attached? %>
-                    <%= image_tag pet.profile_picture, alt: "Photo de #{pet.first_name}", class: "rounded-full h-20 w-20 object-cover" %>
-                  <% else %>
-                    <div class="rounded-full h-20 w-20 bg-gray-300 flex items-center justify-center">
-                      <span class="text-gray-500">Aucune image</span>
-                    </div>
-                  <% end %>
-                  <h3 class="text-lg"><%= pet.first_name %></h3>
-                  <p><strong>Age:</strong> <%= pet.age %> ans</p>
-                  <p><strong>Race:</strong> <%= pet.breed %></p>
-                  <p><strong>Sexe:</strong> <%= pet.sex %></p>
-                  <!-- Ajoutez d'autres détails ici si nécessaire -->
-                  <%= link_to "Modifier", edit_pet_path(pet), class: "underline" %>
+              <div class="flex flex-col items-center justify-center gap-2 color-complementary">
+                <% if pet.profile_picture.attached? %>
+                  <%= image_tag pet.profile_picture, alt: "Photo de #{pet.first_name}", class: "rounded-full h-16 w-16 object-cover" %>
+                <% end %>
+                <div class="flex flex-col items-center">
+                  <h3 class="font-semibold"><%= pet.first_name %></h3>
+                  <p class="text-xs"><%= pet.age %> ans | <%= pet.breed %> | <%= pet.sex %></p>
                 </div>
-              <% end %>
+                <!-- Ajoutez d'autres détails ici si nécessaire -->
+              </div>
+            <% end %>
             </div>
           <% else %>
             <p class="white">Vous n'avez pas ajouté d'animaux pour le moment.</p>
