@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   get 'profil', to: 'static_pages#profil'
   get 'about', to: 'static_pages#about'
-  get 'favorites', to: 'users#favorites', as: 'favorites'
+  get 'favorites', to: 'users#favorites'
   get 'my_offers', to: 'users#my_offers', as: 'my_offers'
 
 
