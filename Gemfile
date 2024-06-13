@@ -42,6 +42,10 @@ gem "table_print"
 
 gem "faker"
 
+gem "open-uri"
+
+gem "httparty"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
