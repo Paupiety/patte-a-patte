@@ -1,62 +1,86 @@
-# Clear existing data
-Like.destroy_all
-User.destroy_all
-ActiveRecord::Base.connection.reset_pk_sequence!('users')
-Offer.destroy_all
-ActiveRecord::Base.connection.reset_pk_sequence!('offers')
+# frozen_string_literal: true
+
+require 'faker'
+require 'httparty'
+
+# Supprimer les enregistrements des tables dépendantes
+CartOffer.destroy_all
 Category.destroy_all
-ActiveRecord::Base.connection.reset_pk_sequence!('categories')
+Comment.destroy_all
+Like.destroy_all
+Offer.destroy_all
+Order.destroy_all
+Pet.destroy_all
 Typeoffer.destroy_all
-ActiveRecord::Base.connection.reset_pk_sequence!('typeoffers')
+UserAddress.destroy_all
+Address.destroy_all
 
-# type_animal_array = ["Chat", "Chien", "NAC"]
-# index = 0
-# 5.times do |t|
-#   Category.create!(
-#     type_animal: type_animal_array[index]
-#   )
-#   index += 1
-# end
+# Supprimer les enregistrements principaux
+ActiveAdmin::Comment.destroy_all
+ActiveStorage::Attachment.destroy_all
+ActiveStorage::Blob.destroy_all
+ActiveStorage::VariantRecord.destroy_all
+AdminUser.destroy_all
+Cart.destroy_all
+User.destroy_all
 
-  Category.create(type_animal: "Chat")
-  Category.create(type_animal: "Chien")
-  Category.create(type_animal: "NAC")
+# Définir un mot de passe commun pour tous les utilisateurs
+common_password = 'password123'
 
-  Typeoffer.create!(
-    type_offer: "Service"
-  )
-  Typeoffer.create!(
-    type_offer: "Adoption"
-  )
-  Typeoffer.create!(
-    type_offer: "Vente"
-  )
 
-# Create Users
-10.times do |i|
-  User.create!(
-    email: "user#{i}@example.com",
-    password: 'password',
-    password_confirmation: 'password',
-    first_name: "FirstName#{i}",
-    last_name: "LastName#{i}",
-    description: "Description for user #{i}"
-  )
-end
-
-# Create Offers
-User.all.each do |user|
-  3.times do |i|
-    Offer.create!(
-      title: "Offer #{i} for #{user.first_name}",
-      description: "This is a description for offer #{i} by #{user.first_name}",
-      price: rand(10..100),
-      type_animal: ["Cat", "Dog", "Bird"].sample,
-      date_publication: Date.today,
-      user: user,
-      type_offer_id: ["1", "2", "3"].sample
+# Créer des utilisateurs avec un mot de passe commun
+User.transaction do
+  10.times do
+    User.create!(
+      email: Faker::Internet.email,
+      password: common_password,
+      password_confirmation: common_password,
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name.last_name,
+      description: Faker::Lorem.paragraph(sentence_count: 3),
+      phone_number: Faker::PhoneNumber.cell_phone.gsub(/\D/, '').slice(0..9)
     )
   end
 end
 
-puts "Seed data created successfully!"
+# Créer des adresses
+10.times do
+  Address.create!(
+    zip_code: Faker::Address.zip_code,
+    city_name: Faker::Address.city,
+    address_name: Faker::Address.street_address
+  )
+end
+
+# Créer des typeoffers
+['Adoption', 'Sale', 'Service'].each do |type_offer|
+  Typeoffer.create!(
+    type_offer: type_offer
+  )
+end
+
+# Créer des catégories
+categories = ['Dog', 'Cat', 'Bird', 'Fish', 'Reptile']
+categories.each do |category|
+  Category.create!(
+    type_animal: category
+  )
+end
+
+# Créer des offres
+30.times do
+  offer = Offer.create!(
+    title: Faker::Lorem.words(number: 3).join(' '),
+    description: Faker::Lorem.paragraph(sentence_count: 3),
+    price: Faker::Commerce.price(range: 10.0..1000.0),
+    type_animal: ['Dog', 'Cat'].sample,
+    date_publication: Faker::Date.between(from: 1.year.ago, to: Date.today),
+    user_id: User.pluck(:id).sample,
+    type_offer_id: Typeoffer.pluck(:id).sample,
+    image: Faker::LoremFlickr.image(size: "300x300", search_terms: ['pets']),
+    price_type: ['Fixed', 'Negotiable'].sample
+  )
+  puts "Created offer: #{offer.title}"
+end
+
+puts "Seed completed with users, addresses, typeoffers, categories, and offers"
