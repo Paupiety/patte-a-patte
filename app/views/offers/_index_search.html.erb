@@ -8,11 +8,11 @@
         <% if @offers_search.any? %>
           <% @offers_search.each do |offer| %>
             <article class="flex max-w-xl flex-col items-start gap-5">
-              <div class="group relative h-64 w-full">
+              <div class="group relative rounded h-64 w-full overflow-hidden">
                 <% if offer.image.attached? %>
-                  <%= link_to offer_path(offer) do %>
-                    <%= image_tag offer.image, alt: 'image', class: "w-full h-full rounded-lg object-cover" %>
-                  <% end %>
+                  <%= link_to offer_path(offer), class:"w-full overflow-hidden rounded-lg" do %>
+                        <%= image_tag offer.image, alt: 'image', class: "object-cover w-full h-full" %>
+                      <%end%>
                 <% end %>
               </div>
 

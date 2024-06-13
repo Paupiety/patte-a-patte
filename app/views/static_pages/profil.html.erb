@@ -1,11 +1,11 @@
 <section class="mt-6 p-14 flex flex-col gap-6 max-md:p-4 max-w-7xl w-full max-sm:p-6 max-sm:mt-0">
     <h1 class="text-3xl">Informations publiques</h1>
     <div class="flex gap-6 w-full max-md:flex-col max-md:items-center">
-      <div class="rounded-full overflow-hidden h-72 w-72 flex flex-col items-center justify-center">
+      <div class="h-72 w-72 rounded-full overflow-hidden">
         <% if current_user.profile_picture.attached? %>
-          <%= image_tag current_user.profile_picture, alt: "Photo de profil", class:"h-full" %>
+          <%= image_tag current_user.profile_picture, alt: "Photo de profil", class:"h-full w-full object-cover" %>
         <% else %>
-          <img src="<%= asset_path('logo/symbole_logo.svg') %>" alt="Logo Patte à patte" class="w-full h-full">
+          <img src="<%= asset_path('logo/symbole_logo.svg') %>" alt="Logo Patte à patte" class="h-full w-full object-cover">
         <% end %>
       </div>
       <div class="flex flex-col gap-3 w-2/5 max-md:w-auto">
@@ -108,10 +108,10 @@
           <%= link_to "Informations de connexion", edit_user_registration_path(current_user), class: "btn_primary mt-6 min-w-max" %>
         </div>
       </div>
-    </div>
-    <div>
+      <div>
         <img class="min-w-28" src="<%= asset_path('illustrations/dog-swimming.svg') %>" alt="Batman qui nage">
       </div>
+    </div>
       </div>
   </section>
   

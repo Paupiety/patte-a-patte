@@ -1,4 +1,4 @@
-<section class="mt-12 p-14 flex flex-col gap-6">
+<section class="mt-6 mb-6 px-12 max-sm:px-6 flex flex-col gap-6">
     <div class="all flex flex-col gap-6">
         <h1 class="text-3xl">Mes trouvailles</h1>
         <div class=container_cart_informations_paiements>
@@ -7,8 +7,12 @@
                         <%@cart.offers.each do |offer|%>
                             <div class="cart_container_offer background_card flex justify-between">
                                 <div class=cart_container_offer>
-                                        <%= image_tag(offer.image, class:"cart_image_offer") if offer.image.present? %>
-                                        <div class="flex flex-col gap-3 items-end justify-between">
+                                    <%if offer.image.present?%>
+                                        <div class="h-32 w-32 rounded overflow-hidden">
+                                            <%= image_tag(offer.image, class:"w-full h-full object-cover") %>
+                                        </div>
+                                    <%end%>
+                                        <div class="flex flex-col gap-3 justify-between">
                                             <h2 class="margin_bottom"><%= offer.title%></h2>
                                             <%= link_to "Voir la trouvaille", offer_path(offer), class:"btn_primary"%>
                                         </div>
