@@ -67,6 +67,7 @@ categories.each do |category|
   )
 end
 
+
 # Créer des offres
 30.times do
   offer = Offer.create!(
@@ -77,9 +78,11 @@ end
     date_publication: Faker::Date.between(from: 1.year.ago, to: Date.today),
     user_id: User.pluck(:id).sample,
     type_offer_id: Typeoffer.pluck(:id).sample,
-    image: Faker::LoremFlickr.image(size: "300x300", search_terms: ['pets']),
     price_type: ['Fixed', 'Negotiable'].sample
   )
+  image_url = Faker::LoremFlickr.image
+  file = URI.open(image_url)
+  offer.image.attach(io: file, filename: "#{offer.title}.jpg", content_type: 'image/jpg')
   puts "Created offer: #{offer.title}"
 end
 
