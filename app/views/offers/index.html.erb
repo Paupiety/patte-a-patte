@@ -4,34 +4,34 @@
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
 <%if @typeoffer.type_offer == "Service"%>
   <div class="mx-auto max-w-2xl lg:mx-0">
-      <h1 class="text-3xl">Coup de patte</h1>
+      <h1 class="text-3xl max-sm:text-center">Coup de patte</h1>
   </div>
 <%elsif @typeoffer.type_offer == "Vente"%>
   <div class="mx-auto max-w-2xl lg:mx-0">
-    <h1 class="text-3xl">Bazar des pattes</h1>
+    <h1 class="text-3xl max-sm:text-center">Bazar des pattes</h1>
   </div>
 <%elsif @typeoffer.type_offer == "Adoption"%>
   <div class="mx-auto max-w-2xl lg:mx-0">
-    <h1 class="text-3xl">Adopte une patte</h1>
+    <h1 class="text-3xl max-sm:text-center">Adopte une patte</h1>
   </div>
 <%end%>
-  <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+  <div class="mt-6 mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           <% @offers.each do |offer| %>
             <article class="flex max-w-xl flex-col items-start gap-5">
               <div class="group relative h-64 w-full flex justify-center">
                 <%if offer.type_offer.type_offer == "Service"%>
                   <% if offer.user.profile_picture.attached? %>
-                    <div class="max-sm:w-auto">
-                        <%= image_tag offer.user.profile_picture, alt: 'profil_picture_user', class: "w-full h-full rounded-lg object-cover" %>
+                    <div class="w-full relative overflow-hidden rounded-lg">
+                        <%= image_tag offer.user.profile_picture, alt: 'profil_picture_user', class: "absolute" %>
                     </div>
                     <%else%>
-                    <div class="max-sm:w-auto">
-                      <img src="<%= asset_path('logo/symbole_logo.svg')%>" alt="Logo Patte à patte" class="w-full h-full rounded-lg object-cover">
+                    <div class="w-full relative overflow-hidden rounded-lg">
+                      <img src="<%= asset_path('logo/symbole_logo.svg')%>" alt="Logo Patte à patte" class="absolute">
                     </div>
                     <%end%>
                 <% elsif offer.image.attached? %>
-                  <%= link_to offer_path(offer) do %>
-                    <%= image_tag offer.image, alt: 'image', class: "w-full h-full rounded-lg object-cover" %>
+                  <%= link_to offer_path(offer), class:"w-full relative overflow-hidden rounded-lg" do %>
+                    <%= image_tag offer.image, alt: 'image', class: "absolute position_img" %>
                   <%end%>
                 <% end %>
               </div>
