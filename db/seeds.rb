@@ -27,6 +27,8 @@ User.destroy_all
 # Définir un mot de passe commun pour tous les utilisateurs
 common_password = 'password123'
 
+User.create(email:"test@test.com", password:"test123", password_confirmation:"test123", first_name:"Michel", last_name:"Patte",description: Faker::Lorem.paragraph(sentence_count: 3),
+phone_number: "0000000000")
 
 # Créer des utilisateurs avec un mot de passe commun
 User.transaction do
