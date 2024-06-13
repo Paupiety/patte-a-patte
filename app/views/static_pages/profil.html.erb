@@ -1,6 +1,6 @@
-<section class="mt-6 p-14 flex flex-col gap-6 max-md:p-4 max-w-7xl w-full max-sm:p-6 max-sm:mt-0">
+<section class="mt-6 p-14 flex flex-col gap-12 max-md:p-4 max-w-7xl w-full max-sm:p-6 max-sm:mt-0 self-center">
     <h1 class="text-3xl">Informations publiques</h1>
-    <div class="flex gap-6 w-full max-md:flex-col max-md:items-center">
+    <div class="flex gap-12 w-full max-md:flex-col max-md:items-center">
       <div class="h-72 w-72 rounded-full overflow-hidden">
         <% if current_user.profile_picture.attached? %>
           <%= image_tag current_user.profile_picture, alt: "Photo de profil", class:"h-full w-full object-cover" %>
@@ -64,22 +64,22 @@
           <%= form_with url: {controller: "addresses", action: "create"}, html: {class: "flex flex-col gap-4" } do |f| %>
           <div class="flex flex-col gap-0.5">
             <%= f.label :zip_code, "Code postal", class: 'label' %>
-            <%= f.text_field :zip_code, class:"input border-transparent focus:border-0 appearance-none rounded w-full py-2 px-3 leading-tight" %>
+            <%= f.text_field :zip_code, class:"input focus:border-0 appearance-none rounded w-full py-2 px-3 leading-tight" %>
           </div>
   
           <div class="flex flex-col gap-0.5">
             <%= f.label :city_name, "Ville", class: 'label' %>
-            <%= f.text_field :city_name, class:"input border-transparent focus:border-0 appearance-none rounded w-full py-2 px-3 leading-tight" %>
+            <%= f.text_field :city_name, class:"input focus:border-0 appearance-none rounded w-full py-2 px-3 leading-tight" %>
           </div>
   
           <div class="flex flex-col gap-0.5">
             <%= f.label :address_name, "Adresse", class: 'label' %>
-            <%= f.text_field :address_name, class:"input border-transparent focus:border-0 appearance-none rounded w-full py-2 px-3 leading-tight" %>
+            <%= f.text_field :address_name, class:"input focus:border-0 appearance-none rounded w-full py-2 px-3 leading-tight" %>
           </div>
   
           <div class="flex flex-col gap-0.5">
           <%= f.label :phone_number, "Numéro de téléphone", class: 'label' %>
-          <%= f.text_field :phone_number, class:"input border-transparent focus:border-0 appearance-none rounded w-full py-2 px-3 leading-tight" %>
+          <%= f.text_field :phone_number, class:"input focus:border-0 appearance-none rounded w-full py-2 px-3 leading-tight" %>
          </div>
   
           <div class="actions btn_primary">

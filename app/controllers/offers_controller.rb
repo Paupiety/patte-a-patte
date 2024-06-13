@@ -40,6 +40,7 @@ class OffersController < ApplicationController
   end
 
   def destroy
+    @offer.likes.destroy_all
     @offer.destroy
     redirect_to offers_url
     flash[:success] = "L'offre a été supprimée avec succès."
