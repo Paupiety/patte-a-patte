@@ -53,7 +53,7 @@ end
 end
 
 # Créer des typeoffers
-['Adoption', 'Sale', 'Service'].each do |type_offer|
+['Adoption', 'Vente', 'Service'].each do |type_offer|
   Typeoffer.create!(
     type_offer: type_offer
   )
