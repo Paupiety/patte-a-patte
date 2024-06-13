@@ -8,14 +8,23 @@
         <% if @offers_search.any? %>
           <% @offers_search.each do |offer| %>
             <article class="flex max-w-xl flex-col items-start gap-5">
-              <div class="group relative rounded h-64 w-full overflow-hidden">
-                <% if offer.image.attached? %>
-                  <%= link_to offer_path(offer), class:"w-full overflow-hidden rounded-lg" do %>
-                        <%= image_tag offer.image, alt: 'image', class: "object-cover w-full h-full" %>
-                      <%end%>
+              <div class="group relative h-64 w-full flex justify-center">
+                <%if offer.type_offer.type_offer == "Service"%>
+                  <% if offer.user.profile_picture.attached? %>
+                    <div class="w-full relative overflow-hidden rounded-lg">
+                        <%= image_tag offer.user.profile_picture, alt: 'profil_picture_user', class: "absolute" %>
+                    </div>
+                    <%else%>
+                    <div class="w-full relative overflow-hidden rounded-lg">
+                      <img src="<%= asset_path('logo/symbole_logo.svg')%>" alt="Logo Patte à patte" class="absolute">
+                    </div>
+                    <%end%>
+                <% elsif offer.image.attached? %>
+                  <%= link_to offer_path(offer), class:"w-full relative overflow-hidden rounded-lg" do %>
+                    <%= image_tag offer.image, alt: 'image', class: "absolute position_img" %>
+                  <%end%>
                 <% end %>
               </div>
-
               <div class="relative flex gap-x-4 justify-between w-full">
                 <div class="flex flex-col gap-1">
                   <h2 class="text-2xl">

@@ -8,6 +8,7 @@
                   <%= link_to @offer do %>
                     <%= image_tag @offer.image, alt: 'photo 1', class: "w-full h-full object-cover rounded thumbnail", data: { large: url_for(@offer.image) } %>
                   <% end %>
+                  <% else%>
                 </div>
               <% end %>
               <% if @offer.photo_1.present? %>
@@ -42,11 +43,15 @@
             </div>
             <p><%= @offer.description %></p>
             <%if @offer.type_offer.type_offer == "Vente"%>
-              <%= link_to "Voir le profil du vendeur", offer_user_path(@offer), class:"underline"%>
+              <%= link_to "Voir le profil du vendeur", user_path(@offer.user), class:"underline"%>
                 <div class="flex gap-3">
                   <% if user_signed_in?%>
-                    <div> 
-                      <%= button_to "Ajouter au panier", offer_cart_offers_path(@offer.id), method: :post, class: "btn_primary" %>
+                    <div>
+                      <% if current_user.cart.offers.exists?(@offer.id) %>
+                        <p>Cette offre est déjà dans votre panier.</p> 
+                      <% else %>
+                        <%= button_to "Ajouter au panier", offer_cart_offers_path(@offer.id), method: :post, class: "btn_primary" %>
+                      <% end %>
                     </div>
                   <% end %>
                 </div>
@@ -71,7 +76,7 @@
                   <%= link_to "Modifier l'annonce", edit_offer_path(@offer), class: "btn_secondary" %>
                 </div>
                 <div class="w-max h-fit">
-                  <%= link_to "Supprimer l'annonce", @offer, method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cette annonce ?" }, class: "btn_danger" %>
+                  <%= link_to "Supprimer l'annonce", @offer, data: {turbo_method: :delete}, class: "btn_danger" %>
                 </div>
               </div>
           <% end %>
