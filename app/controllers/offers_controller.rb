@@ -40,9 +40,11 @@ class OffersController < ApplicationController
   end
 
   def destroy
-    @offer.likes.destroy_all
-    @offer.destroy
-    redirect_back(fallback_location: root_path)
-    flash[:success] = "L'offre a été supprimée avec succès."
+    if @offer
+     @offer.likes.destroy_all
+      @offer.destroy
+      flash[:success] = "L'offre a été supprimée avec succès."
+      redirect_back(fallback_location: offers_path)
+    end
   end
 end

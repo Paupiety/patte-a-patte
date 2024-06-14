@@ -24,6 +24,6 @@ class PetsController < ApplicationController
 
   def destroy
     @pet.destroy
-    redirect_to user_path(current_user), notice: 'Animal supprimé avec succès.'
+    redirect_to pets_path, notice: 'Pet was successfully deleted.'
   end
 end
