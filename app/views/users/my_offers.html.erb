@@ -41,7 +41,12 @@
               <div class="h-fit flex gap-1 items-center rounded-full py-1 px-2 border w-min border-secondary">
                   <h5 class="text-xs font-semibold"><%= offer.type_offer.type_offer %></h5>
                 </div>
-              <p class="text-xs italic text-end"><%= offer.created_at.strftime('%d/%m/%Y') %></p>
+                <div>
+                  <p class="text-xs italic text-end"><%= offer.created_at.strftime('%d/%m/%Y') %></p>
+                  <div class="w-max min-h-fit">
+                    <%= link_to "Supprimer l'annonce", offer, data: {turbo_method: :delete}, class: "underline" %>
+                  </div>
+                </div>
             </div>
           </div>
         <% end %>

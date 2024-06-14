@@ -1,5 +1,5 @@
 <% content_for :title, "Infos perso" %>
-<% content_for :meta_description, "Page d'inscription"%>
+<% content_for :meta_description, "Formulaire de modification"%>
 
 <section class="flex flex-col section max-xl:p-4 p-14">
   <div class="flex flex-col w-full items-center">
@@ -44,7 +44,7 @@
         </div>
       <% end %>
     <div class="flex justify-between mt-10">
-      <%= link_to "Retour", user_path(current_user), class:"btn_primary" %>
+      <%= link_to "Retour", profil_path, class:"btn_primary" %>
       <div><%= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class:"btn_danger" %></div>
     </div>
     </div>

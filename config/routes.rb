@@ -2,11 +2,11 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
+  # Addresses postales
   resources :addresses
 
-
-
-  resources :offers, path:'annonces' do
+  # Annonces
+  resources :offers, path:'annonces', path_names: {new: 'ajouter', edit: 'modifier'} do
     resources :cart_offers, only: %i[create destroy]
     member do
       post 'like', to: 'offers#like', as: 'like'
@@ -21,31 +21,36 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
 
-  devise_for :users, controllers: { registrations: 'users/registrations' } do
+  # Devise utilisateurs
+  devise_for :users, controllers: { registrations: 'users/registrations' }, path:'compte', path_names: {sign_up: 'inscription', sign_in: 'connexion'}
+
+  # Utilisateurs (modifier)
+  resources :users, only: [:show, :edit, :update], path:'compte', path_names: {edit: 'modifier'} do
+    resources :addresses, only: [:index]
   end
 
-  resources :users, only: [:show, :new, :create, :edit, :update]
-  resources :pets, only: [:new, :create, :edit, :update, :destroy]
+  # Animaux de l'utilisateur
+  resources :pets, only: [:new, :create, :edit, :update, :destroy], path:'animaux', path_names: {new: 'ajouter', edit: 'modifier'}
 
+  #Pages statiques
   root 'static_pages#home'
-  get 'mon-compte', to: 'static_pages#profil', as: 'profil'
   get 'a-propos', to: 'static_pages#about', as: 'about'
+  get 'contact', to: "static_pages#contact"
+
+  # Page spécifique pour l'utilisateur
   get 'favoris', to: 'users#favorites', as: 'favorites'
   get 'mes-annonces', to: 'users#my_offers', as: 'my_offers'
-
+  get 'compte', to: 'static_pages#profil', as: 'profil'
 
   resources :carts, only: [:show], path: 'trouvailles'
 
-  #stripe roads
+  #Stripe
   scope '/checkout' do
-    post 'create', to: 'checkout#create', as: 'checkout_create'
-    get 'success', to: 'checkout#success', as: 'checkout_success'
-    get 'cancel', to: 'checkout#cancel', as: 'checkout_cancel'
+    post 'créer', to: 'checkout#create', as: 'checkout_create'
+    get 'succes', to: 'checkout#success', as: 'checkout_success'
+    get 'annule', to: 'checkout#cancel', as: 'checkout_cancel'
   end
 
-  get 'contact', to: "static_pages#contact"
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 end
