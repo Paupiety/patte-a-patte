@@ -46,9 +46,9 @@ Rails.application.routes.draw do
 
   #Stripe
   scope '/checkout' do
-    post 'créer', to: 'checkout#create', as: 'checkout_create'
-    get 'succes', to: 'checkout#success', as: 'checkout_success'
-    get 'annule', to: 'checkout#cancel', as: 'checkout_cancel'
+    post 'create', to: 'checkout#create', as: 'checkout_create'
+    get 'success', to: 'checkout#success', as: 'checkout_success'
+    get 'cancel', to: 'checkout#cancel', as: 'checkout_cancel'
   end
 
 

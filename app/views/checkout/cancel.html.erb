@@ -1,3 +1,7 @@
 <% content_for :title, "Paiement refusé" %>
 <% content_for :meta_description, "Page de refus de paiement"%>
-html <div class="container text-center my-5"> <h1>Echec</h1> <p>Le paiement n'a pas abouti.</p> </div>
+<section class="max-w-screen-2xl mt-6 mb-6 p-12 flex flex-col gap-3 max-md:p-4 w-full max-sm:p-6 max-sm:mt-0 items-center self-center">
+    <h1>Echec</h1>
+    <p>Le paiement n'a pas abouti. Si vous rencontrez un souci technique, n'hésitez pas à nous contacter.</p>
+    <%link_to "Contactez-nous", contact_path, class:"btn_primary"%>
+</section>
