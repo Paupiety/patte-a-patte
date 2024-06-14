@@ -33,9 +33,8 @@
             <div class="flex flex-col items-center gap-1">
               <h3 class="font-semibold"><%= pet.first_name %></h3>
               <p><%= pet.age %> ans | <%= pet.breed %> | <%= pet.sex %></p>
-              <a data-turbo-method="delete" class="underline" href="/pets/<%= pet.id %>">Supprimer</a>
             </div>
-            <!-- Bouton de suppression -->
+              <%= button_to "Supprimer", pet, method: :delete, remote: true, data: { confirm: "Êtes-vous sûr de vouloir supprimer #{pet.first_name} ?" }, class: "underline text-white hover:text-red-500" %>
           </div>
         <% end %>
       </div>
