@@ -22,8 +22,7 @@ Rails.application.routes.draw do
   end
 
   # Devise utilisateurs
-  devise_for :users, controllers: { registrations: 'users/registrations' } do
-  end
+  devise_for :users, controllers: { registrations: 'users/registrations' }, path:'compte', path_names: {sign_up: 'inscription', sign_in: 'connexion'}
 
   # Utilisateurs (modifier)
   resources :users, only: [:show, :edit, :update], path:'compte', path_names: {edit: 'modifier'}
