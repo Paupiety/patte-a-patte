@@ -27,7 +27,7 @@
               <% end %>
             </div>
           <% if @offer.image.attached? %>
-            <div class="w-full rounded max-sm:w-full">
+            <div class="w-full max-h-screen rounded max-sm:w-full">
               <%= link_to @offer do %>
                 <%= image_tag @offer.image, alt: 'image', id: 'main-image', class: "w-full h-full object-cover rounded" %>
               <% end %>

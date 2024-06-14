@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
+  #Pour les types d'animaux
   before_action :authenticate_admin_user!, only: [:new, :create, :edit, :destroy]
-  before_action :set_category, only: [:edit, :destroy]
+  before_action :find_category, only: [:edit, :destroy]
 
   def new
     @category = Category.new
@@ -28,20 +29,4 @@ class CategoriesController < ApplicationController
     flash[:success] = "La catégorie a été supprimée avec succès."
   end
 
-  private
-
-  def set_category
-    @category = Category.find(params[:id])
-  end
-
-  def category_params
-    params.require(:category).permit(:type_animal)
-  end
-
-  def authenticate_admin_user!
-    unless current_user.admin?
-      redirect_to root_path
-      flash[:error] = "Accès refusé"
-    end
-  end
 end
