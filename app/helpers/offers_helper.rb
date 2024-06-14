@@ -1,7 +1,7 @@
 module OffersHelper
 
     def find_offer
-      @offer = Offer.find(params[:id])
+      return @offer = Offer.find(params[:id])
     end
 
     def authenticate_offer_owner!
