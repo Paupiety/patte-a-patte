@@ -1,5 +1,5 @@
 <% content_for :title, "#{current_user.first_name}" %>
-<% content_for :meta_description, "Vu du profile utilisateur"%>
+<% content_for :meta_description, "Vu du profil utilisateur"%>
 
 <section class="mt-6 p-14 flex flex-col gap-12 max-md:p-4 max-w-screen-2xl w-full max-sm:p-6 max-sm:mt-0 self-center">
     <h1 class="text-3xl">Informations publiques</h1>
@@ -21,30 +21,30 @@
             </div>
         </div>
         <div class="bg-primary rounded p-10 w-2/5 flex flex-col g-6 items-center justify-between max-md:w-full">
-            <div class="flex flex-col items-center gap-2">
-                <h2 class="white text-xl">Mes animaux</h2>
-                <% if current_user.pets.any? %>
-                    <div class="flex flex-col gap-4">
-                        <% current_user.pets.each do |pet| %>
-                        <div class="flex flex-col items-center justify-center gap-2 color-complementary">
-                            <% if pet.profile_picture.attached? %>
-                                <%= image_tag pet.profile_picture, alt: "Photo de #{pet.first_name}", class: "rounded-full h-16 w-16 object-cover" %>
-                            <% end %>
-                            <div class="flex flex-col items-center">
-                                <h3 class="font-semibold"><%= pet.first_name %></h3>
-                                <p class="text-xs"><%= pet.age %> ans | <%= pet.breed %> | <%= pet.sex %></p>
-                            </div>
-                            <!-- Ajoutez d'autres détails ici si nécessaire -->
-                        </div>
-                        <% end %>
-                    </div>
-                <% else %>
-                    <p class="white">Vous n'avez pas ajouté d'animaux pour le moment.</p>
-                <% end %>
+  <div class="flex flex-col items-center gap-2">
+    <h2 class="white text-xl">Mes animaux</h2>
+    <% if current_user.pets.any? %>
+      <div class="flex flex-col gap-4">
+        <% current_user.pets.each do |pet| %>
+          <div class="flex flex-col items-center justify-center gap-2 color-complementary">
+            <% if pet.profile_picture.attached? %>
+              <%= image_tag pet.profile_picture, alt: "Photo de #{pet.first_name}", class: "rounded-full h-16 w-16 object-cover" %>
+            <% end %>
+            <div class="flex flex-col items-center">
+              <h3 class="font-semibold"><%= pet.first_name %></h3>
+              <p class="text-xs"><%= pet.age %> ans | <%= pet.breed %> | <%= pet.sex %></p>
             </div>
-            <%= link_to "Ajouter un animal", new_pet_path, class: "btn_secondary mt-6 min-w-max" %>
-        </div>
-    </div>
+            <!-- Bouton de suppression -->
+            <a data-turbo-method="delete" class="btn_danger" href="/pets/<%= pet.id %>">Supprimer l'animal</a>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="white">Vous n'avez pas ajouté d'animaux pour le moment.</p>
+    <% end %>
+  </div>
+  <%= link_to "Ajouter un animal", new_pet_path, class: "btn_secondary mt-6 min-w-max" %>
+</div>
 </section>
   
   <section class="p-14 flex flex-col gap-6 max-md:p-4 max-w-screen-2xl w-full self-center">
