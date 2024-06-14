@@ -27,6 +27,8 @@ User.destroy_all
 # Définir un mot de passe commun pour tous les utilisateurs
 common_password = 'password123'
 
+User.create(email:"test@test.com", password:"test123", password_confirmation:"test123", first_name:"Michel", last_name:"Patte",description: Faker::Lorem.paragraph(sentence_count: 3),
+phone_number: "0000000000")
 
 # Créer des utilisateurs avec un mot de passe commun
 User.transaction do
@@ -60,7 +62,7 @@ end
 end
 
 # Créer des catégories
-categories = ['Dog', 'Cat', 'Bird', 'Fish', 'Reptile']
+categories = ['Chien', 'Chat', 'NAC']
 categories.each do |category|
   Category.create!(
     type_animal: category
@@ -74,11 +76,11 @@ end
     title: Faker::Lorem.words(number: 3).join(' '),
     description: Faker::Lorem.paragraph(sentence_count: 3),
     price: Faker::Commerce.price(range: 10.0..1000.0),
-    type_animal: ['Dog', 'Cat'].sample,
+    type_animal: categories.sample,
     date_publication: Faker::Date.between(from: 1.year.ago, to: Date.today),
     user_id: User.pluck(:id).sample,
     type_offer_id: Typeoffer.pluck(:id).sample,
-    price_type: ['Fixed', 'Negotiable'].sample
+    price_type: ['Fixe', 'Horaire', 'Journalier'].sample
   )
   image_url = Faker::LoremFlickr.image
   file = URI.open(image_url)

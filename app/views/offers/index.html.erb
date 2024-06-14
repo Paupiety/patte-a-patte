@@ -1,5 +1,5 @@
 <%if @typeoffer.present?%>
-  <section class="mt-6 p-12 flex flex-col gap-6 max-md:p-4 max-w-7xl w-full max-sm:p-6 max-sm:mt-0 items-center self-center">
+  <section class="mt-6 mb-6 p-12 flex flex-col gap-6 max-md:p-4 w-full max-sm:p-6 max-sm:mt-0 items-center self-center">
     <div>
       <div class="mx-auto lg:px-8">
   <%if @typeoffer.type_offer == "Service"%>
@@ -16,19 +16,19 @@
     </div>
   <%end%>
   <%if @offers.present?%>
-      <div class="mt-6 mx-auto grid grid-cols-2 gap-x-10 gap-y-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3 max-sm:grid-cols-1">
+      <div class="mx-auto grid grid-cols-2 gap-x-10 gap-y-16 sm:pt-12 lg:mx-0 lg:max-w-none lg:grid-cols-4 xl:grid-cols-3 max-sm:grid-cols-1">
               <% @offers.each do |offer| %>
                 <article class="flex max-w-xl flex-col items-start gap-5">
                   <div class="group relative h-64 w-full flex justify-center">
                     <%if offer.type_offer.type_offer == "Service"%>
                       <% if offer.user.profile_picture.attached? %>
-                        <div class="w-full overflow-hidden rounded-lg">
+                         <%= link_to offer_path(offer), class:"w-full overflow-hidden rounded-lg" do %>
                             <%= image_tag offer.user.profile_picture, alt: 'profil_picture_user', class: "object-cover w-full h-full" %>
-                        </div>
+                        <%end%>
                         <%else%>
-                        <div class="w-full overflow-hidden rounded-lg">
+                        <%= link_to offer_path(offer), class:"w-full overflow-hidden rounded-lg" do %>
                           <img src="<%= asset_path('logo/symbole_logo.svg')%>" alt="Logo Patte à patte" class="object-cover w-full h-full">
-                        </div>
+                        <%end%>
                         <%end%>
                     <% elsif offer.image.attached? %>
                       <%= link_to offer_path(offer), class:"w-full overflow-hidden rounded-lg" do %>
