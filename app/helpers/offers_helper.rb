@@ -1,6 +1,6 @@
 module OffersHelper
 
-    def set_offer
+    def find_offer
       @offer = Offer.find(params[:id])
     end
 
@@ -25,25 +25,28 @@ module OffersHelper
     redirect_to request.referer || @offer
   end
 
+  #Page annonces/vente
   def vente
     @typeoffer = Typeoffer.find_by(type_offer: "Vente")
     @offers = Offer.where(type_offer_id: @typeoffer.id)
     render :index
   end
 
+  #Page annonces/adoption
   def adoption
     @typeoffer = Typeoffer.find_by(type_offer: "Adoption")
     @offers = Offer.where(type_offer_id: @typeoffer.id)
     render :index
   end
 
+  #Page annonces/service
   def service
     @typeoffer = Typeoffer.find_by(type_offer: "Service")
     @offers = Offer.where(type_offer_id: @typeoffer.id)
     render :index
   end
 
-    def offer_params
-      params.require(:offer).permit(:title, :description, :price, :price_type, :type_animal, :date_publication, :image, :photo_1, :photo_2, :type_offer_id)
-    end
+  def offer_params
+    params.require(:offer).permit(:title, :description, :price, :price_type, :type_animal, :date_publication, :image, :photo_1, :photo_2, :type_offer_id)
+  end
 end
