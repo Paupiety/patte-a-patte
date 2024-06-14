@@ -1,122 +1,120 @@
+<% content_for :title, "#{current_user.first_name}" %>
+<% content_for :meta_description, "Vu du profile utilisateur"%>
+
 <section class="mt-6 p-14 flex flex-col gap-12 max-md:p-4 max-w-7xl w-full max-sm:p-6 max-sm:mt-0 self-center">
     <h1 class="text-3xl">Informations publiques</h1>
     <div class="flex gap-12 w-full max-md:flex-col max-md:items-center">
-      <div class="h-72 w-72 rounded-full overflow-hidden">
-        <% if current_user.profile_picture.attached? %>
-          <%= image_tag current_user.profile_picture, alt: "Photo de profil", class:"h-full w-full object-cover" %>
-        <% else %>
-          <img src="<%= asset_path('logo/symbole_logo.svg') %>" alt="Logo Patte à patte" class="h-full w-full object-cover">
-        <% end %>
-      </div>
-      <div class="flex flex-col gap-3 w-2/5 max-md:w-auto">
-        <div class="flex flex-col gap-2">
-          <h2 class="text-xl"><%= current_user.first_name %> <%= current_user.last_name %></h2>
-          <p><%= current_user.description %></p>
-        </div>
-        <div>
-          <%= link_to "Modifier mon profil", edit_user_path(current_user), class: "btn_primary" %>
-        </div>
-      </div>
-      <div class="bg-primary rounded p-10 w-2/5 flex flex-col g-6 items-center justify-between max-md:w-full">
-        <div class="flex flex-col items-center gap-2">
-          <h2 class="white text-xl">Mes animaux</h2>
-          <% if current_user.pets.any? %>
-            <div class="flex flex-col gap-4">
-              <% current_user.pets.each do |pet| %>
-              <div class="flex flex-col items-center justify-center gap-2 color-complementary">
-                <% if pet.profile_picture.attached? %>
-                  <%= image_tag pet.profile_picture, alt: "Photo de #{pet.first_name}", class: "rounded-full h-16 w-16 object-cover" %>
-                <% end %>
-                <div class="flex flex-col items-center">
-                  <h3 class="font-semibold"><%= pet.first_name %></h3>
-                  <p class="text-xs"><%= pet.age %> ans | <%= pet.breed %> | <%= pet.sex %></p>
-                </div>
-                <!-- Ajoutez d'autres détails ici si nécessaire -->
-              </div>
+        <div class="h-72 w-72 rounded-full overflow-hidden">
+            <% if current_user.profile_picture.attached? %>
+                <%= image_tag current_user.profile_picture, alt: "Photo de profil", class:"h-full w-full object-cover" %>
+            <% else %>
+                <img src="<%= asset_path('logo/symbole_logo.svg') %>" alt="Logo Patte à patte" class="h-full w-full object-cover">
             <% end %>
-            </div>
-          <% else %>
-            <p class="white">Vous n'avez pas ajouté d'animaux pour le moment.</p>
-          <% end %>
         </div>
-        <%= link_to "Ajouter un animal", new_pet_path, class: "btn_secondary mt-6 min-w-max" %>
-      </div>
+        <div class="flex flex-col gap-3 w-2/5 max-md:w-auto">
+            <div class="flex flex-col gap-2">
+                <h2 class="text-xl"><%= current_user.first_name %> <%= current_user.last_name %></h2>
+                <p><%= current_user.description %></p>
+            </div>
+            <div>
+                <%= link_to "Modifier mon profil", edit_user_path(current_user), class: "btn_primary" %>
+            </div>
+        </div>
+        <div class="bg-primary rounded p-10 w-2/5 flex flex-col g-6 items-center justify-between max-md:w-full">
+            <div class="flex flex-col items-center gap-2">
+                <h2 class="white text-xl">Mes animaux</h2>
+                <% if current_user.pets.any? %>
+                    <div class="flex flex-col gap-4">
+                        <% current_user.pets.each do |pet| %>
+                        <div class="flex flex-col items-center justify-center gap-2 color-complementary">
+                            <% if pet.profile_picture.attached? %>
+                                <%= image_tag pet.profile_picture, alt: "Photo de #{pet.first_name}", class: "rounded-full h-16 w-16 object-cover" %>
+                            <% end %>
+                            <div class="flex flex-col items-center">
+                                <h3 class="font-semibold"><%= pet.first_name %></h3>
+                                <p class="text-xs"><%= pet.age %> ans | <%= pet.breed %> | <%= pet.sex %></p>
+                            </div>
+                            <!-- Ajoutez d'autres détails ici si nécessaire -->
+                        </div>
+                        <% end %>
+                    </div>
+                <% else %>
+                    <p class="white">Vous n'avez pas ajouté d'animaux pour le moment.</p>
+                <% end %>
+            </div>
+            <%= link_to "Ajouter un animal", new_pet_path, class: "btn_secondary mt-6 min-w-max" %>
+        </div>
     </div>
-  </section>
+</section>
   
-  <section class="p-14 flex flex-col gap-6 max-md:p-4 max-w-7xl w-full">
+  <section class="p-14 flex flex-col gap-6 max-md:p-4 max-w-7xl w-full self-center">
     <h1 class="text-3xl">Informations privées</h1>
     <div class="flex gap-6 justify-between max-md:flex-col-reverse max-md:items-center">
-      <div class="flex flex-col gap-3 w-2/5 relative max-md:w-full">
-        <div class="flex justify-between gap-3 items-center w-full">
-          <h2>Adresses de livraison</h2>
-          <div class="rounded-full p-2 bg-secondary h-8 w-8 justify-center items-center button flex absolute right-0">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg plus_off" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="hidden bi bi-dash plus_on" viewBox="0 0 16 16">
-              <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
-            </svg>
-          </div>
-        </div>
-        <div class="form form_off">
-  
-          <%= form_with url: {controller: "addresses", action: "create"}, html: {class: "flex flex-col gap-4" } do |f| %>
-          <div class="flex flex-col gap-0.5">
-            <%= f.label :zip_code, "Code postal", class: 'label' %>
-            <%= f.text_field :zip_code, class:"input focus:border-0 appearance-none rounded w-full py-2 px-3 leading-tight" %>
-          </div>
-  
-          <div class="flex flex-col gap-0.5">
-            <%= f.label :city_name, "Ville", class: 'label' %>
-            <%= f.text_field :city_name, class:"input focus:border-0 appearance-none rounded w-full py-2 px-3 leading-tight" %>
-          </div>
-  
-          <div class="flex flex-col gap-0.5">
-            <%= f.label :address_name, "Adresse", class: 'label' %>
-            <%= f.text_field :address_name, class:"input focus:border-0 appearance-none rounded w-full py-2 px-3 leading-tight" %>
-          </div>
-  
-          <div class="flex flex-col gap-0.5">
-          <%= f.label :phone_number, "Numéro de téléphone", class: 'label' %>
-          <%= f.text_field :phone_number, class:"input focus:border-0 appearance-none rounded w-full py-2 px-3 leading-tight" %>
-         </div>
-  
-          <div class="actions btn_primary">
-            <%= f.submit "Ajouter l'adresse" %>
-          </div>
-        </div>
-        <% end %>
-          <div class="max-md:w-full">
-          <%if current_user.addresses.present?%>
-          <div class="flex flex-col gap-6">
-            <% current_user.addresses.each do |address|%>
-                <div class="flex flex-col gap-1 bg-complementary p-4 rounded">
-                  <p><%= address.address_name%><p>
-                  <p><%= address.zip_code%> <%= address.city_name%><p>
-                  <div class="flex gap-3 justify-between">
-                    <%= link_to "Modifier", edit_address_path(address), class: "underline" %>
-                    <%= button_to "Supprimer", address_path(address), method: :delete, class: "underline" %>
-                  </div>
-            <%end%>
+        <div class="flex flex-col gap-3 w-2/5 relative max-md:w-full">
+            <div class="flex justify-between gap-3 items-center w-full">
+                <h2>Adresses de livraison</h2>
+                <div class="rounded-full p-2 bg-secondary h-8 w-8 justify-center items-center button flex absolute right-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg plus_off" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="hidden bi bi-dash plus_on" viewBox="0 0 16 16">
+                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                    </svg>
+                </div>
             </div>
-          <%else%>
-            <p>Vous n'avez pas d'adresses enregistrées pour le moment.</p>
-          <%end%>
+            <div class="form form_off">
+                <%= form_with url: {controller: "addresses", action: "create"}, html: {class: "flex flex-col gap-4" } do |f| %>
+                    <div class="flex flex-col gap-0.5">
+                        <%= f.label :zip_code, "Code postal", class: 'label' %>
+                        <%= f.text_field :zip_code, class:"input focus:border-0 appearance-none rounded w-full py-2 px-3 leading-tight" %>
+                    </div>
+                    <div class="flex flex-col gap-0.5">
+                        <%= f.label :city_name, "Ville", class: 'label' %>
+                        <%= f.text_field :city_name, class:"input focus:border-0 appearance-none rounded w-full py-2 px-3 leading-tight" %>
+                    </div>
+                    <div class="flex flex-col gap-0.5">
+                        <%= f.label :address_name, "Adresse", class: 'label' %>
+                        <%= f.text_field :address_name, class:"input focus:border-0 appearance-none rounded w-full py-2 px-3 leading-tight" %>
+                    </div>
+                    <div class="flex flex-col gap-0.5">
+                        <%= f.label :phone_number, "Numéro de téléphone", class: 'label' %>
+                        <%= f.text_field :phone_number, class:"input focus:border-0 appearance-none rounded w-full py-2 px-3 leading-tight" %>
+                    </div>
+                    <div class="actions btn_primary">
+                        <%= f.submit "Ajouter l'adresse" %>
+                    </div>
+                <% end %>
+            </div>
+             <% if current_user.addresses.present? %>
+            <div class="max-md:w-full">
+                <div class="flex flex-col gap-6">
+                    <% current_user.addresses.each do |address| %>
+                        <div class="flex flex-col gap-1 bg-complementary p-4 rounded">
+                            <p><%= address.address_name %></p>
+                            <p><%= address.zip_code %> <%= address.city_name %></p>
+                            <div class="flex gap-3 justify-between">
+                                <%= link_to "Modifier", edit_address_path(address), class: "underline" %>
+                                <%= button_to "Supprimer", address_path(address), method: :delete, class: "underline" %>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+            <% else %>
+                <p>Vous n'avez pas d'adresses enregistrées pour le moment.</p>
+            <% end %>
+            <div class="flex flex-col gap-4">
+                <%= link_to "Informations de connexion", edit_user_registration_path(current_user), class: "btn_primary mt-6 min-w-max" %>
+            </div>
         </div>
-        <div class="flex flex-col gap-4">
-          <%= link_to "Informations de connexion", edit_user_registration_path(current_user), class: "btn_primary mt-6 min-w-max" %>
-        </div>
-      </div>
-      <div>
+        <div>
         <img class="min-w-28" src="<%= asset_path('illustrations/dog-swimming.svg') %>" alt="Batman qui nage">
-      </div>
     </div>
-      </div>
-  </section>
+    </div>
+</section>
   
   <!-- Section pour les annonces -->
-  <section class="p-14 flex flex-col gap-2 max-md:p-4 max-w-7xl w-full">
+  <section class="p-14 flex flex-col gap-2 max-md:p-4 max-w-7xl w-full self-center">
     <div class="flex items-center justify-between bg-complementary p-4 rounded">
       <h1 class="text-3xl">
         <%= link_to "Mes annonces", my_offers_path %>
