@@ -76,7 +76,7 @@
                   <%= link_to "Modifier l'annonce", edit_offer_path(@offer), class: "btn_secondary" %>
                 </div>
                 <div class="w-max h-fit">
-                  <%= link_to "Supprimer l'annonce", @offer, data: {turbo_method: :delete}, class: "btn_danger" %>
+                  <%= button_to "Supprimer l'annonce", @offer, method: :delete, class: "btn_danger", data: { turbo: false } %>
                 </div>
               </div>
           <% end %>
