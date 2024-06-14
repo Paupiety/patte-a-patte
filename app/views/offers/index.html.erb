@@ -10,24 +10,24 @@
 <% content_for :meta_description, "Page de mise en ligne d'une offre"%>
 
 <%if @typeoffer.present?%>
-  <section class="mt-6 mb-6 p-12 flex flex-col gap-6 max-md:p-4 w-full max-sm:p-6 max-sm:mt-0 items-center self-center">
-    <div>
-      <div class="mx-auto lg:px-8">
+  <section class="max-w-screen-2xl mt-6 mb-6 p-12 flex flex-col gap-6 max-md:p-4 w-full max-sm:p-6 max-sm:mt-0 items-center self-center">
+    <div class="w-full">
+      <div>
   <%if @typeoffer.type_offer == "Service"%>
     <div>
-        <h1 class="text-3xl max-sm:text-center">Coup de patte</h1>
+        <h1 class="text-3xl max-sm:text-center w-full">Coup de patte</h1>
     </div>
   <%elsif @typeoffer.type_offer == "Vente"%>
     <div>
-      <h1 class="text-3xl max-sm:text-center">Bazar des pattes</h1>
+      <h1 class="text-3xl max-sm:text-center w-full">Bazar des pattes</h1>
     </div>
   <%elsif @typeoffer.type_offer == "Adoption"%>
-    <div class="mx-auto max-w-2xl lg:mx-0">
-      <h1 class="text-3xl max-sm:text-center">Adopte une patte</h1>
+    <div>
+      <h1 class="text-3xl max-sm:text-center w-full">Adopte une patte</h1>
     </div>
   <%end%>
   <%if @offers.present?%>
-      <div class="mx-auto grid grid-cols-2 gap-x-10 gap-y-16 sm:pt-12 lg:mx-0 lg:max-w-none lg:grid-cols-4 xl:grid-cols-3 max-sm:grid-cols-1">
+      <div class="mx-auto grid grid-cols-2 gap-x-10 gap-y-16 pt-12 max-sm:pt-6 lg:mx-0 lg:max-w-none lg:grid-cols-3 xl:grid-cols-4 max-sm:grid-cols-1">
               <% @offers.each do |offer| %>
                 <article class="flex max-w-xl flex-col items-start gap-5">
                   <div class="group relative h-64 w-full flex justify-center">
@@ -60,7 +60,7 @@
                     </div>
                       <% if user_signed_in? %>
                       <div class="flex gap-3">
-                        <%if offer.type_offer.type_offer != "Service" && offer.type_offer.type_offer != "Adoption"%>
+                        <%if offer.type_offer.type_offer != "Service" && offer.type_offer.type_offer != "Adoption" && !current_user.cart.offers.exists?(offer.id)%>
                           <%= button_to offer_cart_offers_path(offer.id), method: :post, class:"relative p-1 flex gap-2 bg-secondary rounded-full p-3 h-fit w-fit icone_svg" do%>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="svg bi bi-basket" viewBox="0 0 16 16">
                               <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9zM1 7v1h14V7zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5"/>
