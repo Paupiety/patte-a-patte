@@ -6,4 +6,5 @@ class ApplicationController < ActionController::Base
   include CommentsHelper
   include PetsHelper
   include TypeoffersHelper
+  include CheckoutHelper
 end
