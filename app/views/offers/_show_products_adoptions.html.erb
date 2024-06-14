@@ -1,10 +1,10 @@
 <section class="mt-6 mb-6 p-12 flex flex-col gap-6 max-md:p-4 max-w-screen-2xl w-full max-sm:p-6 max-sm:mt-0 items-center self-center">
     <div class="flex max-sm:flex-col max-sm:items-center mx-sm:w-full">
       <div class="flex max-lg:flex-col max-sm:items-center max-md:gap-6 gap-12 w-full">
-        <div class="flex gap-6 max-sm:flex-col max-sm:w-full">
-          <div class="flex gap-6 mr-4 space-y-2 max-sm:mt-4 max-sm:flex-row max-sm:space-x-2 max-sm:space-y-0">
+        <div class="flex gap-12 max-sm:flex-col max-sm:w-full max-md:flex-col w-full">
+          <div class="max-w-4/5 flex gap-6 max-md:mt-4 max-md:flex-col max-sm:space-x-2 max-sm:space-y-0 w-full">
               <% if @offer.image.present? %>
-                <div class="w-24 h-24">
+                <div class="w-1/5 h-1/5">
                   <%= link_to @offer do %>
                     <%= image_tag @offer.image, alt: 'photo 1', class: "w-full h-full object-cover rounded thumbnail", data: { large: url_for(@offer.image) } %>
                   <% end %>
@@ -12,14 +12,14 @@
                 </div>
               <% end %>
               <% if @offer.photo_1.present? %>
-                <div class="w-24 h-24">
+                <div  class="w-1/5 h-1/5">
                   <%= link_to @offer do %>
                     <%= image_tag @offer.photo_1, alt: 'photo 1', class: "w-full h-full object-cover rounded thumbnail", data: { large: url_for(@offer.photo_1) } %>
                   <% end %>
                 </div>
               <% end %>
               <% if @offer.photo_2.present? %>
-                <div class="w-24 h-24">
+                <div  class="w-1/5 h-1/5">
                   <%= link_to @offer do %>
                     <%= image_tag @offer.photo_2, alt: 'photo 2', class: "w-full h-full object-cover rounded thumbnail", data: { large: url_for(@offer.photo_2) } %>
                   <% end %>
@@ -27,7 +27,7 @@
               <% end %>
             </div>
           <% if @offer.image.attached? %>
-            <div class="w-96 h-96 rounded max-sm:w-full">
+            <div class="w-full rounded max-sm:w-full">
               <%= link_to @offer do %>
                 <%= image_tag @offer.image, alt: 'image', id: 'main-image', class: "w-full h-full object-cover rounded" %>
               <% end %>
