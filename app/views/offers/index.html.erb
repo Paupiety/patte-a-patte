@@ -1,3 +1,14 @@
+<% content_for :title do %>
+  <% if @typeoffer.present? %>
+    <%= @typeoffer.type_offer %>
+  <% elsif params[:search].present? %>
+      <%= "#{params[:search]}" %>
+  <% else %> 
+    Résultat
+  <% end %>
+<% end %>
+<% content_for :meta_description, "Page de mise en ligne d'une offre"%>
+
 <%if @typeoffer.present?%>
   <section class="mt-6 mb-6 p-12 flex flex-col gap-6 max-md:p-4 w-full max-sm:p-6 max-sm:mt-0 items-center self-center">
     <div>
