@@ -1,5 +1,5 @@
 class OrderMailer < ApplicationMailer
-  default from: ENV['MAILJET.DEFAULT_FROM']
+  default from: ENV['MAILJET_DEFAULT_FROM']
 
   def order_confirmation(user, offer)
     @user = user
