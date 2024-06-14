@@ -1,22 +1,33 @@
+<% content_for :title do %>
+  <% if @typeoffer.present? %>
+    <%= @typeoffer.type_offer %>
+  <% elsif params[:search].present? %>
+      <%= "#{params[:search]}" %>
+  <% else %> 
+    Résultat
+  <% end %>
+<% end %>
+<% content_for :meta_description, "Page de mise en ligne d'une offre"%>
+
 <%if @typeoffer.present?%>
-  <section class="mt-6 mb-6 p-12 flex flex-col gap-6 max-md:p-4 w-full max-sm:p-6 max-sm:mt-0 items-center self-center">
-    <div>
-      <div class="mx-auto lg:px-8">
+  <section class="max-w-screen-2xl mt-6 mb-6 p-12 flex flex-col gap-6 max-md:p-4 w-full max-sm:p-6 max-sm:mt-0 items-center self-center">
+    <div class="w-full">
+      <div>
   <%if @typeoffer.type_offer == "Service"%>
     <div>
-        <h1 class="text-3xl max-sm:text-center">Coup de patte</h1>
+        <h1 class="text-3xl max-sm:text-center w-full">Coup de patte</h1>
     </div>
   <%elsif @typeoffer.type_offer == "Vente"%>
     <div>
-      <h1 class="text-3xl max-sm:text-center">Bazar des pattes</h1>
+      <h1 class="text-3xl max-sm:text-center w-full">Bazar des pattes</h1>
     </div>
   <%elsif @typeoffer.type_offer == "Adoption"%>
-    <div class="mx-auto max-w-2xl lg:mx-0">
-      <h1 class="text-3xl max-sm:text-center">Adopte une patte</h1>
+    <div>
+      <h1 class="text-3xl max-sm:text-center w-full">Adopte une patte</h1>
     </div>
   <%end%>
   <%if @offers.present?%>
-      <div class="mx-auto grid grid-cols-2 gap-x-10 gap-y-16 sm:pt-12 lg:mx-0 lg:max-w-none lg:grid-cols-4 xl:grid-cols-3 max-sm:grid-cols-1">
+      <div class="mx-auto grid grid-cols-2 gap-x-10 gap-y-16 pt-12 max-sm:pt-6 lg:mx-0 lg:max-w-none lg:grid-cols-3 xl:grid-cols-4 max-sm:grid-cols-1">
               <% @offers.each do |offer| %>
                 <article class="flex max-w-xl flex-col items-start gap-5">
                   <div class="group relative h-64 w-full flex justify-center">

@@ -1,4 +1,7 @@
-<section class="mt-6 px-12 flex flex-col gap-6 max-md:px-4 max-w-7xl w-full max-sm:mt-0 items-center">
+<% content_for :title, "#{@user.first_name}" %>
+<% content_for :meta_description, "Vu du profile utilisateur"%>
+
+<section class="mt-6 px-12 flex flex-col gap-6 max-md:px-4 max-w-screen-2xl w-full max-sm:mt-0 items-center">
   <div class="flex gap-6 w-full max-md:flex-col max-md:items-center justify-center">
     <div class="flex flex-col gap-3 items-center">
       <div class="h-32 w-32 rounded-full overflow-hidden">
@@ -13,7 +16,7 @@
   </div>
 </section>
 
-<section class="mt-12 mb-6 px-12 flex flex-col gap-6 max-md:px-4 max-w-7xl w-full max-sm:mt-0 items-center">
+<section class="mt-12 mb-6 px-12 flex flex-col gap-6 max-md:px-4 max-w-screen-2xl w-full max-sm:mt-0 items-center">
   <div class="flex gap-12 max-md:flex-col justify-center w-full h-full">
     <div class="flex flex-col gap-3 w-2/5 max-md:w-auto">
       <h2 class="text-xl">Informations</h2>
