@@ -30,12 +30,12 @@
             <% if pet.profile_picture.attached? %>
               <%= image_tag pet.profile_picture, alt: "Photo de #{pet.first_name}", class: "rounded-full h-16 w-16 object-cover" %>
             <% end %>
-            <div class="flex flex-col items-center">
+            <div class="flex flex-col items-center gap-1">
               <h3 class="font-semibold"><%= pet.first_name %></h3>
-              <p class="text-xs"><%= pet.age %> ans | <%= pet.breed %> | <%= pet.sex %></p>
+              <p><%= pet.age %> ans | <%= pet.breed %> | <%= pet.sex %></p>
+              <a data-turbo-method="delete" class="underline" href="/pets/<%= pet.id %>">Supprimer</a>
             </div>
             <!-- Bouton de suppression -->
-            <a data-turbo-method="delete" class="btn_danger" href="/pets/<%= pet.id %>">Supprimer l'animal</a>
           </div>
         <% end %>
       </div>
