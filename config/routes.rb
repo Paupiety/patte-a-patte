@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
 
 
-  resources :offers do
+  resources :offers, path:'annonces' do
     resources :cart_offers, only: %i[create destroy]
     member do
       post 'like', to: 'offers#like', as: 'like'
@@ -18,22 +18,23 @@ Rails.application.routes.draw do
       get 'adoption'
       get 'service'
     end
-    resources :cart_offers, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
   end
 
-  devise_for :users, controllers: { registrations: 'users/registrations' }
+  devise_for :users, controllers: { registrations: 'users/registrations' } do
+  end
+
   resources :users, only: [:show, :new, :create, :edit, :update]
   resources :pets, only: [:new, :create, :edit, :update, :destroy]
 
   root 'static_pages#home'
-  get 'profil', to: 'static_pages#profil'
-  get 'about', to: 'static_pages#about'
-  get 'favorites', to: 'users#favorites'
-  get 'my_offers', to: 'users#my_offers', as: 'my_offers'
+  get 'mon-compte', to: 'static_pages#profil', as: 'profil'
+  get 'a-propos', to: 'static_pages#about', as: 'about'
+  get 'favoris', to: 'users#favorites', as: 'favorites'
+  get 'mes-annonces', to: 'users#my_offers', as: 'my_offers'
 
 
-  resources :carts, only: [:show]
+  resources :carts, only: [:show], path: 'trouvailles'
 
   #stripe roads
   scope '/checkout' do
