@@ -1,12 +1,12 @@
-    <section class="mt-6 p-12 flex flex-col gap-6 max-md:p-4 max-w-7xl w-full max-sm:p-6 max-sm:mt-0 items-center">
+    <section class="mt-6 p-12 flex flex-col gap-6 max-md:p-4 max-w-screen-2xl w-full max-sm:p-6 max-sm:mt-0 items-center self-center">
     <div class="flex gap-12 justify-center max-sm:flex-col max-sm:items-center max-w-max">
       <div class="flex flex-col items-center">
         <% if @offer.user.profile_picture.attached? %>
-        <div class="w-3/5 h-96 rounded max-sm:w-auto">
+        <div class="w-3/5 h-96 rounded max-sm:w-auto overflow-hidden">
             <%= image_tag @offer.user.profile_picture, alt: 'profil_picture_user', class: "w-full h-full object-cover rounded" %>
         </div>
         <%else%>
-          <img src="<%= asset_path('logo/symbole_logo.svg')%>" alt="Logo Patte à patte" class="h-72 w-72">
+          <img src="<%= asset_path('logo/symbole_logo.svg')%>" alt="Logo Patte à patte" class="h-72 w-72 rounded">
         <%end%>
         <h2 class="text-2xl mt-2 w-max"><%= @offer.user.first_name%> <%= @offer.user.first_name%></h2>
       </div>
