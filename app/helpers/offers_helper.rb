@@ -1,8 +1,12 @@
 module OffersHelper
 
-    def find_offer
-      @offer = Offer.find(params[:id])
+  def find_offer
+    @offer = Offer.find_by(id: params[:id])
+    unless @offer
+      flash[:success] = "L'offre a été supprimée avec succès."
+      redirect_to root_path
     end
+  end
 
     def authenticate_offer_owner!
       unless @offer.user_id == current_user.id
