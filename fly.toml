@@ -1,17 +1,6 @@
-# fly.toml app configuration file generated for patte-a-patte on 2024-06-05T16:03:46+02:00
-#
-# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
-#
-
 app = 'patte-a-patte'
 primary_region = 'cdg'
 console_command = '/rails/bin/rails console'
-
-[build]
-dockerfile = "./Dockerfile"
-
-[deploy]
-  release_command = "/bin/bash -c 'bundle exec rails db:prepare && bundle exec rails db:seed'"
 
 [http_service]
   internal_port = 3000
@@ -32,7 +21,6 @@ dockerfile = "./Dockerfile"
     path = '/up'
     protocol = 'http'
     tls_skip_verify = false
-
     [checks.status.headers]
       X-Forwarded-Proto = 'https'
 
@@ -44,3 +32,9 @@ dockerfile = "./Dockerfile"
 [[statics]]
   guest_path = '/rails/public'
   url_prefix = '/'
+
+[[deployments]]
+  command = "bin/rails db:migrate"
+
+[[deployments]]
+  command = "bin/rails db:seed"
