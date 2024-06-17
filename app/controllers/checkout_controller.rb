@@ -23,6 +23,8 @@ class CheckoutController < ApplicationController
       success_url: checkout_success_url + '?session_id={CHECKOUT_SESSION_ID}',
       cancel_url: checkout_cancel_url
     )
+    Order.create(user: current_user, cart_id: @cart_id)
+    Cart.create(user: current_user)
     redirect_to @session.url, allow_other_host: true
   end
 end

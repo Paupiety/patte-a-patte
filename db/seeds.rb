@@ -5,12 +5,12 @@ require 'httparty'
 
 # Supprimer les enregistrements des tables dépendantes
 CartOffer.destroy_all
+Pet.destroy_all
 Category.destroy_all
 Comment.destroy_all
 Like.destroy_all
 Offer.destroy_all
 Order.destroy_all
-Pet.destroy_all
 Typeoffer.destroy_all
 UserAddress.destroy_all
 Address.destroy_all
@@ -23,6 +23,8 @@ ActiveStorage::VariantRecord.destroy_all
 AdminUser.destroy_all
 Cart.destroy_all
 User.destroy_all
+
+ActiveRecord::Base.connection.reset_pk_sequence!('typeoffers')
 
 # Définir un mot de passe commun pour tous les utilisateurs
 common_password = 'password123'

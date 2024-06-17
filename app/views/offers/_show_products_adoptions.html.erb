@@ -1,25 +1,24 @@
 <section class="mt-6 mb-6 p-12 flex flex-col gap-6 max-md:p-4 max-w-screen-2xl w-full max-sm:p-6 max-sm:mt-0 items-center self-center">
     <div class="flex max-sm:flex-col max-sm:items-center mx-sm:w-full">
       <div class="flex max-lg:flex-col max-sm:items-center max-md:gap-6 gap-12 w-full">
-        <div class="flex gap-12 max-sm:flex-col max-sm:w-full max-md:flex-col w-full">
-          <div class="max-w-4/5 flex gap-6 max-md:mt-4 max-md:flex-col max-sm:space-x-2 max-sm:space-y-0 w-full">
+        <div class="flex gap-12 max-sm:flex-col max-sm:w-full max-md:flex-col w-full max-sm:gap-6">
+          <div class="max-w-4/5 flex flex-col gap-6 max-md:mt-4 max-md:flex-row max-sm:space-x-2 max-sm:space-y-0 w-full max-w-40 max-sm:max-w-full">
               <% if @offer.image.present? %>
-                <div class="w-1/5 h-1/5">
+                <div class="w-40 h-40 max-sm:w-20 max-sm:h-20">
                   <%= link_to @offer do %>
                     <%= image_tag @offer.image, alt: 'photo 1', class: "w-full h-full object-cover rounded thumbnail", data: { large: url_for(@offer.image) } %>
                   <% end %>
-                  <% else%>
                 </div>
               <% end %>
               <% if @offer.photo_1.present? %>
-                <div  class="w-1/5 h-1/5">
+                <div  class="w-40 h-40 max-sm:w-20 max-sm:h-20">
                   <%= link_to @offer do %>
                     <%= image_tag @offer.photo_1, alt: 'photo 1', class: "w-full h-full object-cover rounded thumbnail", data: { large: url_for(@offer.photo_1) } %>
                   <% end %>
                 </div>
               <% end %>
               <% if @offer.photo_2.present? %>
-                <div  class="w-1/5 h-1/5">
+                <div  class="w-40 h-40 max-sm:w-20 max-sm:h-20">
                   <%= link_to @offer do %>
                     <%= image_tag @offer.photo_2, alt: 'photo 2', class: "w-full h-full object-cover rounded thumbnail", data: { large: url_for(@offer.photo_2) } %>
                   <% end %>
@@ -27,7 +26,7 @@
               <% end %>
             </div>
           <% if @offer.image.attached? %>
-            <div class="w-full max-h-screen rounded max-sm:w-full">
+            <div class="w-full height_img rounded max-sm:w-full">
               <%= link_to @offer do %>
                 <%= image_tag @offer.image, alt: 'image', id: 'main-image', class: "w-full h-full object-cover rounded" %>
               <% end %>
@@ -47,7 +46,7 @@
                 <div class="flex gap-3">
                   <% if user_signed_in?%>
                     <div>
-                      <% if current_user.cart.offers.exists?(@offer.id) %>
+                      <% if create_or_retrieve_cart_current_user.offers.exists?(@offer.id) %>
                         <p>Cette offre est déjà dans votre panier.</p> 
                       <% else %>
                         <%= button_to "Ajouter au panier", offer_cart_offers_path(@offer.id), method: :post, class: "btn_primary" %>
@@ -76,7 +75,7 @@
                   <%= link_to "Modifier l'annonce", edit_offer_path(@offer), class: "btn_secondary" %>
                 </div>
                 <div class="w-max h-fit">
-                  <%= link_to "Supprimer l'annonce", @offer, data: {turbo_method: :delete}, class: "btn_danger" %>
+                  <%= button_to "Supprimer l'annonce", @offer, method: :delete, class: "btn_danger", data: { turbo: false } %>
                 </div>
               </div>
           <% end %>

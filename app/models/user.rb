@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   after_create :welcome_send
   has_one_attached :profile_picture
-  has_one :cart
+  has_many :carts
   has_many :offers, dependent: :destroy
   has_many :comments
   has_many :pets, dependent: :destroy
