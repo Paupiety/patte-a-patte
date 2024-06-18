@@ -2,6 +2,7 @@ class CheckoutController < ApplicationController
   def create
     @total = params[:total].to_d
     @cart_id = params[:cart_id]
+    @address = params[:address_id]
     @session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       line_items: [
@@ -23,7 +24,7 @@ class CheckoutController < ApplicationController
       success_url: checkout_success_url + '?session_id={CHECKOUT_SESSION_ID}',
       cancel_url: checkout_cancel_url
     )
-    Order.create(user: current_user, cart_id: @cart_id)
+    Order.create(user: current_user, cart_id: @cart_id, address_id: @address)
     Cart.create(user: current_user)
     redirect_to @session.url, allow_other_host: true
   end
