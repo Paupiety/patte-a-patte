@@ -1,6 +1,6 @@
 class TypeoffersController < ApplicationController
   before_action :authenticate_admin_user!, only: [:new, :create, :edit, :destroy]
-  before_action :set_type, only: [:edit, :destroy]
+  before_action :find_type_offer, only: [:edit, :destroy]
 
   def new
     @type_offer = Typeoffer.new
@@ -18,30 +18,9 @@ class TypeoffersController < ApplicationController
     end
   end
 
-  def edit
-    @type_offer = Typeoffer.find(params[id])
-  end
-
   def destroy
     @type_offer.destroy
     redirect_to admins_url
     flash[:success] = "La catégorie a été supprimée avec succès."
-  end
-
-  private
-
-  def set_type_offer
-    @type_offer = Typeoffer.find(params[:id])
-  end
-
-  def type_offer_params
-    params.require(:type_offer).permit(:type_offer)
-  end
-
-  def authenticate_admin_user!
-    unless current_user.admin?
-      redirect_to root_path
-      flash[:error] = "Accès refusé"
-    end
   end
 end

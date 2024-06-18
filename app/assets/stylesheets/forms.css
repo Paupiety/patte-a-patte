@@ -17,3 +17,27 @@
     right: 7%;
     bottom: -2%;
 }
+
+.position-icon-cat1{
+    bottom: -3%;
+    width: 10%;
+    right: 10%;
+}
+
+.position-icon-cat2{
+    bottom: -5%;
+    width: 12%;
+    right: 10%;
+}
+
+.position-icon-cat3{
+    bottom: 0%;
+    width: 20%;
+    right: 10%;
+}
+
+.position-icon-bird{
+    width: 120px;
+    right: 5%;
+    bottom: 57%;
+}

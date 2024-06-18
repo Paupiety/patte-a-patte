@@ -1,5 +1,5 @@
 class OffersController < ApplicationController
-  before_action :set_offer, only: [:show, :edit, :update, :destroy]
+  before_action :find_offer, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:like, :unlike]
   before_action :authenticate_offer_owner!, only: [:edit, :update, :destroy]
 
@@ -40,9 +40,11 @@ class OffersController < ApplicationController
   end
 
   def destroy
-    @offer.likes.destroy_all
-    @offer.destroy
-    redirect_to offers_url
-    flash[:success] = "L'offre a été supprimée avec succès."
+    if @offer
+     @offer.likes.destroy_all
+      @offer.destroy
+      flash[:success] = "L'offre a été supprimée avec succès."
+      redirect_back(fallback_location: offers_path)
+    end
   end
 end

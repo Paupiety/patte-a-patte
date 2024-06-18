@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_offer
+  before_action :find_offer_of_comment
   before_action :authenticate_user!
 
   def create
@@ -11,15 +11,5 @@ class CommentsController < ApplicationController
     else
       redirect_to @offer
     end
-  end
-
-  private
-
-  def set_offer
-    @offer = Offer.find(params[:offer_id])
-  end
-
-  def comment_params
-    params.require(:comment).permit(:title, :content)
   end
 end

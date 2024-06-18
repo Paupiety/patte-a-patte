@@ -20,7 +20,7 @@ class AddressesController < ApplicationController
         @address = Address.find(params[:id])
         @user = current_user
         if @address.update(zip_code: params[:address][:zip_code], city_name: params[:address][:city_name], address_name: params[:address][:address_name])
-            redirect_to @user
+          redirect_back(fallback_location: root_path)
           flash[:success] = "L'adresse a bien été modifiée"
         else
             redirect_back(fallback_location: root_path)

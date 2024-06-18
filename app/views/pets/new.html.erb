@@ -1,5 +1,5 @@
 <% content_for :title, "Ajouter un animal" %>
-<% content_for :meta_description, "Page d'ajout d'un animal de compagnies"%>
+<% content_for :meta_description, "Page d'ajout d'un animal de compagnie"%>
 
 <section class="flex flex-col section max-xl:p-4 p-14">
   <div class="flex flex-col w-full items-center">
@@ -7,5 +7,8 @@
       <h1 class="text-3xl">Ajouter un animal</h1>
       <%= render 'form', pet: @pet %>
     </div>
+  </div>
+  <div class="absolute position-icon-cat3">
+    <img class="max-sm:hidden w-full" src="<%= asset_path('illustrations/Cat_3.svg') %>" alt="Cat 3">
   </div>
 </section>

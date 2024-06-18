@@ -1,7 +1,7 @@
 class CartOffersController < ApplicationController
     def create
         id = params[:offer_id]
-        @cart = Cart.find_by(user: current_user)
+        @cart = current_user.carts.last
         @offer = Offer.find(id)
         @cart_offer = CartOffer.new(cart: @cart, offer: @offer)
         return unless @cart_offer.save
@@ -12,7 +12,7 @@ class CartOffersController < ApplicationController
     
       def destroy
         id = params[:offer_id]
-        @cart = Cart.find_by(user: current_user)
+        @cart = current_user.carts.last
         @offer = Offer.find(id)
         @cart_offer = CartOffer.find_by(cart: @cart, offer: @offer)
         @cart_offer.destroy
