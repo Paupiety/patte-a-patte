@@ -46,13 +46,25 @@
                 </div>
             
         <% end %>
-        <div class="mt-6 bg-primary color-complementary py-4 rounded-b-md px-6 flex justify-between max-sm:flex-col">
+        <div class="mt-6 bg-primary color-complementary py-4 rounded-b-md px-6 flex flex-col gap-3">
+          <%if order.address.present?%>
+        <div class="flex gap-2 justify-between items-center max-sm:flex-col pb-3 border-b">
+          <h2 class="text-2xl">Adresse de livraison</h2>
           <div>
-            <h2 class="text-2xl">Le <%= order.created_at.strftime('%d/%m/%Y') %></h2>
+            <%=order.address.address_name%>
+            <%=order.address.zip_code%>
+            <%=order.address.city_name%>
+          </div>
+        </div>
+        <%end%>
+        <div class="flex justify-between max-sm:flex-col">
+          <div>
+            <h2 class="text-2xl"><%= order.created_at.strftime('%d/%m/%Y') %></h2>
           </div>
           <div class=cart_price_total_offer>
-            <h2>Prix total : <%= number_with_precision(total_price(order.cart) + services_charges(order.cart), precision: 2) %> €</h2>
+            <h2>Total : <%= number_with_precision(total_price(order.cart) + services_charges(order.cart), precision: 2) %> €</h2>
           </div>
+        </div>
         </div>
         
         </div>
