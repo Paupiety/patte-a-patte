@@ -1,4 +1,9 @@
 class AddressesController < ApplicationController
+
+    def index()
+      @cart = Cart.find_by(user:current_user)
+    end 
+    
     def create()
         @address = Address.new(zip_code: params[:zip_code], city_name: params[:city_name], address_name: params[:address_name])
         if @address.save
