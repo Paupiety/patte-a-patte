@@ -4,12 +4,13 @@
 <section class="mt-6 mb-6 p-12 flex flex-col gap-6 max-md:p-4 max-w-screen-2xl w-full max-sm:p-6 max-sm:mt-0 self-center">
     <h1 class="text-3xl w-full">Mes commandes passées</h1>
   <div class="w-full">
-    <div class="flex flex-col gap-4">
+    <div class="flex flex-col gap-12">
       <% if current_user.orders.present? %>
         <% current_user.orders.each do |order| %>
-        <div class="bg-complementary p-4 rounded flex flex-col justify-between max-sm:flex-col-reverse max-sm:gap-3">
+        <div class="bg-complementary rounded flex flex-col justify-between max-sm:flex-col max-sm:gap-3">
             <%order.cart.offers.each do |offer|%>
-                <div class="flex gap-6 w-full max-sm:flex-col">
+                <div class="flex gap-6 w-full max-sm:flex-col p-6 justify-between">
+                  <div class="flex gap-6">
                 <%if offer.type_offer.type_offer == "Service"%>
                     <div class="group relative h-32 w-32flex justify-center max-sm:w-full">
                     
@@ -37,16 +38,23 @@
                         </h3>
                 </div>
                 </div>
-                <div class="flex flex-col justify-between items-end max-sm:gap-2 max-sm:items-start max-sm:flex-row">
+                <div class="flex flex-col justify-between items-end max-sm:gap-2 max-sm:items-start max-sm:flex-row align-self-end">
                 <div class="h-fit flex gap-1 items-center rounded-full py-1 px-2 border w-min border-secondary">
                     <h5 class="text-xs font-semibold"><%= offer.type_offer.type_offer %></h5>
-                    </div>
-                    <div>
-                    <p class="text-xs italic text-end"><%= offer.created_at.strftime('%d/%m/%Y') %></p>
-                    </div>
+                </div>
+                </div>
                 </div>
             
         <% end %>
+        <div class="mt-6 bg-primary color-complementary py-4 rounded-b-md px-6 flex justify-between max-sm:flex-col">
+          <div>
+            <h2 class="text-2xl">Le <%= order.created_at.strftime('%d/%m/%Y') %></h2>
+          </div>
+          <div class=cart_price_total_offer>
+            <h2>Prix total : <%= number_with_precision(total_price(order.cart) + services_charges(order.cart), precision: 2) %> €</h2>
+          </div>
+        </div>
+        
         </div>
         <%end%>
       <% else %>
