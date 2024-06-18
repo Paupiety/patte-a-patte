@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to @offer, notice: 'Commentaire ajouté avec succès.'
     else
-      render :new
+      redirect_to @offer
     end
   end
 end
