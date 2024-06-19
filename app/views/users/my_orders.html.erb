@@ -1,0 +1,79 @@
+<% content_for :title, "Mes commandes passées" %>
+<% content_for :meta_description, "Page mes commandes"%>
+
+<section class="mt-6 mb-6 p-12 flex flex-col gap-6 max-md:p-4 max-w-screen-2xl w-full max-sm:p-6 max-sm:mt-0 self-center">
+    <h1 class="text-3xl w-full">Mes commandes passées</h1>
+  <div class="w-full">
+    <div class="flex flex-col gap-12">
+      <% if current_user.orders.present? %>
+        <% current_user.orders.each do |order| %>
+        <div class="bg-complementary rounded flex flex-col justify-between max-sm:flex-col max-sm:gap-3">
+            <%order.cart.offers.each do |offer|%>
+                <div class="flex gap-6 w-full max-sm:flex-col p-6 justify-between">
+                  <div class="flex gap-6">
+                <%if offer.type_offer.type_offer == "Service"%>
+                    <div class="group relative h-32 w-32flex justify-center max-sm:w-full">
+                    
+                    <% if offer.user.profile_picture.attached? %>
+                        <div class="max-sm:w-auto">
+                            <%= image_tag offer.user.profile_picture, alt: 'profil_picture_user', class: "w-full h-full rounded-lg object-cover" %>
+                        </div>
+                        <%else%>
+                        <div class="max-sm:w-auto">
+                        <img src="<%= asset_path('logo/symbole_logo.svg')%>" alt="Logo Patte à patte" class="w-full h-full rounded-lg object-cover">
+                        </div>
+                        <%end%>
+                    </div>
+                    <% elsif offer.image.attached? %>
+                    <div class="group relative h-32 w-32 flex justify-center max-sm:w-full">
+                    <%= link_to offer_path(offer), class:"w-full" do %>
+                        <%= image_tag offer.image, alt: 'image', class: "w-full h-full rounded-lg object-cover" %>
+                    <%end%>
+                    </div> 
+                <% end %>
+                <div class="flex flex-col gap-2">
+                <h2 class="text-2xl"><%= offer.title %></h2>
+                <h3 class="font-bold text-1xl">
+                        <%= offer.price %> €
+                        </h3>
+                </div>
+                </div>
+                <div class="flex flex-col justify-between items-end max-sm:gap-2 max-sm:items-start max-sm:flex-row align-self-end">
+                <div class="h-fit flex gap-1 items-center rounded-full py-1 px-2 border w-min border-secondary">
+                    <h5 class="text-xs font-semibold"><%= offer.type_offer.type_offer %></h5>
+                </div>
+                </div>
+                </div>
+            
+        <% end %>
+        <div class="mt-6 bg-primary color-complementary py-4 rounded-b-md px-6 flex flex-col gap-3">
+          <%if order.address.present?%>
+        <div class="flex gap-2 justify-between items-center max-sm:flex-col pb-3 border-b">
+          <h2 class="text-2xl">Adresse de livraison</h2>
+          <div>
+            <%=order.address.address_name%>
+            <%=order.address.zip_code%>
+            <%=order.address.city_name%>
+          </div>
+        </div>
+        <%end%>
+        <div class="flex justify-between max-sm:flex-col">
+          <div>
+            <h2 class="text-2xl"><%= order.created_at.strftime('%d/%m/%Y') %></h2>
+          </div>
+          <div class=cart_price_total_offer>
+            <h2>Total : <%= number_with_precision(total_price(order.cart) + services_charges(order.cart), precision: 2) %> €</h2>
+          </div>
+        </div>
+        </div>
+        
+        </div>
+        <%end%>
+      <% else %>
+        <p>Vous n'avez pas de commandes pour le moment.</p>
+        <a href="<%=vente_offers_path%>" class="btn_primary">Découvrir</a>
+      <% end %>
+    </div>
+  </div>
+</section>
+

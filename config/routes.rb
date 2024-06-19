@@ -39,6 +39,7 @@ Rails.application.routes.draw do
 
   # Page spécifique pour l'utilisateur
   get 'favoris', to: 'users#favorites', as: 'favorites'
+  get 'mes-commandes', to: 'users#my_orders', as:'my_orders'
   get 'mes-annonces', to: 'users#my_offers', as: 'my_offers'
   get 'compte', to: 'static_pages#profil', as: 'profil'
 
