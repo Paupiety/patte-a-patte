@@ -9,10 +9,9 @@ module ApplicationHelper
       "@type": "Offer",
       "name": offer.title,
       "description": offer.description,
-      "author": {
-        "@type": "Person",
-        "name": offer.user.first_name
-      }
+      "price": offer.price,
+      "priceCurrency": "EUR",
+
     }.to_json.html_safe
   end
 end
