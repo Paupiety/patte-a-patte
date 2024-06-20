@@ -16,3 +16,4 @@ module ApplicationHelper
     }.to_json.html_safe
   end
 end
+ 
