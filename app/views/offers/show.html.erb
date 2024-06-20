@@ -12,3 +12,6 @@
     <img class="max-sm:hidden w-full" src="<%= asset_path('illustrations/dog_2.svg') %>" alt="dog 2">
   </div>
 <%end%>
+<script type="application/ld+json">
+  <%= (offer_jsonld(@offer)) %>
+</script>
