@@ -16,13 +16,18 @@
                   <% end %>
                 </div>
                 <div>
-                  <h3 class="font-semibold"><%=comment.user.first_name%> <%=comment.user.last_name%></h3> 
+                  <h3 class="font-semibold"><%= comment.user.first_name %> <%= comment.user.last_name %></h3> 
                   <p><%= comment.content %></p>
                 </div>
               </div>
-              <small class="text-xs italic max-sm:self-end">
-                <%= comment.created_at.strftime('%d/%m/%Y') %>
-              </small>
+              <div class="flex items-center gap-3 max-sm:self-end">
+                <small class="text-xs italic"><%= comment.created_at.strftime('%d/%m/%Y') %></small>
+                <% if comment.user == current_user %>
+                  <%= form_with model: [@offer, comment], method: :delete, local: true do |form| %>
+                    <%= form.submit "Supprimer", class: 'btn_primary w-fit h-fit' %>
+                  <% end %>
+                <% end %>
+              </div>
             </div>
           <% end %>
         </div>
@@ -31,14 +36,14 @@
 
     <% if user_signed_in? %>
       <div class="container">
-          <%= form_with(model: [@offer, @offer.comments.build], local: true) do |form| %>
+        <%= form_with(model: [@offer, @offer.comments.build], local: true) do |form| %>
           <div class="flex flex-col gap-3 items-end">
             <div class="w-full">
               <%= form.text_area :content, class: 'p-3 mt-1 w-full rounded input', placeholder: "Donner son avis" %>
             </div>
             <%= form.submit "Donner son avis", class: 'btn_primary w-fit h-fit' %>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       </div>
     <% else %>
       <p class="text-muted">Connectez-vous pour laisser un avis.</p>
