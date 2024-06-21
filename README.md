@@ -73,8 +73,8 @@ Javascript
 
 ## Auteurs
 
-Alexandre TEDESCO 
-Manon ESQUERRE 
-Thibault LENORMAND 
+Alexandre TEDESCO alias AlexandreTedesco
+Manon ESQUERRE alias Paupiety
+Thibault LENORMAND alias ThibaultL24
 
 
