@@ -35,7 +35,9 @@ PostgreSQL : Base de données utilisée
 ### Clonez le dépôt :
 
 Copier le code
+
 git clone https://github.com/Paupiety/patte-a-patte.git
+
 cd patte-a-patte
 
 ### Installez les dépendances :
@@ -45,11 +47,13 @@ bundle install
 # Configurez la base de données :
 
 rails db:create
+
 rails db:migrate
 
 ### Démarrez le serveur :
 
 rails server
+
 Ensuite, vous pouvez accéder à l'application dans votre navigateur à http://localhost:3000.
 
 ## Démarrage
@@ -61,20 +65,27 @@ Inscrivez-vous sur la plateforme.
 Créez votre profil et ajoutez vos animaux de compagnie.
 Parcourez et publiez des annonces pour des services et des accessoires.
 Vous pourrez également accèder au menu administrateur en allant sur/admin/login, et pour vous connecter :
+
 admin@example.com
+
 admin123
 
 ## Construit avec :
 
 Ruby on Rails 
+
 PostgreSQL 
+
 Tailwind 
+
 Javascript
 
 ## Auteurs
 
-Alexandre TEDESCO alias AlexandreTedesco
-Manon ESQUERRE alias Paupiety
-Thibault LENORMAND alias ThibaultL24
+Alexandre TEDESCO alias AlexandreTedesco;
+
+Manon ESQUERRE alias Paupiety;
+
+Thibault LENORMAND alias ThibaultL24;
 
 
