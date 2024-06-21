@@ -1,4 +1,4 @@
-#### Patte à Patte
+# Patte à Patte
 
 ## A propos
 
@@ -6,15 +6,15 @@ Chez Patte à Patte, on pense que les animaux méritent le meilleur, et pas seul
 
 Nous sommes trois étudiants passionnés par les animaux et avons réalisé que nos compagnons méritaient une communauté dédiée. Après des semaines de travail intense, nous avons créé Patte à Patte pour offrir une plateforme de confiance où les propriétaires d’animaux peuvent échanger des services et des accessoires.
 
-# Une communauté en pleine croissance
+### Une communauté en pleine croissance
 
 Aujourd'hui, Patte à Patte rassemble une communauté dynamique de propriétaires d’animaux de tous horizons. Notre équipe de passionnés s'efforce de rendre chaque interaction sur la plateforme simple et agréable. Que vous cherchiez une laisse tendance ou un service de garde, Patte à Patte est là pour vous.
 
-# Opérant à travers la France
+### Opérant à travers la France
 
 Depuis nos bureaux à Paris, nous connectons les amoureux des animaux dans toute la France, permettant de trouver des services fiables et des accessoires uniques partout où vous êtes.
 
-# Pour une mission globale
+### Pour une mission globale
 
 Notre mission est de rendre la recherche de services et d'accessoires pour vos animaux facile et fiable. Rejoignez notre communauté et participez à notre mission : faire de Patte à Patte la référence pour les échanges entre propriétaires d’animaux, parce que vos amis à quatre pattes, à plumes ou à écailles le méritent.
 
@@ -30,16 +30,16 @@ PostgreSQL : Base de données utilisée
 
 ## Installation
 
-# Les étapes pour installer votre programme :
+### Les étapes pour installer notre programme :
 
-# Clonez le dépôt :
+### Clonez le dépôt :
 
 bash
 Copier le code
 git clone git@github.com:Paupiety/patte-a-patte.git
 cd patte-a-patte
 
-# Installez les dépendances :
+### Installez les dépendances :
 
 bash
 Copier le code
@@ -52,7 +52,7 @@ Copier le code
 rails db:create
 rails db:migrate
 
-# Démarrez le serveur :
+### Démarrez le serveur :
 
 bash
 Copier le code
@@ -61,7 +61,7 @@ Ensuite, vous pouvez accéder à l'application dans votre navigateur à http://l
 
 ## Démarrage
 
-# Comment lancer le projet :
+### Comment lancer le projet :
 
 Accédez à l'application dans votre navigateur à http://localhost:3000
 Inscrivez-vous sur la plateforme.
