@@ -6,11 +6,11 @@ document.addEventListener("turbo:load", function() {
   function toggleSections() {
     const typeOfferId = typeOfferSelect.value;
 
-    if (typeOfferId == '1') { // Change '1' to the actual ID for the specific type offer
+    if (typeOfferId == '3') { // Change '1' to the actual ID for the specific type offer
       sections1.forEach(section => section.style.display = '');
       sections2.forEach(section => section.style.display = 'none');
       sectionsp.forEach(section => section.style.display = '');
-    } else if (typeOfferId == '2' || typeOfferId =='3') { // Change '2' to the actual ID for another type offer
+    } else if (typeOfferId == '2' || typeOfferId =='1') { // Change '2' to the actual ID for another type offer
       sections1.forEach(section => section.style.display = '');
       sections2.forEach(section => section.style.display = '');
       sectionsp.forEach(section => section.style.display = 'none');
