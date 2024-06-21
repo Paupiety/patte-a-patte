@@ -2,6 +2,7 @@
 
 require 'faker'
 require 'httparty'
+include ActionView::Helpers::AssetUrlHelper
 
 # Supprimer les enregistrements des tables dépendantes
 CartOffer.destroy_all
@@ -14,6 +15,7 @@ Order.destroy_all
 Typeoffer.destroy_all
 UserAddress.destroy_all
 Address.destroy_all
+AdminUser.destroy_all
 
 # Supprimer les enregistrements principaux
 ActiveAdmin::Comment.destroy_all
@@ -31,6 +33,8 @@ common_password = 'password123'
 
 User.create(email:"test@test.com", password:"test123", password_confirmation:"test123", first_name:"Michel", last_name:"Patte",description: Faker::Lorem.paragraph(sentence_count: 3),
 phone_number: "0000000000")
+
+AdminUser.create!(email: 'admin@example.com', password: 'admin123', password_confirmation: 'admin123')
 
 # Créer des utilisateurs avec un mot de passe commun
 User.transaction do
@@ -71,6 +75,29 @@ categories.each do |category|
   )
 end
 
+images = []
+i = 0
+image_folder = Rails.root.join('app', 'assets', 'images', 'offers')
+
+9.times do |image|
+  if Rails.env.production?
+    images << asset_path("offers/image_0#{i += 1}.jpg")
+  else
+    image_path = image_folder.join("image_0#{i += 1}.jpg")
+    images << image_path.to_s
+  end
+end
+i = 0
+9.times do |image|
+  if Rails.env.production?
+    images << asset_path("offers/image_1#{i}.jpg")
+  else
+    image_path = image_folder.join("image_1#{i}.jpg")
+    images << image_path.to_s
+  end
+  i += 1
+end
+
 
 # Créer des offres
 30.times do
@@ -84,7 +111,7 @@ end
     type_offer_id: Typeoffer.pluck(:id).sample,
     price_type: ['Fixe', 'Horaire', 'Journalier'].sample
   )
-  image_url = Faker::LoremFlickr.image
+  image_url = images.sample
   file = URI.open(image_url)
   offer.image.attach(io: file, filename: "#{offer.title}.jpg", content_type: 'image/jpg')
   puts "Created offer: #{offer.title}"
