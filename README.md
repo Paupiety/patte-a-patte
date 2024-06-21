@@ -36,7 +36,7 @@ PostgreSQL : Base de données utilisée
 
 bash
 Copier le code
-git clone git@github.com:Paupiety/patte-a-patte.git
+git clone https://github.com/Paupiety/patte-a-patte.git
 cd patte-a-patte
 
 ### Installez les dépendances :
