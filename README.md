@@ -34,28 +34,21 @@ PostgreSQL : Base de données utilisée
 
 ### Clonez le dépôt :
 
-bash
 Copier le code
 git clone https://github.com/Paupiety/patte-a-patte.git
 cd patte-a-patte
 
 ### Installez les dépendances :
 
-bash
-Copier le code
 bundle install
 
 # Configurez la base de données :
 
-bash
-Copier le code
 rails db:create
 rails db:migrate
 
 ### Démarrez le serveur :
 
-bash
-Copier le code
 rails server
 Ensuite, vous pouvez accéder à l'application dans votre navigateur à http://localhost:3000.
 
