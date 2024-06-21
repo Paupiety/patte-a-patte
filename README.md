@@ -82,10 +82,10 @@ Javascript
 
 ## Auteurs
 
-Alexandre TEDESCO alias AlexandreTedesco;
+Alexandre TEDESCO alias AlexandreTedesco
 
-Manon ESQUERRE alias Paupiety;
+Manon ESQUERRE alias Paupiety
 
-Thibault LENORMAND alias ThibaultL24;
+Thibault LENORMAND alias ThibaultL24
 
 
