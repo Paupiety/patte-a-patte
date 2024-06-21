@@ -60,6 +60,9 @@ Accédez à l'application dans votre navigateur à http://localhost:3000
 Inscrivez-vous sur la plateforme.
 Créez votre profil et ajoutez vos animaux de compagnie.
 Parcourez et publiez des annonces pour des services et des accessoires.
+Vous pourrez également accèder au menu administrateur en allant sur/admin/login, et pour vous connecter :
+admin@example.com
+admin123
 
 ## Construit avec :
 
