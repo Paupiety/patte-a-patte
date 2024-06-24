@@ -31,7 +31,13 @@ ActiveRecord::Base.connection.reset_pk_sequence!('typeoffers')
 # Définir un mot de passe commun pour tous les utilisateurs
 common_password = 'password123'
 
-User.create(email:"test@test.com", password:"test123", password_confirmation:"test123", first_name:"Michel", last_name:"Patte",description: Faker::Lorem.paragraph(sentence_count: 3),
+User.create(email:"manon@test.com", password:"manontest", password_confirmation:"manontest", first_name:"Manon", last_name:"Esquerre",description: Faker::Lorem.paragraph(sentence_count: 3),
+phone_number: "0000000000")
+
+User.create(email:"thibault@test.com", password:"thibaulttest", password_confirmation:"thibaulttest", first_name:"Thibault", last_name:"Lenormand",description: Faker::Lorem.paragraph(sentence_count: 3),
+phone_number: "0000000000")
+
+User.create(email:"alexandre@test.com", password:"alexandretest", password_confirmation:"alexandretest", first_name:"Alexandre", last_name:"Tedesco",description: Faker::Lorem.paragraph(sentence_count: 3),
 phone_number: "0000000000")
 
 AdminUser.create!(email: 'admin@example.com', password: 'admin123', password_confirmation: 'admin123')
@@ -75,38 +81,38 @@ categories.each do |category|
   )
 end
 
-# images = []
-# i = 0
-# image_folder = Rails.root.join('app', 'assets', 'images', 'offers')
+images = []
+i = 0
+image_folder = Rails.root.join('app', 'assets', 'images', 'offers')
 
-# 9.times do |image|
-#     image_path = image_folder.join("image_0#{i += 1}.jpg")
-#     images << image_path.to_s
-# end
-# i = 0
-# 9.times do |image|
-#     image_path = image_folder.join("image_1#{i}.jpg")
-#     images << image_path.to_s
-#   i += 1
-# end
+9.times do |image|
+    image_path = image_folder.join("image_0#{i += 1}.jpg")
+    images << image_path.to_s
+end
+i = 0
+9.times do |image|
+    image_path = image_folder.join("image_1#{i}.jpg")
+    images << image_path.to_s
+  i += 1
+end
 
 
-# # Créer des offres
-# 30.times do
-#   offer = Offer.create!(
-#     title: Faker::Lorem.words(number: 3).join(' '),
-#     description: Faker::Lorem.paragraph(sentence_count: 3),
-#     price: Faker::Commerce.price(range: 10.0..1000.0),
-#     type_animal: categories.sample,
-#     date_publication: Faker::Date.between(from: 1.year.ago, to: Date.today),
-#     user_id: User.pluck(:id).sample,
-#     type_offer_id: Typeoffer.pluck(:id).sample,
-#     price_type: ['Fixe', 'Horaire', 'Journalier'].sample
-#   )
-#   image_url = images.sample
-#   file = URI.open(image_url)
-#   offer.image.attach(io: file, filename: "#{offer.title}.jpg", content_type: 'image/jpg')
-#   puts "Created offer: #{offer.title}"
-# end
+# Créer des offres
+30.times do
+  offer = Offer.create!(
+    title: Faker::Lorem.words(number: 3).join(' '),
+    description: Faker::Lorem.paragraph(sentence_count: 3),
+    price: Faker::Commerce.price(range: 10.0..1000.0),
+    type_animal: categories.sample,
+    date_publication: Faker::Date.between(from: 1.year.ago, to: Date.today),
+    user_id: User.pluck(:id).sample,
+    type_offer_id: Typeoffer.pluck(:id).sample,
+    price_type: ['Fixe', 'Horaire', 'Journalier'].sample
+  )
+  image_url = images.sample
+  file = URI.open(image_url)
+  offer.image.attach(io: file, filename: "#{offer.title}.jpg", content_type: 'image/jpg')
+  puts "Created offer: #{offer.title}"
+end
 
 puts "Seed completed with users, addresses, typeoffers, categories, and offers"

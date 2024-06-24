@@ -21,3 +21,10 @@ console_command = '/rails/bin/rails console'
   memory = '1gb'
   cpu_kind = 'shared'
   cpus = 1
+
+[env]
+  RAILS_STORAGE = "/mnt/volume/storage"
+
+[mounts]
+  source = "images_volumes"
+  destination = "/mnt/volume"
