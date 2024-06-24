@@ -1,5 +1,6 @@
 class Offer < ApplicationRecord
   belongs_to :user
+  has_many :bookings
   belongs_to :type_offer, class_name: 'Typeoffer'
   has_one_attached :image
   has_one_attached :photo_1

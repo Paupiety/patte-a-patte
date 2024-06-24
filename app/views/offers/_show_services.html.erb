@@ -28,6 +28,9 @@
                 <% if user_signed_in? %>
                   <div class="flex gap-3 justify-between w-full"> 
                     <%= button_to "Contacter", user_path(@offer.user), method: :get, class: "btn_primary" %>
+                    <% if @offer.booking_option_enabled %>
+                      <%= button_to 'Réserver', new_offer_booking_path(@offer), class: "btn_primary" %>
+                    <% end %>
                     <div>
                       <% if @offer.likes.find_by(user: current_user) %>
                         <%= button_to unlike_offer_path(@offer), method: :delete, class: "bg-secondary p-2 w-fi rounded-full icone_svg" do %>

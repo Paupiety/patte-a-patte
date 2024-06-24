@@ -1,0 +1,14 @@
+<h1>Réserver un créneau</h1>
+<%= form_with model: [@offer, @booking], local: true do |form| %>
+  <div>
+    <%= form.label :start_time, "Début" %>
+    <%= form.datetime_select :start_time %>
+  </div>
+  <div>
+    <%= form.label :end_time, "Fin" %>
+    <%= form.datetime_select :end_time %>
+  </div>
+  <div>
+    <%= form.submit "Réserver", class: "btn_primary" %>
+  </div>
+<% end %>

@@ -51,6 +51,6 @@ module OffersHelper
   end
 
   def offer_params
-    params.require(:offer).permit(:title, :description, :price, :price_type, :type_animal, :date_publication, :image, :photo_1, :photo_2, :type_offer_id)
+    params.require(:offer).permit(:title, :description, :price, :price_type, :type_animal, :date_publication, :image, :photo_1, :photo_2, :type_offer_id, :booking_option_enabled)
   end
 end

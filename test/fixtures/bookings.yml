@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  offer: one
+  start_time: 2024-06-19 15:34:31
+  end_time: 2024-06-19 15:34:31
+  status: 1
+
+two:
+  user: two
+  offer: two
+  start_time: 2024-06-19 15:34:31
+  end_time: 2024-06-19 15:34:31
+  status: 1

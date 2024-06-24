@@ -32,6 +32,11 @@
           </div>
         </div>
 
+        <div class="type_offer_section_p">
+          <%= f.label :booking_option_enabled, "Activer la réservation" %>
+          <%= f.check_box :booking_option_enabled %>
+        </div>
+
         <div class="type_offer_section_2 flex flex-col gap-2 w-fit">
           <%= f.label :image, "Rajouter des images", class: 'label'%> 
           <%= f.file_field :image %> 

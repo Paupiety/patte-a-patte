@@ -52,6 +52,16 @@ Rails.application.routes.draw do
     get 'cancel', to: 'checkout#cancel', as: 'checkout_cancel'
   end
 
-
+  resources :offers do
+    resources :bookings, only: [:new, :create]
+  end
+  
+  resources :bookings, only: [] do
+    member do
+      patch :approve
+      patch :decline
+    end
+  end
+  
   get "up" => "rails/health#show", as: :rails_health_check
 end
