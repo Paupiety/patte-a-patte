@@ -3,12 +3,6 @@
 
 <%if @offer.type_offer.type_offer == "Service"%>
   <%= render 'offers/show_services' %>
-    <div class='absolute position-icon-bird'>
-    <img class="absolute max-sm:hidden" style="width: 120px;" src="<%= asset_path('illustrations/bird.svg') %>" alt="bird">
-    </div>
 <%else%>
   <%= render 'offers/show_products_adoptions' %>
-  <div class="absolute position-icon-cat2">
-    <img class="max-sm:hidden w-full" src="<%= asset_path('illustrations/dog_2.svg') %>" alt="dog 2">
-  </div>
 <%end%>
